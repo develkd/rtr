@@ -219,54 +219,39 @@
             <property name="title">
              <string>Rotation Axis</string>
             </property>
-            <widget class="QRadioButton" name="radioButtonRotateX">
-             <property name="geometry">
-              <rect>
-               <x>10</x>
-               <y>20</y>
-               <width>51</width>
-               <height>23</height>
-              </rect>
-             </property>
-             <property name="focusPolicy">
-              <enum>Qt::NoFocus</enum>
-             </property>
-             <property name="text">
-              <string>X</string>
-             </property>
-             <property name="checked">
-              <bool>true</bool>
-             </property>
-            </widget>
-            <widget class="QRadioButton" name="radioButtonRotateZ">
-             <property name="geometry">
-              <rect>
-               <x>90</x>
-               <y>20</y>
-               <width>41</width>
-               <height>23</height>
-              </rect>
-             </property>
-             <property name="focusPolicy">
-              <enum>Qt::NoFocus</enum>
-             </property>
-             <property name="text">
-              <string>Z</string>
-             </property>
-            </widget>
-            <widget class="QRadioButton" name="radioButtonRotateY">
-             <property name="geometry">
-              <rect>
-               <x>50</x>
-               <y>20</y>
-               <width>41</width>
-               <height>23</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>Y</string>
-             </property>
-            </widget>
+            <layout class="QHBoxLayout" name="horizontalLayout">
+             <item>
+              <widget class="QSplitter" name="splitter">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <widget class="QRadioButton" name="radioButtonRotateX">
+                <property name="focusPolicy">
+                 <enum>Qt::NoFocus</enum>
+                </property>
+                <property name="text">
+                 <string>X</string>
+                </property>
+                <property name="checked">
+                 <bool>true</bool>
+                </property>
+               </widget>
+               <widget class="QRadioButton" name="radioButtonRotateY">
+                <property name="text">
+                 <string>Y</string>
+                </property>
+               </widget>
+               <widget class="QRadioButton" name="radioButtonRotateZ">
+                <property name="focusPolicy">
+                 <enum>Qt::NoFocus</enum>
+                </property>
+                <property name="text">
+                 <string>Z</string>
+                </property>
+               </widget>
+              </widget>
+             </item>
+            </layout>
            </widget>
           </item>
          </layout>

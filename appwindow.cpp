@@ -66,18 +66,18 @@ AppWindow::AppWindow(QWidget *parent) :
 
     connect(ui->radioButtonRotateX, &QRadioButton::clicked, [this](bool)
     {
-               scene().setRotateAxis(0);
+               scene().setRotateAxis(RotateY::Axis::X);
     });
 
     connect(ui->radioButtonRotateY, &QRadioButton::clicked, [this](bool)
     {
-               scene().setRotateAxis(1);
+               scene().setRotateAxis(RotateY::Axis::Y);
     });
 
 
     connect(ui->radioButtonRotateZ, &QRadioButton::clicked, [this](bool)
     {
-               scene().setRotateAxis(2);
+               scene().setRotateAxis(RotateY::Axis::Z);
     });
 
 

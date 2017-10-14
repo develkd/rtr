@@ -23,6 +23,7 @@
 #include <QtWidgets/QRadioButton>
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QSpacerItem>
+#include <QtWidgets/QSplitter>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -55,9 +56,11 @@ public:
     QRadioButton *greyBgRadioButton;
     QRadioButton *whiteBgRadioButton;
     QGroupBox *groupBox_2;
+    QHBoxLayout *horizontalLayout;
+    QSplitter *splitter;
     QRadioButton *radioButtonRotateX;
-    QRadioButton *radioButtonRotateZ;
     QRadioButton *radioButtonRotateY;
+    QRadioButton *radioButtonRotateZ;
     QSpacerItem *verticalSpacer_2;
     QSpacerItem *verticalSpacer;
     QPushButton *quitButton;
@@ -185,18 +188,26 @@ public:
 
         groupBox_2 = new QGroupBox(rendering_tab);
         groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
-        radioButtonRotateX = new QRadioButton(groupBox_2);
+        horizontalLayout = new QHBoxLayout(groupBox_2);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        splitter = new QSplitter(groupBox_2);
+        splitter->setObjectName(QStringLiteral("splitter"));
+        splitter->setOrientation(Qt::Horizontal);
+        radioButtonRotateX = new QRadioButton(splitter);
         radioButtonRotateX->setObjectName(QStringLiteral("radioButtonRotateX"));
-        radioButtonRotateX->setGeometry(QRect(10, 20, 51, 23));
         radioButtonRotateX->setFocusPolicy(Qt::NoFocus);
         radioButtonRotateX->setChecked(true);
-        radioButtonRotateZ = new QRadioButton(groupBox_2);
-        radioButtonRotateZ->setObjectName(QStringLiteral("radioButtonRotateZ"));
-        radioButtonRotateZ->setGeometry(QRect(90, 20, 41, 23));
-        radioButtonRotateZ->setFocusPolicy(Qt::NoFocus);
-        radioButtonRotateY = new QRadioButton(groupBox_2);
+        splitter->addWidget(radioButtonRotateX);
+        radioButtonRotateY = new QRadioButton(splitter);
         radioButtonRotateY->setObjectName(QStringLiteral("radioButtonRotateY"));
-        radioButtonRotateY->setGeometry(QRect(50, 20, 41, 23));
+        splitter->addWidget(radioButtonRotateY);
+        radioButtonRotateZ = new QRadioButton(splitter);
+        radioButtonRotateZ->setObjectName(QStringLiteral("radioButtonRotateZ"));
+        radioButtonRotateZ->setFocusPolicy(Qt::NoFocus);
+        splitter->addWidget(radioButtonRotateZ);
+
+        horizontalLayout->addWidget(splitter);
+
 
         verticalLayout->addWidget(groupBox_2);
 
@@ -283,8 +294,8 @@ public:
         whiteBgRadioButton->setText(QApplication::translate("AppWindow", "white", Q_NULLPTR));
         groupBox_2->setTitle(QApplication::translate("AppWindow", "Rotation Axis", Q_NULLPTR));
         radioButtonRotateX->setText(QApplication::translate("AppWindow", "X", Q_NULLPTR));
-        radioButtonRotateZ->setText(QApplication::translate("AppWindow", "Z", Q_NULLPTR));
         radioButtonRotateY->setText(QApplication::translate("AppWindow", "Y", Q_NULLPTR));
+        radioButtonRotateZ->setText(QApplication::translate("AppWindow", "Z", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(rendering_tab), QApplication::translate("AppWindow", "Rendering", Q_NULLPTR));
         quitButton->setText(QApplication::translate("AppWindow", "quit", Q_NULLPTR));
         label_11->setText(QApplication::translate("AppWindow", "left/right: rotate camera Y-Axsi", Q_NULLPTR));

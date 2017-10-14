@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Scene_t {
-    QByteArrayData data[32];
-    char stringdata0[309];
+    QByteArrayData data[33];
+    char stringdata0[323];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -62,7 +62,8 @@ QT_MOC_LITERAL(27, 262, 14), // "updateViewport"
 QT_MOC_LITERAL(28, 277, 5), // "width"
 QT_MOC_LITERAL(29, 283, 6), // "height"
 QT_MOC_LITERAL(30, 290, 13), // "setRotateAxis"
-QT_MOC_LITERAL(31, 304, 4) // "axis"
+QT_MOC_LITERAL(31, 304, 13), // "RotateY::Axis"
+QT_MOC_LITERAL(32, 318, 4) // "axis"
 
     },
     "Scene\0displayBufferContents\0\0id\0label\0"
@@ -73,7 +74,7 @@ QT_MOC_LITERAL(31, 304, 4) // "axis"
     "mouseMoveEvent\0mouseReleaseEvent\0"
     "wheelEvent\0QWheelEvent*\0draw\0update\0"
     "updateViewport\0width\0height\0setRotateAxis\0"
-    "axis"
+    "RotateY::Axis\0axis"
 };
 #undef QT_MOC_LITERAL
 
@@ -124,7 +125,7 @@ static const uint qt_meta_data_Scene[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, 0x80000000 | 13, 0x80000000 | 13,   28,   29,
-    QMetaType::Void, QMetaType::Int,   31,
+    QMetaType::Void, 0x80000000 | 31,   32,
 
        0        // eod
 };
@@ -148,7 +149,7 @@ void Scene::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void 
         case 10: _t->draw(); break;
         case 11: _t->update(); break;
         case 12: _t->updateViewport((*reinterpret_cast< size_t(*)>(_a[1])),(*reinterpret_cast< size_t(*)>(_a[2]))); break;
-        case 13: _t->setRotateAxis((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 13: _t->setRotateAxis((*reinterpret_cast< RotateY::Axis(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {

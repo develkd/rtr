@@ -72,7 +72,10 @@ public slots:
 
     // adjust camera / viewport / ... if drawing surface changes
     void updateViewport(size_t width, size_t height);
-    void setRotateAxis(int axis);
+    void setRotateAxis(RotateY::Axis axis);
+
+
+
 protected:
 
     // draw the actual scene

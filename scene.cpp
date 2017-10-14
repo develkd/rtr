@@ -274,7 +274,7 @@ void Scene::updateViewport(size_t width, size_t height)
     glViewport(0,0,GLint(width),GLint(height));
 }
 
-void Scene::setRotateAxis(int axis){
+void Scene::setRotateAxis(RotateY::Axis axis){
      cameraNavigator_->setRotateAxis(axis);
 }
 
