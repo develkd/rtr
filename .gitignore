@@ -30,3 +30,8 @@
 *.exe
 *.out
 *.app
+
+# IDE
+**/.DS_Store
+rtrApp*
+
