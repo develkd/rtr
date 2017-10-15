@@ -111,7 +111,8 @@ void AppWindow::setDefaultUIValues() {
     ui->light0Slider->setValue(80);
     ui->modelComboBox->setCurrentText("Cube");
     ui->modelComboBox->setCurrentText("Duck");
-     ui->modelComboBox->setCurrentText("Goblin");
+    ui->modelComboBox->setCurrentText("Goblin");
+    ui->modelComboBox->setCurrentText("Obiwan");
 
 }
 

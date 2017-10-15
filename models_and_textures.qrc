@@ -4,5 +4,6 @@
         <file>models/teapot/teapot.obj</file>
         <file>models/goblin.obj</file>
         <file>textures/RTR-ist-super-4-3.png</file>
+        <file>models/obiwan/obiwan.obj</file>
     </qresource>
 </RCC>

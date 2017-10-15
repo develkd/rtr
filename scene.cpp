@@ -71,6 +71,7 @@ void Scene::makeNodes()
     meshes_["Duck"]    = std::make_shared<Mesh>(":/models/duck/duck.obj", std);
     meshes_["Teapot"]  = std::make_shared<Mesh>(":/models/teapot/teapot.obj", std);
     meshes_["Goblin"]  = std::make_shared<Mesh>(":/models/goblin.obj", std);
+    meshes_["Obiwan"]  = std::make_shared<Mesh>(":/models/obiwan/obiwan.obj", std);
 
     // add meshes of some procedural geometry objects (not loaded from OBJ files)
     meshes_["Cube"]   = std::make_shared<Mesh>(make_shared<geom::Cube>(), std);
@@ -81,6 +82,7 @@ void Scene::makeNodes()
     nodes_["Duck"]    = createNode(meshes_["Duck"], true);
     nodes_["Teapot"]  = createNode(meshes_["Teapot"], true);
     nodes_["Goblin"]  = createNode(meshes_["Goblin"], true);
+    nodes_["Obiwan"]  = createNode(meshes_["Obiwan"], true);
 
 }
 
