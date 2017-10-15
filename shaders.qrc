@@ -2,5 +2,7 @@
     <qresource prefix="/">
         <file>shaders/phong.frag</file>
         <file>shaders/phong.vert</file>
+        <file>shaders/obiwan.frag</file>
+        <file>shaders/obiwan.vert</file>
     </qresource>
 </RCC>

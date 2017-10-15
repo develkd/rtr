@@ -749,7 +749,9 @@ qrc_models_and_textures.cpp: models_and_textures.qrc \
 qrc_shaders.cpp: shaders.qrc \
 		../../QT/5.9.2/gcc_64/bin/rcc \
 		shaders/phong.frag \
-		shaders/phong.vert
+		shaders/obiwan.vert \
+		shaders/phong.vert \
+		shaders/obiwan.frag
 	/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/bin/rcc -name shaders shaders.qrc -o qrc_shaders.cpp
 
 compiler_moc_predefs_make_all: moc_predefs.h

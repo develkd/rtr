@@ -109,10 +109,7 @@ void AppWindow::setDefaultUIValues() {
     ui->greyBgRadioButton->setChecked(true);
     ui->light0Slider->setValue(0);
     ui->light0Slider->setValue(80);
-    ui->modelComboBox->setCurrentText("Cube");
     ui->modelComboBox->setCurrentText("Duck");
-    ui->modelComboBox->setCurrentText("Goblin");
-    ui->modelComboBox->setCurrentText("Obiwan");
 
 }
 

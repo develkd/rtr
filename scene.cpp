@@ -56,13 +56,20 @@ void Scene::makeNodes()
 {
     // load shader source files and compile them into OpenGL program objects
     auto phong_prog = createProgram(":/shaders/phong.vert", ":/shaders/phong.frag");
+    auto obiwan_prog = createProgram(":/shaders/obiwan.vert", ":/shaders/obiwan.frag");
 
     // Phong materials
     auto red = std::make_shared<PhongMaterial>(phong_prog);
+    auto color_obiwan = std::make_shared<PhongMaterial>(obiwan_prog);
+
     phongMaterials_["red"] = red;
+    phongMaterials_["color_obiwan"] = color_obiwan;
     red->phong.k_diffuse = QVector3D(0.8f,0.1f,0.1f);
     red->phong.k_ambient = red->phong.k_diffuse * 0.3f;
     red->phong.shininess = 80;
+    color_obiwan->phong.k_diffuse = QVector3D(0.8f,0.6f,0.9f);
+    color_obiwan->phong.k_ambient = color_obiwan->phong.k_diffuse * 0.3f;
+    color_obiwan->phong.shininess = 80;
 
     // which material to use as default for all objects?
     auto std = red;
@@ -71,7 +78,7 @@ void Scene::makeNodes()
     meshes_["Duck"]    = std::make_shared<Mesh>(":/models/duck/duck.obj", std);
     meshes_["Teapot"]  = std::make_shared<Mesh>(":/models/teapot/teapot.obj", std);
     meshes_["Goblin"]  = std::make_shared<Mesh>(":/models/goblin.obj", std);
-    meshes_["Obiwan"]  = std::make_shared<Mesh>(":/models/obiwan/obiwan.obj", std);
+    meshes_["Obiwan"]  = std::make_shared<Mesh>(":/models/obiwan/obiwan.obj", color_obiwan);
 
     // add meshes of some procedural geometry objects (not loaded from OBJ files)
     meshes_["Cube"]   = std::make_shared<Mesh>(make_shared<geom::Cube>(), std);
