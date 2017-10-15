@@ -70,6 +70,7 @@ void Scene::makeNodes()
     // load meshes from .obj files and assign shader programs to them
     meshes_["Duck"]    = std::make_shared<Mesh>(":/models/duck/duck.obj", std);
     meshes_["Teapot"]  = std::make_shared<Mesh>(":/models/teapot/teapot.obj", std);
+    meshes_["Goblin"]  = std::make_shared<Mesh>(":/models/goblin.obj", std);
 
     // add meshes of some procedural geometry objects (not loaded from OBJ files)
     meshes_["Cube"]   = std::make_shared<Mesh>(make_shared<geom::Cube>(), std);
@@ -79,6 +80,7 @@ void Scene::makeNodes()
     nodes_["Cube"]    = createNode(meshes_["Cube"], true);
     nodes_["Duck"]    = createNode(meshes_["Duck"], true);
     nodes_["Teapot"]  = createNode(meshes_["Teapot"], true);
+    nodes_["Goblin"]  = createNode(meshes_["Goblin"], true);
 
 }
 

@@ -12,7 +12,7 @@ public:
         X,
         Y,
         Z
-    }axises;
+    };
 
     // this navigator only needs the actual node, and is independent of world and camera
     RotateY(std::shared_ptr<Node> node,
@@ -44,7 +44,7 @@ public:
     Axis getRotateAxis();
 
 protected:
-    Axis selectedAxis = X;
+    Axis selectedAxis;
     float distance_to_center_ = 1.0;
     float rotation_angle_ = 0;
     float elevation_angle_ = 15;

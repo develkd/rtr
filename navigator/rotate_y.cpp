@@ -8,7 +8,7 @@ using namespace std;
 RotateY::RotateY(std::shared_ptr<Node> node,
                  std::shared_ptr<Node>,
                  std::shared_ptr<Node>)
-    : NodeNavigator(node,nullptr,nullptr)
+    : NodeNavigator(node,nullptr,nullptr), selectedAxis(Axis::X)
 {
     updateTransformation_();
 }

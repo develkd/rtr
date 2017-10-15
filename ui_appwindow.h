@@ -283,6 +283,7 @@ public:
         modelComboBox->clear();
         modelComboBox->insertItems(0, QStringList()
          << QApplication::translate("AppWindow", "Cube", Q_NULLPTR)
+         << QApplication::translate("AppWindow", "Goblin", Q_NULLPTR)
          << QApplication::translate("AppWindow", "Duck", Q_NULLPTR)
          << QApplication::translate("AppWindow", "Teapot", Q_NULLPTR)
         );
