@@ -57,13 +57,18 @@ void Scene::makeNodes()
     // load shader source files and compile them into OpenGL program objects
     auto phong_prog = createProgram(":/shaders/phong.vert", ":/shaders/phong.frag");
     auto obiwan_prog = createProgram(":/shaders/obiwan.vert", ":/shaders/obiwan.frag");
+    auto toon_prog = createProgram(":/shaders/toon.vert", ":/shaders/toon.frag");
 
     // Phong materials
     auto red = std::make_shared<PhongMaterial>(phong_prog);
     auto color_obiwan = std::make_shared<PhongMaterial>(obiwan_prog);
+    auto color_toon = std::make_shared<ToonMaterial>(toon_prog);
 
     phongMaterials_["red"] = red;
     phongMaterials_["color_obiwan"] = color_obiwan;
+    toonMaterials_["color_toon"] = color_toon;
+
+
     red->phong.k_diffuse = QVector3D(0.8f,0.1f,0.1f);
     red->phong.k_ambient = red->phong.k_diffuse * 0.3f;
     red->phong.shininess = 80;
@@ -71,11 +76,15 @@ void Scene::makeNodes()
     color_obiwan->phong.k_ambient = color_obiwan->phong.k_diffuse * 0.3f;
     color_obiwan->phong.shininess = 80;
 
+    color_toon->phong.k_diffuse = QVector3D(0.8f,0.6f,0.9f);
+    color_toon->phong.k_ambient = color_toon->phong.k_diffuse * 0.3f;
+    color_toon->phong.shininess = 80;
+
     // which material to use as default for all objects?
     auto std = red;
 
     // load meshes from .obj files and assign shader programs to them
-    meshes_["Duck"]    = std::make_shared<Mesh>(":/models/duck/duck.obj", std);
+    meshes_["Duck"]    = std::make_shared<Mesh>(":/models/duck/duck.obj", color_toon);
     meshes_["Teapot"]  = std::make_shared<Mesh>(":/models/teapot/teapot.obj", std);
     meshes_["Goblin"]  = std::make_shared<Mesh>(":/models/goblin.obj", std);
     meshes_["Obiwan"]  = std::make_shared<Mesh>(":/models/obiwan/obiwan.obj", color_obiwan);

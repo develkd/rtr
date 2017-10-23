@@ -11,6 +11,8 @@
 #include "node.h"
 #include "camera.h"
 #include "material/phong.h"
+#include "material/toon.h"
+
 #include "navigator/rotate_y.h"
 
 #include <memory> // std::unique_ptr
@@ -101,6 +103,8 @@ protected:
 
     // different materials to be demonstrated
     std::map<QString, std::shared_ptr<PhongMaterial>> phongMaterials_;
+
+    std::map<QString, std::shared_ptr<ToonMaterial>> toonMaterials_;
 
     // mesh(es) to be used / shared
     std::map<QString, std::shared_ptr<Mesh>> meshes_;
