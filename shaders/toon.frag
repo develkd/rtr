@@ -30,7 +30,12 @@ struct PointLight {
 uniform PointLight light;
 
 uniform mat4 viewMatrix;
+uniform vec3 color;
+uniform vec3 lightIntensity;
 
+varying vec3 normalW;
+//varying vec3 lightDirectionW;
+//varying vec3 eyeDirectionW;
 /*
  *  Calculate surface color based on Phong illumination model.
  */
@@ -68,6 +73,39 @@ vec3 myphong(vec3 n, vec3 v, vec3 l) {
 
 }
 
+vec3 toon(vec3 normal, vec3 eye, vec3 light, vec3 intensity, vec3 color) {
+
+    // outline (simple silhouette)?
+    if(max(dot(eye, normal), 0.0) < 0.3)
+    {
+        color = vec3(0,0,0);
+    }
+    else
+    {
+        // diffuse
+        float diffuse = max(dot(normal,light),0.0);
+        if (diffuse < 0.2)
+            color *=0.2;
+        else if (diffuse < 0.4)
+            color *=0.4;
+        else if (diffuse < 0.6)
+            color *=0.6;
+        else if(diffuse < 0.8)
+            color *=0.8;
+        else if(diffuse < 1.0)
+            color *=1.0;
+
+        // spec (highest prio)
+        vec3 reflection = normalize(reflect(-eye, normal));
+        float spec = pow(max(0.0, dot(reflection, light)), 10.0);
+        // more than half highlight intensity?
+        if (spec > 0.5)
+            color = vec3(1, 1, 1);
+   }
+
+    return color;
+
+}
 void main() {
 
     // calculate all required vectors in camera/eye coordinates
@@ -80,8 +118,28 @@ void main() {
                                normalize(viewdir_EC),
                                normalize(lightdir_EC));
 
+     vec3 fc = toon(
+            normalize(normal_EC),
+            normalize(viewdir_EC),
+            normalize(vec3(lightpos_EC)), light.intensity, final_color);
     // set output
-    outColor = vec4(final_color, 1.0);
+  //outColor = vec4(final_color, 1.0);
+
+  outColor = vec4(fc, 1.0);
+      //gl_FragColor.a = 1.0;
+
     // outColor = vec4(1,0,0, 1.0);
 
 }
+
+
+
+
+
+//void main() {
+//  gl_FragColor.rgb = toon(
+//    normalize(normalW),
+//    normalize(eyeDirectionW),
+//    normalize(lightDirectionW), lightIntensity, color);
+//  gl_FragColor.a = 1.0;
+//}
