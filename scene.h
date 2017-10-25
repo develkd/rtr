@@ -106,6 +106,7 @@ protected:
 
     std::map<QString, std::shared_ptr<ToonMaterial>> toonMaterials_;
 
+    std::vector<std::shared_ptr<Material>> allMaterials_;
     // mesh(es) to be used / shared
     std::map<QString, std::shared_ptr<Mesh>> meshes_;
 

@@ -76,7 +76,7 @@ vec3 myphong(vec3 n, vec3 v, vec3 l) {
 vec3 toon(vec3 normal, vec3 eye, vec3 light, vec3 intensity, vec3 color) {
 
     // outline (simple silhouette)?
-    if(max(dot(eye, normal), 0.0) < 0.3)
+    if(max(dot(eye, normal), 0.0) < .31)
     {
         color = vec3(0,0,0);
     }
@@ -118,28 +118,10 @@ void main() {
                                normalize(viewdir_EC),
                                normalize(lightdir_EC));
 
+    // toonize color
      vec3 fc = toon(
             normalize(normal_EC),
             normalize(viewdir_EC),
             normalize(vec3(lightpos_EC)), light.intensity, final_color);
-    // set output
-  //outColor = vec4(final_color, 1.0);
-
-  outColor = vec4(fc, 1.0);
-      //gl_FragColor.a = 1.0;
-
-    // outColor = vec4(1,0,0, 1.0);
-
+    outColor = vec4(fc, 1.0);
 }
-
-
-
-
-
-//void main() {
-//  gl_FragColor.rgb = toon(
-//    normalize(normalW),
-//    normalize(eyeDirectionW),
-//    normalize(lightDirectionW), lightIntensity, color);
-//  gl_FragColor.a = 1.0;
-//}

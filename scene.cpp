@@ -68,6 +68,10 @@ void Scene::makeNodes()
     phongMaterials_["color_obiwan"] = color_obiwan;
     toonMaterials_["color_toon"] = color_toon;
 
+    allMaterials_.push_back(red);
+    allMaterials_.push_back(color_obiwan);
+    allMaterials_.push_back(color_toon);
+
 
     red->phong.k_diffuse = QVector3D(0.8f,0.1f,0.1f);
     red->phong.k_ambient = red->phong.k_diffuse * 0.3f;
@@ -143,8 +147,8 @@ void Scene::draw()
 
     // set time uniform in animated shader(s)
     float t = millisec_since_first_draw.count() / 1000.0f;
-    for(auto mat : phongMaterials_)
-        mat.second->time = t;
+    for(auto mat : allMaterials_)
+        mat->time = t;
 
     draw_scene_();
 }
@@ -176,9 +180,9 @@ void Scene::draw_scene_()
 
         // determine current light position and set it in all materials
         QMatrix4x4 lightToWorld = nodes_["World"]->toParentTransform(lightNodes_[i]);
-        for(auto mat : phongMaterials_) {
-            auto phong = mat.second; // mat is of type (key, value)
-            phong->lights[i].position_WC = lightToWorld * QVector3D(0,0,0);
+        for(auto mat : allMaterials_) {
+          //  auto phong = mat.second; // mat is of type (key, value)
+            mat->lights[i].position_WC = lightToWorld * QVector3D(0,0,0);
         }
 
         // draw light pass i
@@ -257,8 +261,8 @@ void Scene::setLightIntensity(size_t i, float v)
     if(i>=lightNodes_.size())
         return;
 
-    for(auto mat : phongMaterials_)
-        mat.second->lights[i].intensity = v; update();
+    for(auto mat : allMaterials_)
+        mat->lights[i].intensity = v; update();
 }
 
 // pass key/mouse events on to navigator objects
