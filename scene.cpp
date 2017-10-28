@@ -250,6 +250,21 @@ void Scene::setSceneNode(QString node)
     update();
 }
 
+void Scene::setShader(QString shader)
+{
+    shader = shader.toLower();
+    for(auto mat : allMaterials_){
+        if(mat -> getAppliedShader() == shader){
+
+             qDebug()<<"Used shader is " << shader;
+        }
+    }
+
+
+    update();
+}
+
+
 // change background color
 void Scene::setBackgroundColor(QVector3D rgb) {
     bgcolor_ = rgb; update();

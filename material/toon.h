@@ -18,7 +18,5 @@ public:
     // bind underlying shader program and set required uniforms
     void apply(unsigned int light_pass = 0) override;
 
-
-
 };
 

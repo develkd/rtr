@@ -48,6 +48,8 @@ public slots:
     // change the node to be rendered in the scene
     void setSceneNode(QString node);
 
+    void setShader(QString shader);
+
     // change background color
     void setBackgroundColor(QVector3D rgb);
 

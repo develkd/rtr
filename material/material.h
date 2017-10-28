@@ -40,6 +40,10 @@ public:
      */
     virtual void apply(unsigned int light_pass = 0) = 0;
 
+     QString getAppliedShader(){
+         return appliedShader;
+     }
+
     /*
      * returns the underlying OpenGL shader program object
      *
@@ -49,6 +53,7 @@ protected:
 
     // reference to underlying shader program
     std::shared_ptr<QOpenGLShaderProgram> prog_;
+    QString appliedShader;
 };
 
 

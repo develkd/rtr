@@ -86,6 +86,12 @@ AppWindow::AppWindow(QWidget *parent) :
         scene().setSceneNode(value);
     });
 
+
+    connect(ui->shaderComboBox, &QComboBox::currentTextChanged, [this](QString value)
+    {
+        scene().setShader(value);
+    });
+
     connect(ui->light0Slider, &QSlider::valueChanged, [this](int value)
     {
         scene().setLightIntensity(0, float(value)/100); // slider goes from 0...1000

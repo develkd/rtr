@@ -50,6 +50,7 @@ public:
     QGridLayout *gridLayout;
     QLabel *label_3;
     QSlider *light0Slider;
+    QComboBox *shaderComboBox;
     QGroupBox *groupBox_6;
     QHBoxLayout *horizontalLayout_4;
     QRadioButton *blackBgRadioButton;
@@ -129,6 +130,11 @@ public:
 
         groupBox_3 = new QGroupBox(rendering_tab);
         groupBox_3->setObjectName(QStringLiteral("groupBox_3"));
+        QSizePolicy sizePolicy3(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(20);
+        sizePolicy3.setHeightForWidth(groupBox_3->sizePolicy().hasHeightForWidth());
+        groupBox_3->setSizePolicy(sizePolicy3);
         verticalLayout_4 = new QVBoxLayout(groupBox_3);
         verticalLayout_4->setSpacing(0);
         verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
@@ -139,16 +145,18 @@ public:
         gridLayout->setContentsMargins(0, 0, 0, 0);
         label_3 = new QLabel(widget_2);
         label_3->setObjectName(QStringLiteral("label_3"));
+        QSizePolicy sizePolicy4(QSizePolicy::Preferred, QSizePolicy::Minimum);
+        sizePolicy4.setHorizontalStretch(0);
+        sizePolicy4.setVerticalStretch(0);
+        sizePolicy4.setHeightForWidth(label_3->sizePolicy().hasHeightForWidth());
+        label_3->setSizePolicy(sizePolicy4);
 
         gridLayout->addWidget(label_3, 0, 0, 1, 1);
 
         light0Slider = new QSlider(widget_2);
         light0Slider->setObjectName(QStringLiteral("light0Slider"));
-        QSizePolicy sizePolicy3(QSizePolicy::Preferred, QSizePolicy::Fixed);
-        sizePolicy3.setHorizontalStretch(0);
-        sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(light0Slider->sizePolicy().hasHeightForWidth());
-        light0Slider->setSizePolicy(sizePolicy3);
+        sizePolicy4.setHeightForWidth(light0Slider->sizePolicy().hasHeightForWidth());
+        light0Slider->setSizePolicy(sizePolicy4);
         light0Slider->setFocusPolicy(Qt::NoFocus);
         light0Slider->setMaximum(100);
         light0Slider->setOrientation(Qt::Horizontal);
@@ -157,6 +165,16 @@ public:
 
 
         verticalLayout_4->addWidget(widget_2);
+
+        shaderComboBox = new QComboBox(groupBox_3);
+        shaderComboBox->setObjectName(QStringLiteral("shaderComboBox"));
+        QSizePolicy sizePolicy5(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy5.setHorizontalStretch(0);
+        sizePolicy5.setVerticalStretch(0);
+        sizePolicy5.setHeightForWidth(shaderComboBox->sizePolicy().hasHeightForWidth());
+        shaderComboBox->setSizePolicy(sizePolicy5);
+
+        verticalLayout_4->addWidget(shaderComboBox);
 
 
         verticalLayout->addWidget(groupBox_3);
@@ -215,11 +233,11 @@ public:
 
         verticalLayout_5->addWidget(tabWidget);
 
-        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Preferred);
+        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Ignored);
 
         verticalLayout_5->addItem(verticalSpacer_2);
 
-        verticalSpacer = new QSpacerItem(20, 100, QSizePolicy::Minimum, QSizePolicy::MinimumExpanding);
+        verticalSpacer = new QSpacerItem(20, 100, QSizePolicy::Minimum, QSizePolicy::Ignored);
 
         verticalLayout_5->addItem(verticalSpacer);
 
@@ -231,9 +249,6 @@ public:
 
         label_11 = new QLabel(ui_container);
         label_11->setObjectName(QStringLiteral("label_11"));
-        QSizePolicy sizePolicy4(QSizePolicy::Preferred, QSizePolicy::Minimum);
-        sizePolicy4.setHorizontalStretch(0);
-        sizePolicy4.setVerticalStretch(0);
         sizePolicy4.setHeightForWidth(label_11->sizePolicy().hasHeightForWidth());
         label_11->setSizePolicy(sizePolicy4);
         label_11->setMaximumSize(QSize(16777215, 20));
@@ -290,6 +305,12 @@ public:
         );
         groupBox_3->setTitle(QApplication::translate("AppWindow", "Shader Parameters", Q_NULLPTR));
         label_3->setText(QApplication::translate("AppWindow", "Light Intensity", Q_NULLPTR));
+        shaderComboBox->clear();
+        shaderComboBox->insertItems(0, QStringList()
+         << QApplication::translate("AppWindow", "Phong", Q_NULLPTR)
+         << QApplication::translate("AppWindow", "Toon", Q_NULLPTR)
+        );
+        shaderComboBox->setCurrentText(QApplication::translate("AppWindow", "Phong", Q_NULLPTR));
         groupBox_6->setTitle(QApplication::translate("AppWindow", "Background", Q_NULLPTR));
         blackBgRadioButton->setText(QApplication::translate("AppWindow", "black", Q_NULLPTR));
         greyBgRadioButton->setText(QApplication::translate("AppWindow", "grey", Q_NULLPTR));
