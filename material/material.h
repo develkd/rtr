@@ -1,7 +1,6 @@
 #pragma once
 
 #include <QOpenGLShaderProgram>
-
 #include <memory>
 
 /*
@@ -40,9 +39,7 @@ public:
      */
     virtual void apply(unsigned int light_pass = 0) = 0;
 
-     QString getAppliedShader(){
-         return appliedShader;
-     }
+    virtual QString getAppliedShader() = 0;
 
     /*
      * returns the underlying OpenGL shader program object
@@ -53,7 +50,7 @@ protected:
 
     // reference to underlying shader program
     std::shared_ptr<QOpenGLShaderProgram> prog_;
-    QString appliedShader;
+
 };
 
 

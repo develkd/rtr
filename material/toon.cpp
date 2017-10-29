@@ -6,7 +6,12 @@ void ToonMaterial::apply(unsigned int light_pass)
     // qDebug() << "applying TexturedPhongMaterial";
 
    PhongMaterial::apply(light_pass);
-   appliedShader = "toon";
 
 }
 
+
+
+QString
+ToonMaterial::getAppliedShader(){
+    return "toon";
+}

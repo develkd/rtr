@@ -253,10 +253,12 @@ void Scene::setSceneNode(QString node)
 void Scene::setShader(QString shader)
 {
     shader = shader.toLower();
+     qDebug()<<"Received shader is " << shader;
     for(auto mat : allMaterials_){
         if(mat -> getAppliedShader() == shader){
 
-             qDebug()<<"Used shader is " << shader;
+
+             qDebug()<<"Used shader is " << mat -> getAppliedShader();
         }
     }
 

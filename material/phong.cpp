@@ -23,6 +23,10 @@ void PhongMaterial::apply(unsigned int light_pass)
     prog_->setUniformValue("phong.k_specular", phong.k_specular);
     prog_->setUniformValue("phong.shininess",  phong.shininess);
 
-    appliedShader = "phong";
+
 }
 
+QString
+PhongMaterial::getAppliedShader(){
+    return "phong";
+}
