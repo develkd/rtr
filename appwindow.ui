@@ -99,6 +99,14 @@
                <property name="focusPolicy">
                 <enum>Qt::NoFocus</enum>
                </property>
+               <property name="maxVisibleItems">
+                <number>20</number>
+               </property>
+               <item>
+                <property name="text">
+                 <string>Teapot</string>
+                </property>
+               </item>
                <item>
                 <property name="text">
                  <string>Cube</string>
@@ -121,7 +129,22 @@
                </item>
                <item>
                 <property name="text">
-                 <string>Teapot</string>
+                 <string>Venus</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Buddha</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Dragon</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Sphere</string>
                 </property>
                </item>
               </widget>

@@ -5,5 +5,9 @@
         <file>models/goblin.obj</file>
         <file>textures/RTR-ist-super-4-3.png</file>
         <file>models/obiwan/obiwan.obj</file>
+        <file>models/extern/buddha.obj</file>
+        <file>models/extern/dragon.obj</file>
+        <file>models/extern/sphere.obj</file>
+        <file>models/extern/venus.obj</file>
     </qresource>
 </RCC>
