@@ -83,7 +83,7 @@ void Scene::makeNodes()
     color_toon->phong.k_diffuse = QVector3D(0.8f,0.6f,0.9f);
     color_toon->phong.k_ambient = color_toon->phong.k_diffuse * 0.3f;
     color_toon->phong.shininess = 80;
-
+    color_toon->toonShader.toon=true;
     // which material to use as default for all objects?
     auto std = red;
 
@@ -259,23 +259,19 @@ Scene::getCurrentSceneNode(){
 void Scene::setShader(QString shader)
 {
 
-    auto toonShader = "toon" == shader.toLower();
-   qDebug()<<"toonShader shader is " << toonShader;
-    /*
     shader = shader.toLower();
-    qDebug()<<"Received shader is " << shader;
-
-    auto mesh = meshes_[getCurrentSceneNode()];
+    bool isToonShader = "toon" == shader;
+   qDebug()<<"toonShader shader is " << isToonShader;
 
     for(auto mat : allMaterials_){
 
         if(mat -> getAppliedShader() == shader){
-            mesh -> replaceMaterial(mat);
-             qDebug()<<"Used shader is " << mat -> getAppliedShader();
+         ToonMaterial* tm =    toonMaterials_["color_toon"].get();
+         tm -> toonShader.toon = isToonShader;
+         qDebug()<<"Used shader is " << mat -> getAppliedShader();
         }
     }
 
-*/
     update();
 
 }

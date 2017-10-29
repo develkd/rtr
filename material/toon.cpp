@@ -7,6 +7,8 @@ void ToonMaterial::apply(unsigned int light_pass)
 
    PhongMaterial::apply(light_pass);
 
+   prog_->setUniformValue("toonShader.toon", toonShader.toon);
+
 }
 
 

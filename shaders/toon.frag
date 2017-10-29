@@ -28,12 +28,17 @@ struct PointLight {
     int  pass;
 };
 
+struct ToonShader {
+   bool toon;
+};
+
+uniform ToonShader toonShader;
 uniform PointLight light;
 
 uniform mat4 viewMatrix;
 uniform vec3 color;
 uniform vec3 lightIntensity;
-uniform bool toonShader;
+
 
 /*
  *  Calculate surface color based on Phong illumination model.
@@ -120,7 +125,7 @@ void main() {
     outColor = vec4(phong_color, 1.0);
 
     // toonize color
-    if(toonShader){
+    if(toonShader.toon){
         // calculate color using phong, all vectors in eye coordinates
 
         vec3 fc = toon(
