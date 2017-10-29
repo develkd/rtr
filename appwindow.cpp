@@ -116,6 +116,7 @@ void AppWindow::setDefaultUIValues() {
     ui->light0Slider->setValue(0);
     ui->light0Slider->setValue(80);
     ui->modelComboBox->setCurrentText("Duck");
+    ui->shaderComboBox->setCurrentText("Toon");
 
 }
 

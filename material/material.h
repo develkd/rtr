@@ -26,6 +26,7 @@ public:
     };
 
     float time = 0.0;
+    bool toonShader = false;
 
      std::vector<PointLight> lights;
 

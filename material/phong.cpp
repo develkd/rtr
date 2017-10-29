@@ -10,7 +10,7 @@ void PhongMaterial::apply(unsigned int light_pass)
     // globals
     prog_->setUniformValue("time", time);
     prog_->setUniformValue("ambientLightIntensity", ambientLightIntensity);
-
+    prog_->setUniformValue("toonShader", toonShader);
     // point light
     assert(light_pass>=0 && light_pass<lights.size());
     prog_->setUniformValue("light.position_WC", lights[light_pass].position_WC);

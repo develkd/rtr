@@ -88,8 +88,8 @@ void Scene::makeNodes()
     auto std = red;
 
     // load meshes from .obj files and assign shader programs to them
-    meshes_["Duck"]    = std::make_shared<Mesh>(":/models/duck/duck.obj", color_toon);
     meshes_["Teapot"]  = std::make_shared<Mesh>(":/models/teapot/teapot.obj", std);
+    meshes_["Duck"]    = std::make_shared<Mesh>(":/models/duck/duck.obj", color_toon);
     meshes_["Goblin"]  = std::make_shared<Mesh>(":/models/goblin.obj", std);
     meshes_["Obiwan"]  = std::make_shared<Mesh>(":/models/obiwan/obiwan.obj", color_obiwan);
 
@@ -241,8 +241,10 @@ void Scene::toggleAnimation(bool flag)
 
 void Scene::setSceneNode(QString node)
 {
+
     auto n = nodes_[node];
     assert(n);
+    currentSceneNode = node;
 
     nodes_["Scene"]->children.clear();
     nodes_["Scene"]->children.push_back(n);
@@ -250,20 +252,32 @@ void Scene::setSceneNode(QString node)
     update();
 }
 
+QString
+Scene::getCurrentSceneNode(){
+    return currentSceneNode;
+}
 void Scene::setShader(QString shader)
 {
+
+    auto toonShader = "toon" == shader.toLower();
+   qDebug()<<"toonShader shader is " << toonShader;
+    /*
     shader = shader.toLower();
-     qDebug()<<"Received shader is " << shader;
+    qDebug()<<"Received shader is " << shader;
+
+    auto mesh = meshes_[getCurrentSceneNode()];
+
     for(auto mat : allMaterials_){
+
         if(mat -> getAppliedShader() == shader){
-
-
+            mesh -> replaceMaterial(mat);
              qDebug()<<"Used shader is " << mat -> getAppliedShader();
         }
     }
 
-
+*/
     update();
+
 }
 
 

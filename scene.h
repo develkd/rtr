@@ -47,6 +47,7 @@ public slots:
 
     // change the node to be rendered in the scene
     void setSceneNode(QString node);
+    QString getCurrentSceneNode();
 
     void setShader(QString shader);
 
@@ -132,6 +133,6 @@ protected:
     // helpers to construct the objects and to build the hierarchical scene
     void makeNodes();
     void makeScene();
-
+    QString currentSceneNode;
 };
 

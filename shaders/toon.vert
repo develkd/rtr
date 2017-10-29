@@ -15,6 +15,7 @@ uniform mat4 inverseViewMatrix;
 uniform mat4 modelMatrix;
 uniform mat3 normalMatrix;
 
+
 // in: position and normal vector in model coordinates (_MC)
 in vec3 position_MC;
 in vec3 normal_MC;

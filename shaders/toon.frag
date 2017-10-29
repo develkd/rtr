@@ -27,15 +27,14 @@ struct PointLight {
     vec4 position_WC;
     int  pass;
 };
+
 uniform PointLight light;
 
 uniform mat4 viewMatrix;
 uniform vec3 color;
 uniform vec3 lightIntensity;
+uniform bool toonShader;
 
-varying vec3 normalW;
-//varying vec3 lightDirectionW;
-//varying vec3 eyeDirectionW;
 /*
  *  Calculate surface color based on Phong illumination model.
  */
@@ -113,15 +112,23 @@ void main() {
     vec3 lightdir_EC = (lightpos_EC   - position_EC).xyz;
     vec3 viewdir_EC  = (vec4(0,0,0,1) - position_EC).xyz;
 
-    // calculate color using phong, all vectors in eye coordinates
-    vec3 final_color = myphong(normalize(normal_EC),
+    vec3 phong_color = myphong(normalize(normal_EC),
                                normalize(viewdir_EC),
                                normalize(lightdir_EC));
 
+
+    outColor = vec4(phong_color, 1.0);
+
     // toonize color
-     vec3 fc = toon(
+    if(toonShader){
+        // calculate color using phong, all vectors in eye coordinates
+
+        vec3 fc = toon(
             normalize(normal_EC),
             normalize(viewdir_EC),
-            normalize(vec3(lightpos_EC)), light.intensity, final_color);
-    outColor = vec4(fc, 1.0);
+            normalize(vec3(lightpos_EC)), light.intensity, phong_color);
+
+        outColor = vec4(fc, 1.0);
+   }
+
 }
