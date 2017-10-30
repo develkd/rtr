@@ -82,7 +82,7 @@ vec3 toon(vec3 normal, vec3 eye, vec3 light, vec3 intensity, vec3 color) {
     // outline (simple silhouette)?
     if(max(dot(eye, normal), 0.0) < .31)
     {
-        color = vec3(0,0,0);
+        color = vec3(0.3,0.4,0.8);
     }
     else
     {
