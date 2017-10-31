@@ -84,6 +84,7 @@ void Scene::makeNodes()
     color_toon->phong.k_ambient = color_toon->phong.k_diffuse * 0.3f;
     color_toon->phong.shininess = 80;
     color_toon->toonShader.toon=true;
+
     // which material to use as default for all objects?
     auto std = red;
 
@@ -99,7 +100,7 @@ void Scene::makeNodes()
     meshes_["Venus"]  = std::make_shared<Mesh>(":/models/extern/venus.obj", std);
 
     // add meshes of some procedural geometry objects (not loaded from OBJ files)
-    meshes_["Cube"]   = std::make_shared<Mesh>(make_shared<geom::Cube>(), std);
+    meshes_["Cube"]   = std::make_shared<Mesh>(make_shared<geom::Cube>(), color_toon);
 
     // pack each mesh into a scene node, along with a transform that scales
     // it to standard size [1,1,1]

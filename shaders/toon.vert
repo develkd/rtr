@@ -23,7 +23,7 @@ in vec2 texCoord;
 
 out vec4 position_EC;
 out vec3 normal_EC;
-out vec2 texCoordI;
+out vec2 fragTextCoord;
 
 void main(void) {
 
@@ -36,7 +36,7 @@ void main(void) {
     // normal direction in eye coordinates
     normal_EC  = normalMatrix * normal_MC;
 
-     texCoordI = texCoord;
+     fragTextCoord = texCoord;
 }
 
 
