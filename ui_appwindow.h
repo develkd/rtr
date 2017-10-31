@@ -122,6 +122,7 @@ public:
         modelComboBox = new QComboBox(groupBox);
         modelComboBox->setObjectName(QStringLiteral("modelComboBox"));
         modelComboBox->setFocusPolicy(Qt::NoFocus);
+        modelComboBox->setMaxVisibleItems(20);
 
         verticalLayout_2->addWidget(modelComboBox);
 
@@ -297,11 +298,15 @@ public:
         groupBox->setTitle(QApplication::translate("AppWindow", "Scene", Q_NULLPTR));
         modelComboBox->clear();
         modelComboBox->insertItems(0, QStringList()
+         << QApplication::translate("AppWindow", "Teapot", Q_NULLPTR)
          << QApplication::translate("AppWindow", "Cube", Q_NULLPTR)
          << QApplication::translate("AppWindow", "Obiwan", Q_NULLPTR)
          << QApplication::translate("AppWindow", "Goblin", Q_NULLPTR)
          << QApplication::translate("AppWindow", "Duck", Q_NULLPTR)
-         << QApplication::translate("AppWindow", "Teapot", Q_NULLPTR)
+         << QApplication::translate("AppWindow", "Venus", Q_NULLPTR)
+         << QApplication::translate("AppWindow", "Buddha", Q_NULLPTR)
+         << QApplication::translate("AppWindow", "Dragon", Q_NULLPTR)
+         << QApplication::translate("AppWindow", "Sphere", Q_NULLPTR)
         );
         groupBox_3->setTitle(QApplication::translate("AppWindow", "Shader Parameters", Q_NULLPTR));
         label_3->setText(QApplication::translate("AppWindow", "Light Intensity", Q_NULLPTR));

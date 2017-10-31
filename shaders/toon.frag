@@ -4,14 +4,6 @@
  */
 
 #version 150
-
-// output - transformed to eye coordinates (EC)
-in vec4 position_EC;
-in vec3 normal_EC;
-
-// output: fragment/pixel color
-out vec4 outColor;
-
 struct PhongMaterial {
     vec3 k_ambient;
     vec3 k_diffuse;
@@ -19,9 +11,6 @@ struct PhongMaterial {
     float shininess;
 
 };
-uniform PhongMaterial phong;
-uniform vec3 ambientLightIntensity;
-
 struct PointLight {
     vec3 intensity;
     vec4 position_WC;
@@ -31,6 +20,18 @@ struct PointLight {
 struct ToonShader {
    bool toon;
 };
+
+// output - transformed to eye coordinates (EC)
+in vec4 position_EC;
+in vec3 normal_EC;
+in vec2 texCoordI;
+// output: fragment/pixel color
+out vec4 outColor;
+
+
+uniform PhongMaterial phong;
+uniform vec3 ambientLightIntensity;
+
 
 uniform ToonShader toonShader;
 uniform PointLight light;
@@ -82,7 +83,9 @@ vec3 toon(vec3 normal, vec3 eye, vec3 light, vec3 intensity, vec3 color) {
     // outline (simple silhouette)?
     if(max(dot(eye, normal), 0.0) < .31)
     {
-        color = vec3(0.3,0.4,0.8);
+//        color = vec3(0.3,0.4,0.8);
+        color = vec3(texCoordI.x,texCoordI.y,0.8);
+
     }
     else
     {
