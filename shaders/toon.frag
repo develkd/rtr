@@ -21,6 +21,13 @@ struct ToonShader {
    bool toon;
 };
 
+struct Texture {
+   int dichte;
+   float radius;
+   vec3 backgroundColor;
+   vec3 circleColor;
+};
+
 // output - transformed to eye coordinates (EC)
 in vec4 position_EC;
 in vec3 normal_EC;
@@ -35,6 +42,7 @@ uniform vec3 ambientLightIntensity;
 
 uniform ToonShader toonShader;
 uniform PointLight light;
+uniform Texture texture;
 
 uniform mat4 viewMatrix;
 uniform vec3 color;
@@ -116,24 +124,23 @@ vec3 toon(vec3 normal, vec3 cam, vec3 light, vec3 intensity, vec3 color) {
 
 
 vec3 getColor(vec3 phong_color) {
-    int density = 5;
-    float radius = 0.12;
 
-            vec2 middle = vec2(0.5, 0.5);
-            middle = middle / density;
 
-            float localRadius = radius / density;
-            float x1_y1 = 1.0 / density;
+            vec2 middle = fragTextCoord;
+            middle = middle / texture.dichte;
+
+            float localRadius = texture.radius / texture.dichte;
+            float x1_y1 = 1.0 / texture.dichte;
 
             middle = vec2(
                     float(int(fragTextCoord.x/x1_y1)) * x1_y1 + middle.x,
                     float(int(fragTextCoord.y/x1_y1)) * x1_y1 + middle.y);
 
             if (distance(fragTextCoord, middle) < localRadius) {
-                return  phong_color-vec3(0.2, 0.3, 0.4);
+                return texture.circleColor;
             }
             else {
-                return phong_color;
+                return texture.backgroundColor;
             }
         }
 
