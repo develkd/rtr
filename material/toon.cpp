@@ -11,6 +11,7 @@ void ToonMaterial::apply(unsigned int light_pass)
    prog_->setUniformValue("toonShader.threshold", toonShader.threshold);
    prog_->setUniformValue("toonShader.toon", toonShader.toon);
    prog_->setUniformValue("toonShader.silhoutte", toonShader.silhoutte);
+   prog_->setUniformValue("toonShader.discretize", toonShader.discretize);
    //prog_->setAttributeValue("texCoord",QVector2D(0.5,0.5) );
    prog_->setUniformValue("texture.dichte", texture.dichte);
    prog_->setUniformValue("texture.radius", texture.radius);

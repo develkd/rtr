@@ -21,6 +21,7 @@ struct ToonShader {
    bool toon;
    bool silhoutte;
    float threshold;
+   int discretize;
 };
 
 struct Texture {
@@ -88,16 +89,26 @@ vec3 myphong(vec3 n, vec3 v, vec3 l) {
 
 }
 
+vec3 getDiscretizedColor( int i,float diffuse,vec3 color){
+        float step = i/10.0f;
+        color = diffuse < step ? color * step :color;
+    return color;
+}
 vec3 toon(vec3 normal, vec3 cam, vec3 light, vec3 intensity, vec3 color) {
 
     if(toonShader.silhoutte && max(dot(cam, normal), 0.0) < toonShader.threshold)
     {
-        color = vec3(0.3,0.4,0.8);
+        color = vec3(0.5,0.6,0.3);
     }
     else
     {
         // diffuse
         float diffuse = max(dot(normal,light),0.0);
+
+        for(int i = 0; i < toonShader.discretize; i++){
+             color = getDiscretizedColor(i,diffuse, color);
+        }
+        /*
         if (diffuse < 0.2)
             color *=0.2;
         else if (diffuse < 0.4)
@@ -108,7 +119,7 @@ vec3 toon(vec3 normal, vec3 cam, vec3 light, vec3 intensity, vec3 color) {
             color *=0.8;
         else if(diffuse < 1.0)
             color *=1.0;
-
+*/
         // spec (highest prio)
         vec3 reflection = normalize(reflect(-cam, normal));
         float spec = pow(max(0.0, dot(reflection, light)), 10.0);

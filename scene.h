@@ -52,6 +52,8 @@ public slots:
     void setShader(QString shader);
     void enableSilhoutte(bool enable);
     void setThreshold(float threshold);
+    void setAmountOfDiscretiz(int amount);
+
 
     // change background color
     void setBackgroundColor(QVector3D rgb);

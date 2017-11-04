@@ -105,6 +105,10 @@ AppWindow::AppWindow(QWidget *parent) :
          scene().setThreshold(float(value)/100); // slider goes from 0...1000
     });
 
+    connect(ui -> discretizer, &QSlider::valueChanged, [this](int value){
+         scene().setAmountOfDiscretiz(value);
+    });
+
 }
 
 // called when the window is initially shown

@@ -24,6 +24,7 @@ public:
        bool toon = false;
        bool silhoutte = false;
        float threshold = 0.3f;
+       int discretize = 0;
     } toonShader;
 
     struct Texture {

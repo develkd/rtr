@@ -24,7 +24,6 @@
 #include <QtWidgets/QRadioButton>
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QSpacerItem>
-#include <QtWidgets/QSpinBox>
 #include <QtWidgets/QSplitter>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QVBoxLayout>
@@ -66,7 +65,7 @@ public:
     QLabel *label_7;
     QSlider *threshold;
     QLabel *label_8;
-    QSpinBox *spinBox;
+    QSlider *discretizer;
     QWidget *widget_2;
     QGridLayout *gridLayout;
     QGroupBox *groupBox_6;
@@ -269,12 +268,13 @@ public:
 
         verticalLayout_4->addWidget(label_8);
 
-        spinBox = new QSpinBox(groupBox_3);
-        spinBox->setObjectName(QStringLiteral("spinBox"));
-        sizePolicy5.setHeightForWidth(spinBox->sizePolicy().hasHeightForWidth());
-        spinBox->setSizePolicy(sizePolicy5);
+        discretizer = new QSlider(groupBox_3);
+        discretizer->setObjectName(QStringLiteral("discretizer"));
+        discretizer->setMinimum(1);
+        discretizer->setMaximum(10);
+        discretizer->setOrientation(Qt::Horizontal);
 
-        verticalLayout_4->addWidget(spinBox);
+        verticalLayout_4->addWidget(discretizer);
 
         widget_2 = new QWidget(groupBox_3);
         widget_2->setObjectName(QStringLiteral("widget_2"));

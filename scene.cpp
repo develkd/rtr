@@ -375,6 +375,18 @@ void Scene::setThreshold(float threshold){
 }
 
 
+void Scene::setAmountOfDiscretiz(int amount){
+    std::shared_ptr<Material>  material =  meshes_[getCurrentSceneNode()] ->material();
+    if("toon" == material ->getAppliedShader()){
+         ToonMaterial* tm = mapOfToonMaterials_["color_toon"].get();
+        tm -> toonShader.discretize=amount;
+         qDebug()<<"Used silhoutte is " << amount;
+    }
+
+    update();
+}
+
+
 // pass key/mouse events on to navigator objects
 void Scene::keyPressEvent(QKeyEvent *event) {
 
