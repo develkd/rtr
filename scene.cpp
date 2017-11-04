@@ -65,9 +65,9 @@ void Scene::makeNodes()
     auto color_toon = std::make_shared<ToonMaterial>(toon_prog);
     toonMaterial_ = color_toon;
 
-    phongMaterials_["red"] = red;
-    phongMaterials_["color_obiwan"] = color_obiwan;
-    toonMaterials_["color_toon"] = color_toon;
+   mapOfPhongMaterials_["red"] = red;
+    mapOfPhongMaterials_["color_obiwan"] = color_obiwan;
+    mapOfToonMaterials_["color_toon"] = color_toon;
 
     allMaterials_.push_back(red);
     allMaterials_.push_back(color_obiwan);
@@ -324,7 +324,7 @@ void Scene::setShader(QString shader)
     for(auto mat : allMaterials_){
 
         if(mat -> getAppliedShader() == shader){
-         ToonMaterial* tm =    toonMaterials_["color_toon"].get();
+          ToonMaterial* tm = mapOfToonMaterials_["color_toon"].get();
          tm -> toonShader.toon = isToonShader;
          qDebug()<<"Used shader is " << mat -> getAppliedShader();
         }
