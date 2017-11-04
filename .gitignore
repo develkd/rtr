@@ -34,4 +34,6 @@
 **/.DS_Store
 rtrApp
 rtrApp*
+qrc_shaders.cpp
+
 
