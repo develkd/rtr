@@ -85,7 +85,7 @@ protected:
 
     // draw the actual scene
     void draw_scene_();
-
+    void replaceMaterialAndDrawScene(const Camera &camera, std::shared_ptr<Material> mat);
     // parent widget
     QWidget* parent_;
 
@@ -101,6 +101,7 @@ protected:
     double angle = 0.0;
     bool rotationOn = true;
 
+    std::shared_ptr<ToonMaterial> toonMaterial_;
     // bg color
     QVector3D bgcolor_ = QVector3D(0.4f,0.4f,0.4f);
 

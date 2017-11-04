@@ -80,13 +80,15 @@ vec3 myphong(vec3 n, vec3 v, vec3 l) {
 
 vec3 toon(vec3 normal, vec3 cam, vec3 light, vec3 intensity, vec3 color) {
 
- //    outline (simple silhouette)?
-    if(max(dot(cam, normal), 0.0) < .31)
-    {
-        color = vec3(0.3,0.4,0.8);
-    }
-    else
-    {
+    // outline (simple silhouette)?
+//    if(max(dot(cam, normal), 0.0) < .31)
+//    {
+//        color = vec3(0.3,0.4,0.8);
+
+
+//    }
+//    else
+//    {
         // diffuse
         float diffuse = max(dot(normal,light),0.0);
         if (diffuse < 0.2)
@@ -106,12 +108,34 @@ vec3 toon(vec3 normal, vec3 cam, vec3 light, vec3 intensity, vec3 color) {
         // more than half highlight intensity?
         if (spec > 0.5)
             color = vec3(1, 1, 1);
-   }
+   //}
 
     return color;
 
 }
 
+
+vec3 getColor(vec3 phong_color) {
+    int density = 5;
+    float radius = 0.12;
+
+            vec2 middle = vec2(0.5, 0.5);
+            middle = middle / density;
+
+            float localRadius = radius / density;
+            float x1_y1 = 1.0 / density;
+
+            middle = vec2(
+                    float(int(fragTextCoord.x/x1_y1)) * x1_y1 + middle.x,
+                    float(int(fragTextCoord.y/x1_y1)) * x1_y1 + middle.y);
+
+            if (distance(fragTextCoord, middle) < localRadius) {
+                return  phong_color-vec3(0.2, 0.3, 0.4);
+            }
+            else {
+                return phong_color;
+            }
+        }
 
 void main() {
 
@@ -132,7 +156,7 @@ void main() {
         outColor.rgb = toon(
             normalize(normal_EC),
             normalize(viewdir_EC),
-            normalize(vec3(lightpos_EC)), light.intensity, phong_color);
+            normalize(vec3(lightpos_EC)), light.intensity, getColor(phong_color));
         outColor.a = 1;
   }
 }

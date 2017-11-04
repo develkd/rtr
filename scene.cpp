@@ -63,6 +63,7 @@ void Scene::makeNodes()
     auto red = std::make_shared<PhongMaterial>(phong_prog);
     auto color_obiwan = std::make_shared<PhongMaterial>(obiwan_prog);
     auto color_toon = std::make_shared<ToonMaterial>(toon_prog);
+    toonMaterial_ = color_toon;
 
     phongMaterials_["red"] = red;
     phongMaterials_["color_obiwan"] = color_obiwan;
@@ -180,13 +181,21 @@ void Scene::draw_scene_()
     // clear buffer
     glClearColor(bgcolor_[0], bgcolor_[1], bgcolor_[2], 1.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glDisable(GL_CULL_FACE);
+    glCullFace(GL_BACK);
 
     // first light pass: standard depth test, no blending
-    glDepthFunc(GL_LESS);
-    glEnable(GL_DEPTH_TEST);
-    glDisable(GL_BLEND);
-    glDisable(GL_CULL_FACE);
+//    glDepthFunc(GL_LESS);
+//    glEnable(GL_DEPTH_TEST);
+//    glDisable(GL_BLEND);
+//    glDisable(GL_CULL_FACE);
 
+
+        glDepthFunc(GL_LEQUAL);
+        glEnable(GL_DEPTH_TEST);
+        glDisable(GL_BLEND);
+        replaceMaterialAndDrawScene(camera, toonMaterial_);
+/*
     // draw one pass for each light
     for(unsigned int i=0; i<lightNodes_.size(); i++) {
 
@@ -205,7 +214,42 @@ void Scene::draw_scene_()
         glBlendFunc(GL_ONE,GL_ONE);
         glDepthFunc(GL_EQUAL);
     }
+    */
 }
+
+void Scene::replaceMaterialAndDrawScene(const Camera& camera, shared_ptr<Material> material)
+{
+    // replace material in all meshes, if necessary
+    if(material != meshes_.begin()->second->material()) {
+        // qDebug() << "replacing material";
+        for (auto& element : meshes_) {
+            auto mesh = element.second;
+            mesh->replaceMaterial(material);
+        }
+    }
+
+    // draw one pass for each light
+    // TODO: wireframe and vector materials always only require one pass
+    for(unsigned int i=0; i<lightNodes_.size(); i++) {
+
+        // qDebug() << "drawing light pass" << i;
+
+        // determine current light position and set it in all materials
+        QMatrix4x4 lightToWorld = nodes_["World"]->toParentTransform(lightNodes_[i]);
+        toonMaterial_->lights[i].position_WC = lightToWorld * QVector3D(0,0,0);
+
+        // draw light pass i
+        nodes_["World"]->draw(camera, i);
+
+        // settings for i>0 (add light contributions using alpha blending)
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_ONE,GL_ONE);
+        glDepthFunc(GL_EQUAL);
+    }
+
+}
+
+
 
 // helper to load shaders and create programs
 shared_ptr<QOpenGLShaderProgram>
@@ -268,6 +312,8 @@ QString
 Scene::getCurrentSceneNode(){
     return currentSceneNode;
 }
+
+
 void Scene::setShader(QString shader)
 {
 
