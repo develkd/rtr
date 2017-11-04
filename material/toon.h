@@ -24,5 +24,12 @@ public:
        bool toon = false;
     } toonShader;
 
+    struct Texture {
+       int dichte = 5;
+       float radius = 0.3;
+       QVector3D circleColor = QVector3D(0.6,0.2,0.8);
+       QVector3D backgroundColor = QVector3D(0.3,0.4,0.6);
+    } texture;
+
 };
 

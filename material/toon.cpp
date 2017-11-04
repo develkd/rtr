@@ -10,6 +10,11 @@ void ToonMaterial::apply(unsigned int light_pass)
 
    prog_->setUniformValue("toonShader.toon", toonShader.toon);
    prog_->setAttributeValue("texCoord",QVector2D(0.5,0.5) );
+   prog_->setUniformValue("texture.dichte", texture.dichte);
+   prog_->setUniformValue("texture.radius", texture.radius);
+   prog_->setUniformValue("texture.backgroundColor", texture.backgroundColor);
+   prog_->setUniformValue("texture.circleColor", texture.circleColor);
+
 }
 
 
