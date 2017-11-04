@@ -65,7 +65,7 @@ void Scene::makeNodes()
     auto color_toon = std::make_shared<ToonMaterial>(toon_prog);
     toonMaterial_ = color_toon;
 
-   mapOfPhongMaterials_["red"] = red;
+    mapOfPhongMaterials_["red"] = red;
     mapOfPhongMaterials_["color_obiwan"] = color_obiwan;
     mapOfToonMaterials_["color_toon"] = color_toon;
 
@@ -85,6 +85,8 @@ void Scene::makeNodes()
     color_toon->phong.k_ambient = color_toon->phong.k_diffuse * 0.3f;
     color_toon->phong.shininess = 80;
     color_toon->toonShader.toon=true;
+    color_toon->toonShader.silhoutte=false;
+    color_toon->toonShader.threshold=0.3f;
 
     // which material to use as default for all objects?
     auto std = red;
@@ -349,6 +351,29 @@ void Scene::setLightIntensity(size_t i, float v)
     for(auto mat : allMaterials_)
         mat->lights[i].intensity = v; update();
 }
+
+void Scene::enableSilhoutte(bool enable){
+    std::shared_ptr<Material>  material =  meshes_[getCurrentSceneNode()] ->material();
+
+
+    if("toon" == material ->getAppliedShader()){
+         ToonMaterial* tm = mapOfToonMaterials_["color_toon"].get();
+       tm -> toonShader.silhoutte = enable;
+         qDebug()<<"Used silhoutte is " << enable;
+    }
+    update();
+}
+
+void Scene::setThreshold(float threshold){
+    std::shared_ptr<Material>  material =  meshes_[getCurrentSceneNode()] ->material();
+    if("toon" == material ->getAppliedShader()){
+         ToonMaterial* tm = mapOfToonMaterials_["color_toon"].get();
+       tm -> toonShader.threshold = threshold;
+         qDebug()<<"Used silhoutte is " << threshold;
+    }
+    update();
+}
+
 
 // pass key/mouse events on to navigator objects
 void Scene::keyPressEvent(QKeyEvent *event) {

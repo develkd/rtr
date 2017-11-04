@@ -78,44 +78,9 @@ vec3 myphong(vec3 n, vec3 v, vec3 l) {
 
 }
 
-vec3 toon(vec3 normal, vec3 cam, vec3 light, vec3 intensity, vec3 color) {
-
-    // outline (simple silhouette)?
-//    if(max(dot(cam, normal), 0.0) < .31)
-//    {
-//        color = vec3(0.3,0.4,0.8);
 
 
-//    }
-//    else
-//    {
-        // diffuse
-        float diffuse = max(dot(normal,light),0.0);
-        if (diffuse < 0.2)
-            color *=0.2;
-        else if (diffuse < 0.4)
-            color *=0.4;
-        else if (diffuse < 0.6)
-            color *=0.6;
-        else if(diffuse < 0.8)
-            color *=0.8;
-        else if(diffuse < 1.0)
-            color *=1.0;
-
-        // spec (highest prio)
-        vec3 reflection = normalize(reflect(-cam, normal));
-        float spec = pow(max(0.0, dot(reflection, light)), 10.0);
-        // more than half highlight intensity?
-        if (spec > 0.5)
-            color = vec3(1, 1, 1);
-   //}
-
-    return color;
-
-}
-
-
-vec3 getColor(vec3 phong_color) {
+vec3 getTextureColor(vec3 phong_color) {
     int density = 5;
     float radius = 0.12;
 
@@ -147,16 +112,6 @@ void main() {
    vec3 phong_color =  myphong(normalize(normal_EC),
                            normalize(viewdir_EC),
                            normalize(lightdir_EC));
-    outColor = vec4(phong_color,1);
+    outColor = vec4( getTextureColor(phong_color),1);
 
-    // toonize color
-    if(toonShader.toon){
-        // calculate color using phong, all vectors in eye coordinates
-
-        outColor.rgb = toon(
-            normalize(normal_EC),
-            normalize(viewdir_EC),
-            normalize(vec3(lightpos_EC)), light.intensity, getColor(phong_color));
-        outColor.a = 1;
-  }
 }

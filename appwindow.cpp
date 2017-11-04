@@ -97,6 +97,14 @@ AppWindow::AppWindow(QWidget *parent) :
         scene().setLightIntensity(0, float(value)/100); // slider goes from 0...1000
     });
 
+    connect(ui -> checkBoxSilhoutte, &QCheckBox::toggled,[this](bool enable) {
+        scene().enableSilhoutte(enable);
+    });
+
+    connect(ui -> threshold,  &QSlider::valueChanged, [this](int value){
+         scene().setThreshold(float(value)/100); // slider goes from 0...1000
+    });
+
 }
 
 // called when the window is initially shown

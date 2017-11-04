@@ -22,6 +22,8 @@ public:
 
     struct ToonShader {
        bool toon = false;
+       bool silhoutte = false;
+       float threshold = 0.3f;
     } toonShader;
 
     struct Texture {

@@ -13,6 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QGroupBox>
@@ -23,6 +24,7 @@
 #include <QtWidgets/QRadioButton>
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QSpacerItem>
+#include <QtWidgets/QSpinBox>
 #include <QtWidgets/QSplitter>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QVBoxLayout>
@@ -46,11 +48,27 @@ public:
     QComboBox *modelComboBox;
     QGroupBox *groupBox_3;
     QVBoxLayout *verticalLayout_4;
-    QWidget *widget_2;
-    QGridLayout *gridLayout;
+    QComboBox *shaderComboBox;
+    QSpacerItem *verticalSpacer_4;
     QLabel *label_3;
     QSlider *light0Slider;
-    QComboBox *shaderComboBox;
+    QSpacerItem *verticalSpacer_3;
+    QLabel *label_4;
+    QSlider *horizontalSlider;
+    QSpacerItem *verticalSpacer_5;
+    QLabel *label_5;
+    QSlider *horizontalSlider_2;
+    QSpacerItem *verticalSpacer_6;
+    QLabel *label_6;
+    QSlider *horizontalSlider_3;
+    QSpacerItem *verticalSpacer_7;
+    QCheckBox *checkBoxSilhoutte;
+    QLabel *label_7;
+    QSlider *threshold;
+    QLabel *label_8;
+    QSpinBox *spinBox;
+    QWidget *widget_2;
+    QGridLayout *gridLayout;
     QGroupBox *groupBox_6;
     QHBoxLayout *horizontalLayout_4;
     QRadioButton *blackBgRadioButton;
@@ -75,16 +93,21 @@ public:
         if (AppWindow->objectName().isEmpty())
             AppWindow->setObjectName(QStringLiteral("AppWindow"));
         AppWindow->resize(910, 818);
+        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(AppWindow->sizePolicy().hasHeightForWidth());
+        AppWindow->setSizePolicy(sizePolicy);
         AppWindow->setMinimumSize(QSize(800, 600));
         mainLayout = new QHBoxLayout(AppWindow);
         mainLayout->setObjectName(QStringLiteral("mainLayout"));
         openGLWidget = new rtrGLWidget(AppWindow);
         openGLWidget->setObjectName(QStringLiteral("openGLWidget"));
-        QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-        sizePolicy.setHorizontalStretch(8);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(openGLWidget->sizePolicy().hasHeightForWidth());
-        openGLWidget->setSizePolicy(sizePolicy);
+        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        sizePolicy1.setHorizontalStretch(8);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(openGLWidget->sizePolicy().hasHeightForWidth());
+        openGLWidget->setSizePolicy(sizePolicy1);
         openGLWidget->setMinimumSize(QSize(0, 0));
         openGLWidget->setFocusPolicy(Qt::StrongFocus);
 
@@ -92,22 +115,22 @@ public:
 
         ui_container = new QWidget(AppWindow);
         ui_container->setObjectName(QStringLiteral("ui_container"));
-        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy1.setHorizontalStretch(2);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(ui_container->sizePolicy().hasHeightForWidth());
-        ui_container->setSizePolicy(sizePolicy1);
+        QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy2.setHorizontalStretch(2);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(ui_container->sizePolicy().hasHeightForWidth());
+        ui_container->setSizePolicy(sizePolicy2);
         ui_container->setMaximumSize(QSize(226, 800));
         ui_container->setFocusPolicy(Qt::WheelFocus);
         verticalLayout_5 = new QVBoxLayout(ui_container);
         verticalLayout_5->setObjectName(QStringLiteral("verticalLayout_5"));
         tabWidget = new QTabWidget(ui_container);
         tabWidget->setObjectName(QStringLiteral("tabWidget"));
-        QSizePolicy sizePolicy2(QSizePolicy::Expanding, QSizePolicy::Expanding);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(tabWidget->sizePolicy().hasHeightForWidth());
-        tabWidget->setSizePolicy(sizePolicy2);
+        QSizePolicy sizePolicy3(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(tabWidget->sizePolicy().hasHeightForWidth());
+        tabWidget->setSizePolicy(sizePolicy3);
         tabWidget->setMaximumSize(QSize(16777215, 16777215));
         tabWidget->setUsesScrollButtons(false);
         rendering_tab = new QWidget();
@@ -126,59 +149,151 @@ public:
 
         verticalLayout_2->addWidget(modelComboBox);
 
-
-        verticalLayout->addWidget(groupBox);
-
-        groupBox_3 = new QGroupBox(rendering_tab);
+        groupBox_3 = new QGroupBox(groupBox);
         groupBox_3->setObjectName(QStringLiteral("groupBox_3"));
-        QSizePolicy sizePolicy3(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy3.setHorizontalStretch(0);
-        sizePolicy3.setVerticalStretch(20);
-        sizePolicy3.setHeightForWidth(groupBox_3->sizePolicy().hasHeightForWidth());
-        groupBox_3->setSizePolicy(sizePolicy3);
+        QSizePolicy sizePolicy4(QSizePolicy::Preferred, QSizePolicy::MinimumExpanding);
+        sizePolicy4.setHorizontalStretch(0);
+        sizePolicy4.setVerticalStretch(20);
+        sizePolicy4.setHeightForWidth(groupBox_3->sizePolicy().hasHeightForWidth());
+        groupBox_3->setSizePolicy(sizePolicy4);
         verticalLayout_4 = new QVBoxLayout(groupBox_3);
         verticalLayout_4->setSpacing(0);
         verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
-        widget_2 = new QWidget(groupBox_3);
-        widget_2->setObjectName(QStringLiteral("widget_2"));
-        gridLayout = new QGridLayout(widget_2);
-        gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        gridLayout->setContentsMargins(0, 0, 0, 0);
-        label_3 = new QLabel(widget_2);
+        shaderComboBox = new QComboBox(groupBox_3);
+        shaderComboBox->setObjectName(QStringLiteral("shaderComboBox"));
+        shaderComboBox->setEnabled(true);
+        sizePolicy.setHeightForWidth(shaderComboBox->sizePolicy().hasHeightForWidth());
+        shaderComboBox->setSizePolicy(sizePolicy);
+
+        verticalLayout_4->addWidget(shaderComboBox);
+
+        verticalSpacer_4 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        verticalLayout_4->addItem(verticalSpacer_4);
+
+        label_3 = new QLabel(groupBox_3);
         label_3->setObjectName(QStringLiteral("label_3"));
-        QSizePolicy sizePolicy4(QSizePolicy::Preferred, QSizePolicy::Minimum);
-        sizePolicy4.setHorizontalStretch(0);
-        sizePolicy4.setVerticalStretch(0);
-        sizePolicy4.setHeightForWidth(label_3->sizePolicy().hasHeightForWidth());
-        label_3->setSizePolicy(sizePolicy4);
+        QSizePolicy sizePolicy5(QSizePolicy::MinimumExpanding, QSizePolicy::Fixed);
+        sizePolicy5.setHorizontalStretch(0);
+        sizePolicy5.setVerticalStretch(0);
+        sizePolicy5.setHeightForWidth(label_3->sizePolicy().hasHeightForWidth());
+        label_3->setSizePolicy(sizePolicy5);
 
-        gridLayout->addWidget(label_3, 0, 0, 1, 1);
+        verticalLayout_4->addWidget(label_3);
 
-        light0Slider = new QSlider(widget_2);
+        light0Slider = new QSlider(groupBox_3);
         light0Slider->setObjectName(QStringLiteral("light0Slider"));
-        sizePolicy4.setHeightForWidth(light0Slider->sizePolicy().hasHeightForWidth());
-        light0Slider->setSizePolicy(sizePolicy4);
+        sizePolicy5.setHeightForWidth(light0Slider->sizePolicy().hasHeightForWidth());
+        light0Slider->setSizePolicy(sizePolicy5);
         light0Slider->setFocusPolicy(Qt::NoFocus);
         light0Slider->setMaximum(100);
         light0Slider->setOrientation(Qt::Horizontal);
 
-        gridLayout->addWidget(light0Slider, 0, 2, 1, 1);
+        verticalLayout_4->addWidget(light0Slider);
 
+        verticalSpacer_3 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        verticalLayout_4->addItem(verticalSpacer_3);
+
+        label_4 = new QLabel(groupBox_3);
+        label_4->setObjectName(QStringLiteral("label_4"));
+        sizePolicy5.setHeightForWidth(label_4->sizePolicy().hasHeightForWidth());
+        label_4->setSizePolicy(sizePolicy5);
+        label_4->setBaseSize(QSize(0, 30));
+
+        verticalLayout_4->addWidget(label_4);
+
+        horizontalSlider = new QSlider(groupBox_3);
+        horizontalSlider->setObjectName(QStringLiteral("horizontalSlider"));
+        horizontalSlider->setOrientation(Qt::Horizontal);
+
+        verticalLayout_4->addWidget(horizontalSlider);
+
+        verticalSpacer_5 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        verticalLayout_4->addItem(verticalSpacer_5);
+
+        label_5 = new QLabel(groupBox_3);
+        label_5->setObjectName(QStringLiteral("label_5"));
+        sizePolicy5.setHeightForWidth(label_5->sizePolicy().hasHeightForWidth());
+        label_5->setSizePolicy(sizePolicy5);
+
+        verticalLayout_4->addWidget(label_5);
+
+        horizontalSlider_2 = new QSlider(groupBox_3);
+        horizontalSlider_2->setObjectName(QStringLiteral("horizontalSlider_2"));
+        horizontalSlider_2->setOrientation(Qt::Horizontal);
+
+        verticalLayout_4->addWidget(horizontalSlider_2);
+
+        verticalSpacer_6 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        verticalLayout_4->addItem(verticalSpacer_6);
+
+        label_6 = new QLabel(groupBox_3);
+        label_6->setObjectName(QStringLiteral("label_6"));
+        sizePolicy5.setHeightForWidth(label_6->sizePolicy().hasHeightForWidth());
+        label_6->setSizePolicy(sizePolicy5);
+
+        verticalLayout_4->addWidget(label_6);
+
+        horizontalSlider_3 = new QSlider(groupBox_3);
+        horizontalSlider_3->setObjectName(QStringLiteral("horizontalSlider_3"));
+        horizontalSlider_3->setOrientation(Qt::Horizontal);
+
+        verticalLayout_4->addWidget(horizontalSlider_3);
+
+        verticalSpacer_7 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        verticalLayout_4->addItem(verticalSpacer_7);
+
+        checkBoxSilhoutte = new QCheckBox(groupBox_3);
+        checkBoxSilhoutte->setObjectName(QStringLiteral("checkBoxSilhoutte"));
+
+        verticalLayout_4->addWidget(checkBoxSilhoutte);
+
+        label_7 = new QLabel(groupBox_3);
+        label_7->setObjectName(QStringLiteral("label_7"));
+
+        verticalLayout_4->addWidget(label_7);
+
+        threshold = new QSlider(groupBox_3);
+        threshold->setObjectName(QStringLiteral("threshold"));
+        threshold->setMaximum(100);
+        threshold->setOrientation(Qt::Horizontal);
+
+        verticalLayout_4->addWidget(threshold);
+
+        label_8 = new QLabel(groupBox_3);
+        label_8->setObjectName(QStringLiteral("label_8"));
+
+        verticalLayout_4->addWidget(label_8);
+
+        spinBox = new QSpinBox(groupBox_3);
+        spinBox->setObjectName(QStringLiteral("spinBox"));
+        sizePolicy5.setHeightForWidth(spinBox->sizePolicy().hasHeightForWidth());
+        spinBox->setSizePolicy(sizePolicy5);
+
+        verticalLayout_4->addWidget(spinBox);
+
+        widget_2 = new QWidget(groupBox_3);
+        widget_2->setObjectName(QStringLiteral("widget_2"));
+        QSizePolicy sizePolicy6(QSizePolicy::Maximum, QSizePolicy::Minimum);
+        sizePolicy6.setHorizontalStretch(0);
+        sizePolicy6.setVerticalStretch(0);
+        sizePolicy6.setHeightForWidth(widget_2->sizePolicy().hasHeightForWidth());
+        widget_2->setSizePolicy(sizePolicy6);
+        gridLayout = new QGridLayout(widget_2);
+        gridLayout->setObjectName(QStringLiteral("gridLayout"));
+        gridLayout->setContentsMargins(0, 0, 0, 0);
 
         verticalLayout_4->addWidget(widget_2);
 
-        shaderComboBox = new QComboBox(groupBox_3);
-        shaderComboBox->setObjectName(QStringLiteral("shaderComboBox"));
-        QSizePolicy sizePolicy5(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy5.setHorizontalStretch(0);
-        sizePolicy5.setVerticalStretch(0);
-        sizePolicy5.setHeightForWidth(shaderComboBox->sizePolicy().hasHeightForWidth());
-        shaderComboBox->setSizePolicy(sizePolicy5);
 
-        verticalLayout_4->addWidget(shaderComboBox);
+        verticalLayout_2->addWidget(groupBox_3);
 
 
-        verticalLayout->addWidget(groupBox_3);
+        verticalLayout->addWidget(groupBox);
 
         groupBox_6 = new QGroupBox(rendering_tab);
         groupBox_6->setObjectName(QStringLiteral("groupBox_6"));
@@ -250,32 +365,35 @@ public:
 
         label_11 = new QLabel(ui_container);
         label_11->setObjectName(QStringLiteral("label_11"));
-        sizePolicy4.setHeightForWidth(label_11->sizePolicy().hasHeightForWidth());
-        label_11->setSizePolicy(sizePolicy4);
+        QSizePolicy sizePolicy7(QSizePolicy::Preferred, QSizePolicy::Minimum);
+        sizePolicy7.setHorizontalStretch(0);
+        sizePolicy7.setVerticalStretch(0);
+        sizePolicy7.setHeightForWidth(label_11->sizePolicy().hasHeightForWidth());
+        label_11->setSizePolicy(sizePolicy7);
         label_11->setMaximumSize(QSize(16777215, 20));
 
         verticalLayout_5->addWidget(label_11);
 
         label_12 = new QLabel(ui_container);
         label_12->setObjectName(QStringLiteral("label_12"));
-        sizePolicy4.setHeightForWidth(label_12->sizePolicy().hasHeightForWidth());
-        label_12->setSizePolicy(sizePolicy4);
+        sizePolicy7.setHeightForWidth(label_12->sizePolicy().hasHeightForWidth());
+        label_12->setSizePolicy(sizePolicy7);
         label_12->setMaximumSize(QSize(16777215, 20));
 
         verticalLayout_5->addWidget(label_12);
 
         label_2 = new QLabel(ui_container);
         label_2->setObjectName(QStringLiteral("label_2"));
-        sizePolicy4.setHeightForWidth(label_2->sizePolicy().hasHeightForWidth());
-        label_2->setSizePolicy(sizePolicy4);
+        sizePolicy7.setHeightForWidth(label_2->sizePolicy().hasHeightForWidth());
+        label_2->setSizePolicy(sizePolicy7);
         label_2->setMaximumSize(QSize(16777215, 20));
 
         verticalLayout_5->addWidget(label_2);
 
         label = new QLabel(ui_container);
         label->setObjectName(QStringLiteral("label"));
-        sizePolicy4.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
-        label->setSizePolicy(sizePolicy4);
+        sizePolicy7.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
+        label->setSizePolicy(sizePolicy7);
         label->setMaximumSize(QSize(16777215, 20));
 
         verticalLayout_5->addWidget(label);
@@ -309,13 +427,19 @@ public:
          << QApplication::translate("AppWindow", "Sphere", Q_NULLPTR)
         );
         groupBox_3->setTitle(QApplication::translate("AppWindow", "Shader Parameters", Q_NULLPTR));
-        label_3->setText(QApplication::translate("AppWindow", "Light Intensity", Q_NULLPTR));
         shaderComboBox->clear();
         shaderComboBox->insertItems(0, QStringList()
          << QApplication::translate("AppWindow", "Phong", Q_NULLPTR)
          << QApplication::translate("AppWindow", "Toon", Q_NULLPTR)
         );
         shaderComboBox->setCurrentText(QApplication::translate("AppWindow", "Phong", Q_NULLPTR));
+        label_3->setText(QApplication::translate("AppWindow", "Light Intensity", Q_NULLPTR));
+        label_4->setText(QApplication::translate("AppWindow", "Red", Q_NULLPTR));
+        label_5->setText(QApplication::translate("AppWindow", "Green", Q_NULLPTR));
+        label_6->setText(QApplication::translate("AppWindow", "Blue", Q_NULLPTR));
+        checkBoxSilhoutte->setText(QApplication::translate("AppWindow", "Silhouette", Q_NULLPTR));
+        label_7->setText(QApplication::translate("AppWindow", "Threshold", Q_NULLPTR));
+        label_8->setText(QApplication::translate("AppWindow", "Steps of discretize", Q_NULLPTR));
         groupBox_6->setTitle(QApplication::translate("AppWindow", "Background", Q_NULLPTR));
         blackBgRadioButton->setText(QApplication::translate("AppWindow", "black", Q_NULLPTR));
         greyBgRadioButton->setText(QApplication::translate("AppWindow", "grey", Q_NULLPTR));

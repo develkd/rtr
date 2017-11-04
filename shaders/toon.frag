@@ -19,6 +19,8 @@ struct PointLight {
 
 struct ToonShader {
    bool toon;
+   bool silhoutte;
+   float threshold;
 };
 
 struct Texture {
@@ -50,7 +52,7 @@ uniform vec3 lightIntensity;
 
 
 /*
- *  Calculate surface color based on Phong illumination model.
+ *  Calculate surface color based on Phong illumination model.silhoullette
  */
 
 vec3 myphong(vec3 n, vec3 v, vec3 l) {
@@ -88,8 +90,7 @@ vec3 myphong(vec3 n, vec3 v, vec3 l) {
 
 vec3 toon(vec3 normal, vec3 cam, vec3 light, vec3 intensity, vec3 color) {
 
- //    outline (simple silhouette)?
-    if(max(dot(cam, normal), 0.0) < .31)
+    if(toonShader.silhoutte && max(dot(cam, normal), 0.0) < toonShader.threshold)
     {
         color = vec3(0.3,0.4,0.8);
     }

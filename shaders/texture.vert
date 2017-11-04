@@ -36,7 +36,7 @@ void main(void) {
     // normal direction in eye coordinates
     normal_EC  = normalMatrix * normal_MC;
 
-     fragTextCoord = texCoord;
+    fragTextCoord = texCoord;
 }
 
 

@@ -8,8 +8,10 @@ void ToonMaterial::apply(unsigned int light_pass)
    PhongMaterial::apply(light_pass);
 
 
+   prog_->setUniformValue("toonShader.threshold", toonShader.threshold);
    prog_->setUniformValue("toonShader.toon", toonShader.toon);
-   prog_->setAttributeValue("texCoord",QVector2D(0.5,0.5) );
+   prog_->setUniformValue("toonShader.silhoutte", toonShader.silhoutte);
+   //prog_->setAttributeValue("texCoord",QVector2D(0.5,0.5) );
    prog_->setUniformValue("texture.dichte", texture.dichte);
    prog_->setUniformValue("texture.radius", texture.radius);
    prog_->setUniformValue("texture.backgroundColor", texture.backgroundColor);
