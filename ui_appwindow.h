@@ -421,6 +421,8 @@ public:
         modelComboBox->clear();
         modelComboBox->insertItems(0, QStringList()
          << QApplication::translate("AppWindow", "Teapot", Q_NULLPTR)
+         << QApplication::translate("AppWindow", "F117_H", Q_NULLPTR)
+         << QApplication::translate("AppWindow", "Alien", Q_NULLPTR)
          << QApplication::translate("AppWindow", "Cube", Q_NULLPTR)
          << QApplication::translate("AppWindow", "Obiwan", Q_NULLPTR)
          << QApplication::translate("AppWindow", "Goblin", Q_NULLPTR)
@@ -434,6 +436,7 @@ public:
         shaderComboBox->clear();
         shaderComboBox->insertItems(0, QStringList()
          << QApplication::translate("AppWindow", "Phong", Q_NULLPTR)
+         << QApplication::translate("AppWindow", "Point", Q_NULLPTR)
          << QApplication::translate("AppWindow", "Toon", Q_NULLPTR)
         );
         shaderComboBox->setCurrentText(QApplication::translate("AppWindow", "Phong", Q_NULLPTR));

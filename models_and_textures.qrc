@@ -9,5 +9,7 @@
         <file>models/extern/dragon.obj</file>
         <file>models/extern/sphere.obj</file>
         <file>models/extern/venus.obj</file>
+        <file>models/stuff/alien.obj</file>
+        <file>models/stuff/F117_H.obj</file>
     </qresource>
 </RCC>

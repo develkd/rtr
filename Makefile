@@ -67,7 +67,8 @@ SOURCES       = main.cpp \
 		material/phong.cpp \
 		navigator/position_navigator.cpp \
 		navigator/rotate_y.cpp \
-		material/toon.cpp qrc_models_and_textures.cpp \
+		material/toon.cpp \
+		material/point.cpp qrc_models_and_textures.cpp \
 		qrc_shaders.cpp \
 		moc_appwindow.cpp \
 		moc_rtrglwidget.cpp \
@@ -90,6 +91,7 @@ OBJECTS       = main.o \
 		position_navigator.o \
 		rotate_y.o \
 		toon.o \
+		point.o \
 		qrc_models_and_textures.o \
 		qrc_shaders.o \
 		moc_appwindow.o \
@@ -292,7 +294,8 @@ DIST          = ../../../QT/5.9.2/gcc_64/mkspecs/features/spec_pre.prf \
 		material/phong.h \
 		navigator/position_navigator.h \
 		navigator/rotate_y.h \
-		material/toon.h main.cpp \
+		material/toon.h \
+		material/point.h main.cpp \
 		appwindow.cpp \
 		camera.cpp \
 		material/material.cpp \
@@ -309,7 +312,8 @@ DIST          = ../../../QT/5.9.2/gcc_64/mkspecs/features/spec_pre.prf \
 		material/phong.cpp \
 		navigator/position_navigator.cpp \
 		navigator/rotate_y.cpp \
-		material/toon.cpp
+		material/toon.cpp \
+		material/point.cpp
 QMAKE_TARGET  = rtrApp
 DESTDIR       = 
 TARGET        = rtrApp
@@ -710,8 +714,8 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents models_and_textures.qrc shaders.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../QT/5.9.2/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents camera.h appwindow.h material/material.h node.h rtrglwidget.h scene.h geometry/cube.h mesh/bbox.h mesh/objloader.h mesh/indexbuffer.h mesh/mesh.h mesh/vertexbuffer.h mesh/geometrybuffers.h navigator/nodenavigator.h material/phong.h navigator/position_navigator.h navigator/rotate_y.h material/toon.h $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp appwindow.cpp camera.cpp material/material.cpp node.cpp scene.cpp geometry/cube.cpp mesh/bbox.cpp mesh/geometrybuffers.cpp mesh/objloader.cpp mesh/indexbuffer.cpp mesh/mesh.cpp rtrglwidget.cpp navigator/nodenavigator.cpp material/phong.cpp navigator/position_navigator.cpp navigator/rotate_y.cpp material/toon.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents camera.h appwindow.h material/material.h node.h rtrglwidget.h scene.h geometry/cube.h mesh/bbox.h mesh/objloader.h mesh/indexbuffer.h mesh/mesh.h mesh/vertexbuffer.h mesh/geometrybuffers.h navigator/nodenavigator.h material/phong.h navigator/position_navigator.h navigator/rotate_y.h material/toon.h material/point.h $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp appwindow.cpp camera.cpp material/material.cpp node.cpp scene.cpp geometry/cube.cpp mesh/bbox.cpp mesh/geometrybuffers.cpp mesh/objloader.cpp mesh/indexbuffer.cpp mesh/mesh.cpp rtrglwidget.cpp navigator/nodenavigator.cpp material/phong.cpp navigator/position_navigator.cpp navigator/rotate_y.cpp material/toon.cpp material/point.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents appwindow.ui $(DISTDIR)/
 
 
@@ -746,6 +750,8 @@ qrc_models_and_textures.cpp: models_and_textures.qrc \
 		models/goblin.obj \
 		models/duck/duck.obj \
 		models/obiwan/obiwan.obj \
+		models/stuff/alien.obj \
+		models/stuff/F117_H.obj \
 		models/extern/venus.obj \
 		models/extern/dragon.obj \
 		models/extern/buddha.obj \
@@ -760,10 +766,12 @@ qrc_shaders.cpp: shaders.qrc \
 		shaders/obiwan.vert \
 		shaders/toon.frag \
 		shaders/texture.vert \
+		shaders/point.frag \
 		shaders/phong.vert \
 		shaders/obiwan.frag \
 		shaders/toon.vert \
-		shaders/texture.frag
+		shaders/texture.frag \
+		shaders/point.vert
 	/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/bin/rcc -name shaders shaders.qrc -o qrc_shaders.cpp
 
 compiler_moc_predefs_make_all: moc_predefs.h
@@ -921,6 +929,7 @@ moc_appwindow.cpp: ../../../QT/5.9.2/gcc_64/include/QtWidgets/QWidget \
 		../../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLTexture \
 		../../../QT/5.9.2/gcc_64/include/QtGui/qopengltexture.h \
 		material/toon.h \
+		material/point.h \
 		navigator/rotate_y.h \
 		navigator/nodenavigator.h \
 		../../../QT/5.9.2/gcc_64/include/QtGui/QKeyEvent \
@@ -1196,6 +1205,7 @@ moc_scene.cpp: ../../../QT/5.9.2/gcc_64/include/QtWidgets/QWidget \
 		../../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLTexture \
 		../../../QT/5.9.2/gcc_64/include/QtGui/qopengltexture.h \
 		material/toon.h \
+		material/point.h \
 		navigator/rotate_y.h \
 		navigator/nodenavigator.h \
 		../../../QT/5.9.2/gcc_64/include/QtGui/QKeyEvent \
@@ -1497,6 +1507,7 @@ main.o: main.cpp ../../../QT/5.9.2/gcc_64/include/QtWidgets/QApplication \
 		../../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLTexture \
 		../../../QT/5.9.2/gcc_64/include/QtGui/qopengltexture.h \
 		material/toon.h \
+		material/point.h \
 		navigator/rotate_y.h \
 		navigator/nodenavigator.h \
 		../../../QT/5.9.2/gcc_64/include/QtGui/QKeyEvent \
@@ -1666,6 +1677,7 @@ appwindow.o: appwindow.cpp ../../../QT/5.9.2/gcc_64/include/QtWidgets/QApplicati
 		../../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLTexture \
 		../../../QT/5.9.2/gcc_64/include/QtGui/qopengltexture.h \
 		material/toon.h \
+		material/point.h \
 		navigator/rotate_y.h \
 		navigator/nodenavigator.h \
 		../../../QT/5.9.2/gcc_64/include/QtGui/QMouseEvent \
@@ -1677,6 +1689,9 @@ appwindow.o: appwindow.cpp ../../../QT/5.9.2/gcc_64/include/QtWidgets/QApplicati
 		../../../QT/5.9.2/gcc_64/include/QtWidgets/qactiongroup.h \
 		../../../QT/5.9.2/gcc_64/include/QtWidgets/QButtonGroup \
 		../../../QT/5.9.2/gcc_64/include/QtWidgets/qbuttongroup.h \
+		../../../QT/5.9.2/gcc_64/include/QtWidgets/QCheckBox \
+		../../../QT/5.9.2/gcc_64/include/QtWidgets/qcheckbox.h \
+		../../../QT/5.9.2/gcc_64/include/QtWidgets/qabstractbutton.h \
 		../../../QT/5.9.2/gcc_64/include/QtWidgets/QComboBox \
 		../../../QT/5.9.2/gcc_64/include/QtWidgets/qcombobox.h \
 		../../../QT/5.9.2/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
@@ -1705,7 +1720,6 @@ appwindow.o: appwindow.cpp ../../../QT/5.9.2/gcc_64/include/QtWidgets/QApplicati
 		../../../QT/5.9.2/gcc_64/include/QtWidgets/qlabel.h \
 		../../../QT/5.9.2/gcc_64/include/QtWidgets/QPushButton \
 		../../../QT/5.9.2/gcc_64/include/QtWidgets/qpushbutton.h \
-		../../../QT/5.9.2/gcc_64/include/QtWidgets/qabstractbutton.h \
 		../../../QT/5.9.2/gcc_64/include/QtWidgets/QRadioButton \
 		../../../QT/5.9.2/gcc_64/include/QtWidgets/qradiobutton.h \
 		../../../QT/5.9.2/gcc_64/include/QtWidgets/QSlider \
@@ -2131,6 +2145,7 @@ scene.o: scene.cpp scene.h \
 		../../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLTexture \
 		../../../QT/5.9.2/gcc_64/include/QtGui/qopengltexture.h \
 		material/toon.h \
+		material/point.h \
 		navigator/rotate_y.h \
 		navigator/nodenavigator.h \
 		../../../QT/5.9.2/gcc_64/include/QtGui/QKeyEvent \
@@ -2838,6 +2853,7 @@ rtrglwidget.o: rtrglwidget.cpp rtrglwidget.h \
 		../../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLTexture \
 		../../../QT/5.9.2/gcc_64/include/QtGui/qopengltexture.h \
 		material/toon.h \
+		material/point.h \
 		navigator/rotate_y.h \
 		navigator/nodenavigator.h \
 		../../../QT/5.9.2/gcc_64/include/QtGui/QKeyEvent \
@@ -3396,6 +3412,106 @@ toon.o: material/toon.cpp material/toon.h \
 		../../../QT/5.9.2/gcc_64/include/QtGui/qpainterpath.h \
 		../../../QT/5.9.2/gcc_64/include/QtCore/QScopedPointer
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o toon.o material/toon.cpp
+
+point.o: material/point.cpp material/point.h \
+		material/material.h \
+		../../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLShaderProgram \
+		../../../QT/5.9.2/gcc_64/include/QtGui/qopenglshaderprogram.h \
+		../../../QT/5.9.2/gcc_64/include/QtGui/qtguiglobal.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qglobal.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qconfig.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qtcore-config.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qsysinfo.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qlogging.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qflags.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qatomic.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qmutex.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qnumeric.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qversiontagging.h \
+		../../../QT/5.9.2/gcc_64/include/QtGui/qtgui-config.h \
+		../../../QT/5.9.2/gcc_64/include/QtGui/qopengl.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qt_windows.h \
+		../../../QT/5.9.2/gcc_64/include/QtGui/qopengles2ext.h \
+		../../../QT/5.9.2/gcc_64/include/QtGui/qopenglext.h \
+		../../../QT/5.9.2/gcc_64/include/QtGui/qvector2d.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qpoint.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qnamespace.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qmetatype.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qbytearray.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qrefcount.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qarraydata.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qstring.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qchar.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qalgorithms.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../QT/5.9.2/gcc_64/include/QtGui/qvector3d.h \
+		../../../QT/5.9.2/gcc_64/include/QtGui/qvector4d.h \
+		../../../QT/5.9.2/gcc_64/include/QtGui/qmatrix4x4.h \
+		../../../QT/5.9.2/gcc_64/include/QtGui/qquaternion.h \
+		../../../QT/5.9.2/gcc_64/include/QtGui/qgenericmatrix.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qdebug.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qhash.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qiterator.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qlist.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qpair.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qstringlist.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qregexp.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qmap.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qtextstream.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qiodevice.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qobject.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qcoreevent.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qobject_impl.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qlocale.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qvariant.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qshareddata.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qvector.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qset.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qsharedpointer.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qdatastream.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qrect.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qmargins.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qsize.h \
+		material/phong.h \
+		../../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLTexture \
+		../../../QT/5.9.2/gcc_64/include/QtGui/qopengltexture.h \
+		../../../QT/5.9.2/gcc_64/include/QtGui/qimage.h \
+		../../../QT/5.9.2/gcc_64/include/QtGui/qcolor.h \
+		../../../QT/5.9.2/gcc_64/include/QtGui/qrgb.h \
+		../../../QT/5.9.2/gcc_64/include/QtGui/qrgba64.h \
+		../../../QT/5.9.2/gcc_64/include/QtGui/qpaintdevice.h \
+		../../../QT/5.9.2/gcc_64/include/QtGui/qwindowdefs.h \
+		../../../QT/5.9.2/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../../QT/5.9.2/gcc_64/include/QtGui/qpixelformat.h \
+		../../../QT/5.9.2/gcc_64/include/QtGui/qtransform.h \
+		../../../QT/5.9.2/gcc_64/include/QtGui/qmatrix.h \
+		../../../QT/5.9.2/gcc_64/include/QtGui/qpolygon.h \
+		../../../QT/5.9.2/gcc_64/include/QtGui/qregion.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/qline.h \
+		../../../QT/5.9.2/gcc_64/include/QtGui/qpainterpath.h \
+		../../../QT/5.9.2/gcc_64/include/QtCore/QScopedPointer
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o point.o material/point.cpp
 
 qrc_models_and_textures.o: qrc_models_and_textures.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_models_and_textures.o qrc_models_and_textures.cpp

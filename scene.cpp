@@ -58,21 +58,24 @@ void Scene::makeNodes()
     auto phong_prog = createProgram(":/shaders/phong.vert", ":/shaders/phong.frag");
     auto obiwan_prog = createProgram(":/shaders/obiwan.vert", ":/shaders/obiwan.frag");
     auto toon_prog = createProgram(":/shaders/toon.vert", ":/shaders/toon.frag");
+    auto point_prog = createProgram(":/shaders/point.vert", ":/shaders/point.frag");
 
     // Phong materials
     auto red = std::make_shared<PhongMaterial>(phong_prog);
     auto color_obiwan = std::make_shared<PhongMaterial>(obiwan_prog);
     auto color_toon = std::make_shared<ToonMaterial>(toon_prog);
-    toonMaterial_ = color_toon;
+    auto point = std::make_shared<PointMaterial>(point_prog);
+   material_ = red;
 
     mapOfPhongMaterials_["red"] = red;
     mapOfPhongMaterials_["color_obiwan"] = color_obiwan;
     mapOfToonMaterials_["color_toon"] = color_toon;
+    mapOfPointMaterials_["point"] = point;
 
     allMaterials_.push_back(red);
     allMaterials_.push_back(color_obiwan);
     allMaterials_.push_back(color_toon);
-
+    allMaterials_.push_back(point);
 
     red->phong.k_diffuse = QVector3D(0.8f,0.1f,0.1f);
     red->phong.k_ambient = red->phong.k_diffuse * 0.3f;
@@ -86,6 +89,10 @@ void Scene::makeNodes()
     color_toon->toonShader.silhoutte=false;
     color_toon->toonShader.threshold=0.0f;
 
+    point->phong.k_diffuse = QVector3D(0.2f,0.34f,0.41f);
+    point->phong.k_ambient = point->phong.k_diffuse * 0.1f;
+    point->phong.shininess = 95;
+
     // which material to use as default for all objects?
     auto std = red;
 
@@ -97,8 +104,10 @@ void Scene::makeNodes()
 
     meshes_["Buddha"]  = std::make_shared<Mesh>(":/models/extern/buddha.obj", std);
     meshes_["Dragon"]  = std::make_shared<Mesh>(":/models/extern/dragon.obj", std);
-    meshes_["Sphere"]  = std::make_shared<Mesh>(":/models/extern/sphere.obj", std);
+    meshes_["Sphere"]  = std::make_shared<Mesh>(":/models/extern/sphere.obj", point);
     meshes_["Venus"]  = std::make_shared<Mesh>(":/models/extern/venus.obj", std);
+    meshes_["Alien"]  = std::make_shared<Mesh>(":/models/stuff/alien.obj", std);
+    meshes_["F117_H"]  = std::make_shared<Mesh>(":/models/stuff/F117_H.obj", std);
 
     // add meshes of some procedural geometry objects (not loaded from OBJ files)
     meshes_["Cube"]   = std::make_shared<Mesh>(make_shared<geom::Cube>(), color_toon);
@@ -115,6 +124,8 @@ void Scene::makeNodes()
     nodes_["Dragon"]  = createNode(meshes_["Dragon"], true);
     nodes_["Sphere"]  = createNode(meshes_["Sphere"], true);
     nodes_["Venus"]  = createNode(meshes_["Venus"], true);
+    nodes_["Alien"]  = createNode(meshes_["Alien"], true);
+    nodes_["F117_H"]  = createNode(meshes_["F117_H"], true);
 
 
 }
@@ -194,7 +205,7 @@ void Scene::draw_scene_()
         glDepthFunc(GL_LEQUAL);
         glEnable(GL_DEPTH_TEST);
         glDisable(GL_BLEND);
-        replaceMaterialAndDrawScene(camera, toonMaterial_);
+        replaceMaterialAndDrawScene(camera, material_);
 /*
     // draw one pass for each light
     for(unsigned int i=0; i<lightNodes_.size(); i++) {
@@ -221,7 +232,7 @@ void Scene::replaceMaterialAndDrawScene(const Camera& camera, shared_ptr<Materia
 {
     // replace material in all meshes, if necessary
     if(material != meshes_.begin()->second->material()) {
-        // qDebug() << "replacing material";
+         qDebug() << "replacing material "+ material->getAppliedShader();
         for (auto& element : meshes_) {
             auto mesh = element.second;
             mesh->replaceMaterial(material);
@@ -236,7 +247,7 @@ void Scene::replaceMaterialAndDrawScene(const Camera& camera, shared_ptr<Materia
 
         // determine current light position and set it in all materials
         QMatrix4x4 lightToWorld = nodes_["World"]->toParentTransform(lightNodes_[i]);
-        toonMaterial_->lights[i].position_WC = lightToWorld * QVector3D(0,0,0);
+        material_->lights[i].position_WC = lightToWorld * QVector3D(0,0,0);
 
         // draw light pass i
         nodes_["World"]->draw(camera, i);
@@ -320,6 +331,14 @@ void Scene::setShader(QString shader)
     shader = shader.toLower();
     bool isToonShader = "toon" == shader;
    qDebug()<<"toonShader shader is " << isToonShader;
+
+//   std::shared_ptr<Material>  material =  meshes_[getCurrentSceneNode()] ->material();
+//   if("toon" == material ->getAppliedShader()){
+//        ToonMaterial* tm = mapOfToonMaterials_["color_toon"].get();
+//       tm -> toonShader.toon = isToonShader;
+
+//   }
+
 
     for(auto mat : allMaterials_){
 
