@@ -458,7 +458,7 @@ public:
         tabWidget->setTabText(tabWidget->indexOf(rendering_tab), QApplication::translate("AppWindow", "Rendering", Q_NULLPTR));
         quitButton->setText(QApplication::translate("AppWindow", "quit", Q_NULLPTR));
         label_11->setText(QApplication::translate("AppWindow", "left/right: rotate camera Y-Axsi", Q_NULLPTR));
-        label_12->setText(QApplication::translate("AppWindow", "up/down: rotate camera X-Axis", Q_NULLPTR));
+        label_12->setText(QApplication::translate("AppWindow", "up/down: rotate camera X/Z-Axis", Q_NULLPTR));
         label_2->setText(QApplication::translate("AppWindow", "zoom in: +      zoom out: -", Q_NULLPTR));
         label->setText(QApplication::translate("AppWindow", "'h': show/hide UI", Q_NULLPTR));
     } // retranslateUi

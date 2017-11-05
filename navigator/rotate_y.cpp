@@ -111,6 +111,8 @@ RotateY::Axis RotateY::getRotateAxis(){
 }
 
 QVector3D RotateY::getQVector3DOfAxis(){
+
+
     switch (getRotateAxis()) {
     case X:
         return  QVector3D(-1,0,0);

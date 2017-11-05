@@ -634,7 +634,7 @@
          </size>
         </property>
         <property name="text">
-         <string>up/down: rotate camera X-Axis</string>
+         <string>up/down: rotate camera X/Z-Axis</string>
         </property>
        </widget>
       </item>

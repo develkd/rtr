@@ -94,7 +94,7 @@ void Scene::makeNodes()
     point->phong.shininess = 90;
 
     // which material to use as default for all objects?
-    auto std = red;
+    auto std = color_toon;
 
     // load meshes from .obj files and assign shader programs to them
     meshes_["Teapot"]  = std::make_shared<Mesh>(":/models/teapot/teapot.obj", std);
