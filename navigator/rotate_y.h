@@ -50,6 +50,7 @@ protected:
     float elevation_angle_ = 15;
     float rotation_speed_ = 5.0;
     float zoom_speed_ = 0.25;
+    QVector3D rotateVector =  QVector3D(0,1,0);
 
     void updateTransformation_();
     QVector3D getQVector3DOfAxis();

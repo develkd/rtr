@@ -90,8 +90,8 @@ void Scene::makeNodes()
     color_toon->toonShader.threshold=0.0f;
 
     point->phong.k_diffuse = QVector3D(0.2f,0.34f,0.41f);
-    point->phong.k_ambient = point->phong.k_diffuse * 0.1f;
-    point->phong.shininess = 95;
+    point->phong.k_ambient = point->phong.k_diffuse * 0.5f;
+    point->phong.shininess = 90;
 
     // which material to use as default for all objects?
     auto std = red;
@@ -196,17 +196,17 @@ void Scene::draw_scene_()
     glCullFace(GL_BACK);
 
     // first light pass: standard depth test, no blending
-//    glDepthFunc(GL_LESS);
-//    glEnable(GL_DEPTH_TEST);
-//    glDisable(GL_BLEND);
-//    glDisable(GL_CULL_FACE);
+    glDepthFunc(GL_LESS);
+    glEnable(GL_DEPTH_TEST);
+    glDisable(GL_BLEND);
+    glDisable(GL_CULL_FACE);
 
 
-        glDepthFunc(GL_LEQUAL);
-        glEnable(GL_DEPTH_TEST);
-        glDisable(GL_BLEND);
-        replaceMaterialAndDrawScene(camera, material_);
-/*
+//        glDepthFunc(GL_LEQUAL);
+//        glEnable(GL_DEPTH_TEST);
+//        glDisable(GL_BLEND);
+//        replaceMaterialAndDrawScene(camera, material_);
+
     // draw one pass for each light
     for(unsigned int i=0; i<lightNodes_.size(); i++) {
 
@@ -225,7 +225,7 @@ void Scene::draw_scene_()
         glBlendFunc(GL_ONE,GL_ONE);
         glDepthFunc(GL_EQUAL);
     }
-    */
+
 }
 
 void Scene::replaceMaterialAndDrawScene(const Camera& camera, shared_ptr<Material> material)
