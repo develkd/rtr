@@ -98,17 +98,28 @@ AppWindow::AppWindow(QWidget *parent) :
     });
 
     connect(ui -> checkBoxSilhoutte, &QCheckBox::toggled,[this](bool enable) {
+        ui->threshold->setEnabled(enable);
         scene().enableSilhoutte(enable);
     });
 
     connect(ui -> threshold,  &QSlider::valueChanged, [this](int value){
-         scene().setThreshold(float(value)/100); // slider goes from 0...1000
+         scene().setThreshold(float(value)/100); // slider goes from 0...100
     });
 
     connect(ui -> discretizer, &QSlider::valueChanged, [this](int value){
          scene().setAmountOfDiscretiz(value);
     });
 
+    connect(ui -> blueSlider, &QSlider::valueChanged, [this](int value){
+         scene().setBlueIntensity(float(value)/100);
+    });
+
+    connect(ui -> greenSlider, &QSlider::valueChanged, [this](int value){
+         scene().setGreenIntensity(float(value)/100);
+    });
+    connect(ui -> redSlider, &QSlider::valueChanged, [this](int value){
+         scene().setRedIntensity(float(value)/100);
+    });
 }
 
 // called when the window is initially shown
@@ -126,7 +137,9 @@ void AppWindow::setDefaultUIValues() {
     ui->blackBgRadioButton->setChecked(true);
     ui->greyBgRadioButton->setChecked(true);
     ui->light0Slider->setValue(0);
-    ui->light0Slider->setValue(80);
+    ui->light0Slider->setValue(50);
+
+
     ui->modelComboBox->setCurrentText("Duck");
     ui->shaderComboBox->setCurrentText("Toon");
 

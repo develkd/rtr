@@ -54,6 +54,9 @@ public slots:
     void setThreshold(float threshold);
     void setAmountOfDiscretiz(int amount);
 
+    void setRedIntensity(float redIntensitiy);
+    void setGreenIntensity(float greenIntensitiy);
+    void setBlueIntensity(float blueIntensitiy);
 
     // change background color
     void setBackgroundColor(QVector3D rgb);

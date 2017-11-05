@@ -76,17 +76,15 @@ void Scene::makeNodes()
 
     red->phong.k_diffuse = QVector3D(0.8f,0.1f,0.1f);
     red->phong.k_ambient = red->phong.k_diffuse * 0.3f;
-    red->phong.shininess = 80;
-    color_obiwan->phong.k_diffuse = QVector3D(0.8f,0.6f,0.9f);
-    color_obiwan->phong.k_ambient = color_obiwan->phong.k_diffuse * 0.3f;
-    color_obiwan->phong.shininess = 80;
+    red->phong.shininess = 90;
 
     color_toon->phong.k_diffuse = QVector3D(0.8f,0.6f,0.9f);
     color_toon->phong.k_ambient = color_toon->phong.k_diffuse * 0.3f;
-    color_toon->phong.shininess = 80;
+    color_toon->phong.shininess = 90;
+
     color_toon->toonShader.toon=true;
     color_toon->toonShader.silhoutte=false;
-    color_toon->toonShader.threshold=0.3f;
+    color_toon->toonShader.threshold=0.0f;
 
     // which material to use as default for all objects?
     auto std = red;
@@ -387,12 +385,36 @@ void Scene::setAmountOfDiscretiz(int amount){
 }
 
 
-// pass key/mouse events on to navigator objects
-void Scene::keyPressEvent(QKeyEvent *event) {
+void Scene::setBlueIntensity(float blueIntensitiy){
+ std::shared_ptr<Material>  material =  meshes_[getCurrentSceneNode()] ->material();
+ for(unsigned int i=0; i<lightNodes_.size(); i++) {
+     material->lights[i].color.setZ(blueIntensitiy);
+ }
+ update();
+}
 
-    cameraNavigator_->keyPressEvent(event);
+void Scene::setRedIntensity(float redIntensitiy){
+    std::shared_ptr<Material>  material =  meshes_[getCurrentSceneNode()] ->material();
+    for(unsigned int i=0; i<lightNodes_.size(); i++) {
+        material->lights[i].color.setX(redIntensitiy);
+    }
     update();
 
+}
+
+void Scene::setGreenIntensity(float greenIntensitiy){
+    std::shared_ptr<Material>  material =  meshes_[getCurrentSceneNode()] ->material();
+    for(unsigned int i=0; i<lightNodes_.size(); i++) {
+        material->lights[i].color.setY(greenIntensitiy);
+    }
+    update();
+
+}
+
+// pass key/mouse events on to navigator objects
+void Scene::keyPressEvent(QKeyEvent *event) {
+    cameraNavigator_->keyPressEvent(event);
+    update();
 }
 
 // mouse press events all processed by trackball navigator

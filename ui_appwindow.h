@@ -53,13 +53,13 @@ public:
     QSlider *light0Slider;
     QSpacerItem *verticalSpacer_3;
     QLabel *label_4;
-    QSlider *horizontalSlider;
+    QSlider *redSlider;
     QSpacerItem *verticalSpacer_5;
     QLabel *label_5;
-    QSlider *horizontalSlider_2;
+    QSlider *greenSlider;
     QSpacerItem *verticalSpacer_6;
     QLabel *label_6;
-    QSlider *horizontalSlider_3;
+    QSlider *blueSlider;
     QSpacerItem *verticalSpacer_7;
     QCheckBox *checkBoxSilhoutte;
     QLabel *label_7;
@@ -202,11 +202,12 @@ public:
 
         verticalLayout_4->addWidget(label_4);
 
-        horizontalSlider = new QSlider(groupBox_3);
-        horizontalSlider->setObjectName(QStringLiteral("horizontalSlider"));
-        horizontalSlider->setOrientation(Qt::Horizontal);
+        redSlider = new QSlider(groupBox_3);
+        redSlider->setObjectName(QStringLiteral("redSlider"));
+        redSlider->setMaximum(100);
+        redSlider->setOrientation(Qt::Horizontal);
 
-        verticalLayout_4->addWidget(horizontalSlider);
+        verticalLayout_4->addWidget(redSlider);
 
         verticalSpacer_5 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
 
@@ -219,11 +220,12 @@ public:
 
         verticalLayout_4->addWidget(label_5);
 
-        horizontalSlider_2 = new QSlider(groupBox_3);
-        horizontalSlider_2->setObjectName(QStringLiteral("horizontalSlider_2"));
-        horizontalSlider_2->setOrientation(Qt::Horizontal);
+        greenSlider = new QSlider(groupBox_3);
+        greenSlider->setObjectName(QStringLiteral("greenSlider"));
+        greenSlider->setMaximum(100);
+        greenSlider->setOrientation(Qt::Horizontal);
 
-        verticalLayout_4->addWidget(horizontalSlider_2);
+        verticalLayout_4->addWidget(greenSlider);
 
         verticalSpacer_6 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
 
@@ -236,11 +238,12 @@ public:
 
         verticalLayout_4->addWidget(label_6);
 
-        horizontalSlider_3 = new QSlider(groupBox_3);
-        horizontalSlider_3->setObjectName(QStringLiteral("horizontalSlider_3"));
-        horizontalSlider_3->setOrientation(Qt::Horizontal);
+        blueSlider = new QSlider(groupBox_3);
+        blueSlider->setObjectName(QStringLiteral("blueSlider"));
+        blueSlider->setMaximum(100);
+        blueSlider->setOrientation(Qt::Horizontal);
 
-        verticalLayout_4->addWidget(horizontalSlider_3);
+        verticalLayout_4->addWidget(blueSlider);
 
         verticalSpacer_7 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
 
@@ -258,6 +261,7 @@ public:
 
         threshold = new QSlider(groupBox_3);
         threshold->setObjectName(QStringLiteral("threshold"));
+        threshold->setEnabled(false);
         threshold->setMaximum(100);
         threshold->setOrientation(Qt::Horizontal);
 
