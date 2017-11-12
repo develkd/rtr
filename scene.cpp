@@ -58,34 +58,43 @@ void Scene::makeNodes()
     auto phong_prog = createProgram(":/shaders/phong.vert", ":/shaders/phong.frag");
     auto obiwan_prog = createProgram(":/shaders/obiwan.vert", ":/shaders/obiwan.frag");
     auto toon_prog = createProgram(":/shaders/toon.vert", ":/shaders/toon.frag");
+    auto point_prog = createProgram(":/shaders/point.vert", ":/shaders/point.frag");
 
     // Phong materials
     auto red = std::make_shared<PhongMaterial>(phong_prog);
     auto color_obiwan = std::make_shared<PhongMaterial>(obiwan_prog);
     auto color_toon = std::make_shared<ToonMaterial>(toon_prog);
+    auto point = std::make_shared<PointMaterial>(point_prog);
+   material_ = red;
 
-    phongMaterials_["red"] = red;
-    phongMaterials_["color_obiwan"] = color_obiwan;
-    toonMaterials_["color_toon"] = color_toon;
+    mapOfPhongMaterials_["red"] = red;
+    mapOfPhongMaterials_["color_obiwan"] = color_obiwan;
+    mapOfToonMaterials_["color_toon"] = color_toon;
+    mapOfPointMaterials_["point"] = point;
 
     allMaterials_.push_back(red);
     allMaterials_.push_back(color_obiwan);
     allMaterials_.push_back(color_toon);
-
+    allMaterials_.push_back(point);
 
     red->phong.k_diffuse = QVector3D(0.8f,0.1f,0.1f);
     red->phong.k_ambient = red->phong.k_diffuse * 0.3f;
-    red->phong.shininess = 80;
-    color_obiwan->phong.k_diffuse = QVector3D(0.8f,0.6f,0.9f);
-    color_obiwan->phong.k_ambient = color_obiwan->phong.k_diffuse * 0.3f;
-    color_obiwan->phong.shininess = 80;
+    red->phong.shininess = 90;
 
     color_toon->phong.k_diffuse = QVector3D(0.8f,0.6f,0.9f);
     color_toon->phong.k_ambient = color_toon->phong.k_diffuse * 0.3f;
-    color_toon->phong.shininess = 80;
+    color_toon->phong.shininess = 90;
+
     color_toon->toonShader.toon=true;
+    color_toon->toonShader.silhoutte=false;
+    color_toon->toonShader.threshold=0.0f;
+
+    point->phong.k_diffuse = QVector3D(0.2f,0.34f,0.41f);
+    point->phong.k_ambient = point->phong.k_diffuse * 0.5f;
+    point->phong.shininess = 90;
+
     // which material to use as default for all objects?
-    auto std = red;
+    auto std = color_toon;
 
     // load meshes from .obj files and assign shader programs to them
     meshes_["Teapot"]  = std::make_shared<Mesh>(":/models/teapot/teapot.obj", std);
@@ -95,11 +104,13 @@ void Scene::makeNodes()
 
     meshes_["Buddha"]  = std::make_shared<Mesh>(":/models/extern/buddha.obj", std);
     meshes_["Dragon"]  = std::make_shared<Mesh>(":/models/extern/dragon.obj", std);
-    meshes_["Sphere"]  = std::make_shared<Mesh>(":/models/extern/sphere.obj", std);
+    meshes_["Sphere"]  = std::make_shared<Mesh>(":/models/extern/sphere.obj", point);
     meshes_["Venus"]  = std::make_shared<Mesh>(":/models/extern/venus.obj", std);
+    meshes_["Alien"]  = std::make_shared<Mesh>(":/models/stuff/alien.obj", std);
+    meshes_["F117_H"]  = std::make_shared<Mesh>(":/models/stuff/F117_H.obj", std);
 
     // add meshes of some procedural geometry objects (not loaded from OBJ files)
-    meshes_["Cube"]   = std::make_shared<Mesh>(make_shared<geom::Cube>(), std);
+    meshes_["Cube"]   = std::make_shared<Mesh>(make_shared<geom::Cube>(), color_toon);
 
     // pack each mesh into a scene node, along with a transform that scales
     // it to standard size [1,1,1]
@@ -113,6 +124,8 @@ void Scene::makeNodes()
     nodes_["Dragon"]  = createNode(meshes_["Dragon"], true);
     nodes_["Sphere"]  = createNode(meshes_["Sphere"], true);
     nodes_["Venus"]  = createNode(meshes_["Venus"], true);
+    nodes_["Alien"]  = createNode(meshes_["Alien"], true);
+    nodes_["F117_H"]  = createNode(meshes_["F117_H"], true);
 
 
 }
@@ -179,12 +192,20 @@ void Scene::draw_scene_()
     // clear buffer
     glClearColor(bgcolor_[0], bgcolor_[1], bgcolor_[2], 1.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glDisable(GL_CULL_FACE);
+    glCullFace(GL_BACK);
 
     // first light pass: standard depth test, no blending
     glDepthFunc(GL_LESS);
     glEnable(GL_DEPTH_TEST);
     glDisable(GL_BLEND);
     glDisable(GL_CULL_FACE);
+
+
+//        glDepthFunc(GL_LEQUAL);
+//        glEnable(GL_DEPTH_TEST);
+//        glDisable(GL_BLEND);
+//        replaceMaterialAndDrawScene(camera, material_);
 
     // draw one pass for each light
     for(unsigned int i=0; i<lightNodes_.size(); i++) {
@@ -204,7 +225,42 @@ void Scene::draw_scene_()
         glBlendFunc(GL_ONE,GL_ONE);
         glDepthFunc(GL_EQUAL);
     }
+
 }
+
+void Scene::replaceMaterialAndDrawScene(const Camera& camera, shared_ptr<Material> material)
+{
+    // replace material in all meshes, if necessary
+    if(material != meshes_.begin()->second->material()) {
+         qDebug() << "replacing material "+ material->getAppliedShader();
+        for (auto& element : meshes_) {
+            auto mesh = element.second;
+            mesh->replaceMaterial(material);
+        }
+    }
+
+    // draw one pass for each light
+    // TODO: wireframe and vector materials always only require one pass
+    for(unsigned int i=0; i<lightNodes_.size(); i++) {
+
+        // qDebug() << "drawing light pass" << i;
+
+        // determine current light position and set it in all materials
+        QMatrix4x4 lightToWorld = nodes_["World"]->toParentTransform(lightNodes_[i]);
+        material_->lights[i].position_WC = lightToWorld * QVector3D(0,0,0);
+
+        // draw light pass i
+        nodes_["World"]->draw(camera, i);
+
+        // settings for i>0 (add light contributions using alpha blending)
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_ONE,GL_ONE);
+        glDepthFunc(GL_EQUAL);
+    }
+
+}
+
+
 
 // helper to load shaders and create programs
 shared_ptr<QOpenGLShaderProgram>
@@ -267,6 +323,8 @@ QString
 Scene::getCurrentSceneNode(){
     return currentSceneNode;
 }
+
+
 void Scene::setShader(QString shader)
 {
 
@@ -274,10 +332,18 @@ void Scene::setShader(QString shader)
     bool isToonShader = "toon" == shader;
    qDebug()<<"toonShader shader is " << isToonShader;
 
+//   std::shared_ptr<Material>  material =  meshes_[getCurrentSceneNode()] ->material();
+//   if("toon" == material ->getAppliedShader()){
+//        ToonMaterial* tm = mapOfToonMaterials_["color_toon"].get();
+//       tm -> toonShader.toon = isToonShader;
+
+//   }
+
+
     for(auto mat : allMaterials_){
 
         if(mat -> getAppliedShader() == shader){
-         ToonMaterial* tm =    toonMaterials_["color_toon"].get();
+          ToonMaterial* tm = mapOfToonMaterials_["color_toon"].get();
          tm -> toonShader.toon = isToonShader;
          qDebug()<<"Used shader is " << mat -> getAppliedShader();
         }
@@ -303,12 +369,71 @@ void Scene::setLightIntensity(size_t i, float v)
         mat->lights[i].intensity = v; update();
 }
 
-// pass key/mouse events on to navigator objects
-void Scene::keyPressEvent(QKeyEvent *event) {
+void Scene::enableSilhoutte(bool enable){
+    std::shared_ptr<Material>  material =  meshes_[getCurrentSceneNode()] ->material();
 
-    cameraNavigator_->keyPressEvent(event);
+
+    if("toon" == material ->getAppliedShader()){
+         ToonMaterial* tm = mapOfToonMaterials_["color_toon"].get();
+       tm -> toonShader.silhoutte = enable;
+         qDebug()<<"Used silhoutte is " << enable;
+    }
+    update();
+}
+
+void Scene::setThreshold(float threshold){
+    std::shared_ptr<Material>  material =  meshes_[getCurrentSceneNode()] ->material();
+    if("toon" == material ->getAppliedShader()){
+         ToonMaterial* tm = mapOfToonMaterials_["color_toon"].get();
+       tm -> toonShader.threshold = threshold;
+         qDebug()<<"Used silhoutte is " << threshold;
+    }
+    update();
+}
+
+
+void Scene::setAmountOfDiscretiz(int amount){
+    std::shared_ptr<Material>  material =  meshes_[getCurrentSceneNode()] ->material();
+    if("toon" == material ->getAppliedShader()){
+         ToonMaterial* tm = mapOfToonMaterials_["color_toon"].get();
+        tm -> toonShader.discretize=amount;
+         qDebug()<<"Used silhoutte is " << amount;
+    }
+
+    update();
+}
+
+
+void Scene::setBlueIntensity(float blueIntensitiy){
+ std::shared_ptr<Material>  material =  meshes_[getCurrentSceneNode()] ->material();
+ for(unsigned int i=0; i<lightNodes_.size(); i++) {
+     material->lights[i].color.setZ(blueIntensitiy);
+ }
+ update();
+}
+
+void Scene::setRedIntensity(float redIntensitiy){
+    std::shared_ptr<Material>  material =  meshes_[getCurrentSceneNode()] ->material();
+    for(unsigned int i=0; i<lightNodes_.size(); i++) {
+        material->lights[i].color.setX(redIntensitiy);
+    }
     update();
 
+}
+
+void Scene::setGreenIntensity(float greenIntensitiy){
+    std::shared_ptr<Material>  material =  meshes_[getCurrentSceneNode()] ->material();
+    for(unsigned int i=0; i<lightNodes_.size(); i++) {
+        material->lights[i].color.setY(greenIntensitiy);
+    }
+    update();
+
+}
+
+// pass key/mouse events on to navigator objects
+void Scene::keyPressEvent(QKeyEvent *event) {
+    cameraNavigator_->keyPressEvent(event);
+    update();
 }
 
 // mouse press events all processed by trackball navigator

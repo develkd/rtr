@@ -22,7 +22,17 @@ public:
 
     struct ToonShader {
        bool toon = false;
+       bool silhoutte = false;
+       float threshold = 0.3f;
+       int discretize = 0;
     } toonShader;
+
+    struct Texture {
+       int dichte = 5;
+       float radius = 0.3;
+       QVector3D circleColor = QVector3D(0.6,0.2,0.8);
+       QVector3D backgroundColor = QVector3D(0.3,0.4,0.6);
+    } texture;
 
 };
 

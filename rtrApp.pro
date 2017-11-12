@@ -26,7 +26,8 @@ HEADERS      += \
     material/phong.h \
     navigator/position_navigator.h \
     navigator/rotate_y.h \
-    material/toon.h
+    material/toon.h \
+    material/point.h
 
 # C++ SOURCE FILES TO BE COMPILED AND LINKED TOGETHER
 SOURCES      += \
@@ -47,7 +48,8 @@ SOURCES      += \
     material/phong.cpp \
     navigator/position_navigator.cpp \
     navigator/rotate_y.cpp \
-    material/toon.cpp
+    material/toon.cpp \
+    material/point.cpp
 
 # RESOURCE FILES TO BE PROCESSED BY QT
 RESOURCES    += \
@@ -67,3 +69,5 @@ shaders.depends += \
     $$PWD/assets/shaders/phong.frag $$PWD/assets/shaders/phong.vert 
 shaders.commands =
 QMAKE_EXTRA_TARGETS += shaders
+
+DISTFILES +=

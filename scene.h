@@ -12,6 +12,7 @@
 #include "camera.h"
 #include "material/phong.h"
 #include "material/toon.h"
+#include "material/point.h"
 
 #include "navigator/rotate_y.h"
 
@@ -50,6 +51,13 @@ public slots:
     QString getCurrentSceneNode();
 
     void setShader(QString shader);
+    void enableSilhoutte(bool enable);
+    void setThreshold(float threshold);
+    void setAmountOfDiscretiz(int amount);
+
+    void setRedIntensity(float redIntensitiy);
+    void setGreenIntensity(float greenIntensitiy);
+    void setBlueIntensity(float blueIntensitiy);
 
     // change background color
     void setBackgroundColor(QVector3D rgb);
@@ -85,7 +93,7 @@ protected:
 
     // draw the actual scene
     void draw_scene_();
-
+    void replaceMaterialAndDrawScene(const Camera &camera, std::shared_ptr<Material> mat);
     // parent widget
     QWidget* parent_;
 
@@ -101,13 +109,14 @@ protected:
     double angle = 0.0;
     bool rotationOn = true;
 
+    std::shared_ptr<Material> material_;
     // bg color
     QVector3D bgcolor_ = QVector3D(0.4f,0.4f,0.4f);
 
     // different materials to be demonstrated
-    std::map<QString, std::shared_ptr<PhongMaterial>> phongMaterials_;
-
-    std::map<QString, std::shared_ptr<ToonMaterial>> toonMaterials_;
+    std::map<QString, std::shared_ptr<PhongMaterial>> mapOfPhongMaterials_;
+    std::map<QString, std::shared_ptr<ToonMaterial>> mapOfToonMaterials_;
+    std::map<QString, std::shared_ptr<PointMaterial>> mapOfPointMaterials_;
 
     std::vector<std::shared_ptr<Material>> allMaterials_;
     // mesh(es) to be used / shared

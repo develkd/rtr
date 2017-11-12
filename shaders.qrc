@@ -6,5 +6,9 @@
         <file>shaders/obiwan.vert</file>
         <file>shaders/toon.frag</file>
         <file>shaders/toon.vert</file>
+        <file>shaders/texture.frag</file>
+        <file>shaders/texture.vert</file>
+        <file>shaders/point.frag</file>
+        <file>shaders/point.vert</file>
     </qresource>
 </RCC>
