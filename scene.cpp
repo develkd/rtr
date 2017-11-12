@@ -56,20 +56,47 @@ void Scene::makeNodes()
 {
     // load shader source files and compile them into OpenGL program objects
     auto phong_prog = createProgram(":/shaders/phong.vert", ":/shaders/phong.frag");
+    auto obiwan_prog = createProgram(":/shaders/obiwan.vert", ":/shaders/obiwan.frag");
+    auto toon_prog = createProgram(":/shaders/toon.vert", ":/shaders/toon.frag");
 
     // Phong materials
     auto red = std::make_shared<PhongMaterial>(phong_prog);
+    auto color_obiwan = std::make_shared<PhongMaterial>(obiwan_prog);
+    auto color_toon = std::make_shared<ToonMaterial>(toon_prog);
+
     phongMaterials_["red"] = red;
+    phongMaterials_["color_obiwan"] = color_obiwan;
+    toonMaterials_["color_toon"] = color_toon;
+
+    allMaterials_.push_back(red);
+    allMaterials_.push_back(color_obiwan);
+    allMaterials_.push_back(color_toon);
+
+
     red->phong.k_diffuse = QVector3D(0.8f,0.1f,0.1f);
     red->phong.k_ambient = red->phong.k_diffuse * 0.3f;
     red->phong.shininess = 80;
+    color_obiwan->phong.k_diffuse = QVector3D(0.8f,0.6f,0.9f);
+    color_obiwan->phong.k_ambient = color_obiwan->phong.k_diffuse * 0.3f;
+    color_obiwan->phong.shininess = 80;
 
+    color_toon->phong.k_diffuse = QVector3D(0.8f,0.6f,0.9f);
+    color_toon->phong.k_ambient = color_toon->phong.k_diffuse * 0.3f;
+    color_toon->phong.shininess = 80;
+    color_toon->toonShader.toon=true;
     // which material to use as default for all objects?
     auto std = red;
 
     // load meshes from .obj files and assign shader programs to them
-    meshes_["Duck"]    = std::make_shared<Mesh>(":/models/duck/duck.obj", std);
     meshes_["Teapot"]  = std::make_shared<Mesh>(":/models/teapot/teapot.obj", std);
+    meshes_["Duck"]    = std::make_shared<Mesh>(":/models/duck/duck.obj", color_toon);
+    meshes_["Goblin"]  = std::make_shared<Mesh>(":/models/goblin.obj", std);
+    meshes_["Obiwan"]  = std::make_shared<Mesh>(":/models/obiwan/obiwan.obj", color_obiwan);
+
+    meshes_["Buddha"]  = std::make_shared<Mesh>(":/models/extern/buddha.obj", std);
+    meshes_["Dragon"]  = std::make_shared<Mesh>(":/models/extern/dragon.obj", std);
+    meshes_["Sphere"]  = std::make_shared<Mesh>(":/models/extern/sphere.obj", std);
+    meshes_["Venus"]  = std::make_shared<Mesh>(":/models/extern/venus.obj", std);
 
     // add meshes of some procedural geometry objects (not loaded from OBJ files)
     meshes_["Cube"]   = std::make_shared<Mesh>(make_shared<geom::Cube>(), std);
@@ -79,6 +106,14 @@ void Scene::makeNodes()
     nodes_["Cube"]    = createNode(meshes_["Cube"], true);
     nodes_["Duck"]    = createNode(meshes_["Duck"], true);
     nodes_["Teapot"]  = createNode(meshes_["Teapot"], true);
+    nodes_["Goblin"]  = createNode(meshes_["Goblin"], true);
+    nodes_["Obiwan"]  = createNode(meshes_["Obiwan"], true);
+
+    nodes_["Buddha"]  = createNode(meshes_["Buddha"], true);
+    nodes_["Dragon"]  = createNode(meshes_["Dragon"], true);
+    nodes_["Sphere"]  = createNode(meshes_["Sphere"], true);
+    nodes_["Venus"]  = createNode(meshes_["Venus"], true);
+
 
 }
 
@@ -123,8 +158,8 @@ void Scene::draw()
 
     // set time uniform in animated shader(s)
     float t = millisec_since_first_draw.count() / 1000.0f;
-    for(auto mat : phongMaterials_)
-        mat.second->time = t;
+    for(auto mat : allMaterials_)
+        mat->time = t;
 
     draw_scene_();
 }
@@ -156,9 +191,9 @@ void Scene::draw_scene_()
 
         // determine current light position and set it in all materials
         QMatrix4x4 lightToWorld = nodes_["World"]->toParentTransform(lightNodes_[i]);
-        for(auto mat : phongMaterials_) {
-            auto phong = mat.second; // mat is of type (key, value)
-            phong->lights[i].position_WC = lightToWorld * QVector3D(0,0,0);
+        for(auto mat : allMaterials_) {
+          //  auto phong = mat.second; // mat is of type (key, value)
+            mat->lights[i].position_WC = lightToWorld * QVector3D(0,0,0);
         }
 
         // draw light pass i
@@ -217,14 +252,41 @@ void Scene::toggleAnimation(bool flag)
 
 void Scene::setSceneNode(QString node)
 {
+
     auto n = nodes_[node];
     assert(n);
+    currentSceneNode = node;
 
     nodes_["Scene"]->children.clear();
     nodes_["Scene"]->children.push_back(n);
 
     update();
 }
+
+QString
+Scene::getCurrentSceneNode(){
+    return currentSceneNode;
+}
+void Scene::setShader(QString shader)
+{
+
+    shader = shader.toLower();
+    bool isToonShader = "toon" == shader;
+   qDebug()<<"toonShader shader is " << isToonShader;
+
+    for(auto mat : allMaterials_){
+
+        if(mat -> getAppliedShader() == shader){
+         ToonMaterial* tm =    toonMaterials_["color_toon"].get();
+         tm -> toonShader.toon = isToonShader;
+         qDebug()<<"Used shader is " << mat -> getAppliedShader();
+        }
+    }
+
+    update();
+
+}
+
 
 // change background color
 void Scene::setBackgroundColor(QVector3D rgb) {
@@ -237,8 +299,8 @@ void Scene::setLightIntensity(size_t i, float v)
     if(i>=lightNodes_.size())
         return;
 
-    for(auto mat : phongMaterials_)
-        mat.second->lights[i].intensity = v; update();
+    for(auto mat : allMaterials_)
+        mat->lights[i].intensity = v; update();
 }
 
 // pass key/mouse events on to navigator objects
@@ -274,7 +336,7 @@ void Scene::updateViewport(size_t width, size_t height)
     glViewport(0,0,GLint(width),GLint(height));
 }
 
-void Scene::setRotateAxis(int axis){
+void Scene::setRotateAxis(RotateY::Axis axis){
      cameraNavigator_->setRotateAxis(axis);
 }
 

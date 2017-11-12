@@ -23,6 +23,7 @@
 #include <QtWidgets/QRadioButton>
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QSpacerItem>
+#include <QtWidgets/QSplitter>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -49,15 +50,18 @@ public:
     QGridLayout *gridLayout;
     QLabel *label_3;
     QSlider *light0Slider;
+    QComboBox *shaderComboBox;
     QGroupBox *groupBox_6;
     QHBoxLayout *horizontalLayout_4;
     QRadioButton *blackBgRadioButton;
     QRadioButton *greyBgRadioButton;
     QRadioButton *whiteBgRadioButton;
     QGroupBox *groupBox_2;
+    QHBoxLayout *horizontalLayout;
+    QSplitter *splitter;
     QRadioButton *radioButtonRotateX;
-    QRadioButton *radioButtonRotateZ;
     QRadioButton *radioButtonRotateY;
+    QRadioButton *radioButtonRotateZ;
     QSpacerItem *verticalSpacer_2;
     QSpacerItem *verticalSpacer;
     QPushButton *quitButton;
@@ -126,6 +130,11 @@ public:
 
         groupBox_3 = new QGroupBox(rendering_tab);
         groupBox_3->setObjectName(QStringLiteral("groupBox_3"));
+        QSizePolicy sizePolicy3(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(20);
+        sizePolicy3.setHeightForWidth(groupBox_3->sizePolicy().hasHeightForWidth());
+        groupBox_3->setSizePolicy(sizePolicy3);
         verticalLayout_4 = new QVBoxLayout(groupBox_3);
         verticalLayout_4->setSpacing(0);
         verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
@@ -136,16 +145,18 @@ public:
         gridLayout->setContentsMargins(0, 0, 0, 0);
         label_3 = new QLabel(widget_2);
         label_3->setObjectName(QStringLiteral("label_3"));
+        QSizePolicy sizePolicy4(QSizePolicy::Preferred, QSizePolicy::Minimum);
+        sizePolicy4.setHorizontalStretch(0);
+        sizePolicy4.setVerticalStretch(0);
+        sizePolicy4.setHeightForWidth(label_3->sizePolicy().hasHeightForWidth());
+        label_3->setSizePolicy(sizePolicy4);
 
         gridLayout->addWidget(label_3, 0, 0, 1, 1);
 
         light0Slider = new QSlider(widget_2);
         light0Slider->setObjectName(QStringLiteral("light0Slider"));
-        QSizePolicy sizePolicy3(QSizePolicy::Preferred, QSizePolicy::Fixed);
-        sizePolicy3.setHorizontalStretch(0);
-        sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(light0Slider->sizePolicy().hasHeightForWidth());
-        light0Slider->setSizePolicy(sizePolicy3);
+        sizePolicy4.setHeightForWidth(light0Slider->sizePolicy().hasHeightForWidth());
+        light0Slider->setSizePolicy(sizePolicy4);
         light0Slider->setFocusPolicy(Qt::NoFocus);
         light0Slider->setMaximum(100);
         light0Slider->setOrientation(Qt::Horizontal);
@@ -154,6 +165,16 @@ public:
 
 
         verticalLayout_4->addWidget(widget_2);
+
+        shaderComboBox = new QComboBox(groupBox_3);
+        shaderComboBox->setObjectName(QStringLiteral("shaderComboBox"));
+        QSizePolicy sizePolicy5(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy5.setHorizontalStretch(0);
+        sizePolicy5.setVerticalStretch(0);
+        sizePolicy5.setHeightForWidth(shaderComboBox->sizePolicy().hasHeightForWidth());
+        shaderComboBox->setSizePolicy(sizePolicy5);
+
+        verticalLayout_4->addWidget(shaderComboBox);
 
 
         verticalLayout->addWidget(groupBox_3);
@@ -185,18 +206,26 @@ public:
 
         groupBox_2 = new QGroupBox(rendering_tab);
         groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
-        radioButtonRotateX = new QRadioButton(groupBox_2);
+        horizontalLayout = new QHBoxLayout(groupBox_2);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        splitter = new QSplitter(groupBox_2);
+        splitter->setObjectName(QStringLiteral("splitter"));
+        splitter->setOrientation(Qt::Horizontal);
+        radioButtonRotateX = new QRadioButton(splitter);
         radioButtonRotateX->setObjectName(QStringLiteral("radioButtonRotateX"));
-        radioButtonRotateX->setGeometry(QRect(10, 20, 51, 23));
         radioButtonRotateX->setFocusPolicy(Qt::NoFocus);
         radioButtonRotateX->setChecked(true);
-        radioButtonRotateZ = new QRadioButton(groupBox_2);
-        radioButtonRotateZ->setObjectName(QStringLiteral("radioButtonRotateZ"));
-        radioButtonRotateZ->setGeometry(QRect(90, 20, 41, 23));
-        radioButtonRotateZ->setFocusPolicy(Qt::NoFocus);
-        radioButtonRotateY = new QRadioButton(groupBox_2);
+        splitter->addWidget(radioButtonRotateX);
+        radioButtonRotateY = new QRadioButton(splitter);
         radioButtonRotateY->setObjectName(QStringLiteral("radioButtonRotateY"));
-        radioButtonRotateY->setGeometry(QRect(50, 20, 41, 23));
+        splitter->addWidget(radioButtonRotateY);
+        radioButtonRotateZ = new QRadioButton(splitter);
+        radioButtonRotateZ->setObjectName(QStringLiteral("radioButtonRotateZ"));
+        radioButtonRotateZ->setFocusPolicy(Qt::NoFocus);
+        splitter->addWidget(radioButtonRotateZ);
+
+        horizontalLayout->addWidget(splitter);
+
 
         verticalLayout->addWidget(groupBox_2);
 
@@ -204,11 +233,11 @@ public:
 
         verticalLayout_5->addWidget(tabWidget);
 
-        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Preferred);
+        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Ignored);
 
         verticalLayout_5->addItem(verticalSpacer_2);
 
-        verticalSpacer = new QSpacerItem(20, 100, QSizePolicy::Minimum, QSizePolicy::MinimumExpanding);
+        verticalSpacer = new QSpacerItem(20, 100, QSizePolicy::Minimum, QSizePolicy::Ignored);
 
         verticalLayout_5->addItem(verticalSpacer);
 
@@ -220,9 +249,6 @@ public:
 
         label_11 = new QLabel(ui_container);
         label_11->setObjectName(QStringLiteral("label_11"));
-        QSizePolicy sizePolicy4(QSizePolicy::Preferred, QSizePolicy::Minimum);
-        sizePolicy4.setHorizontalStretch(0);
-        sizePolicy4.setVerticalStretch(0);
         sizePolicy4.setHeightForWidth(label_11->sizePolicy().hasHeightForWidth());
         label_11->setSizePolicy(sizePolicy4);
         label_11->setMaximumSize(QSize(16777215, 20));
@@ -272,19 +298,27 @@ public:
         modelComboBox->clear();
         modelComboBox->insertItems(0, QStringList()
          << QApplication::translate("AppWindow", "Cube", Q_NULLPTR)
+         << QApplication::translate("AppWindow", "Obiwan", Q_NULLPTR)
+         << QApplication::translate("AppWindow", "Goblin", Q_NULLPTR)
          << QApplication::translate("AppWindow", "Duck", Q_NULLPTR)
          << QApplication::translate("AppWindow", "Teapot", Q_NULLPTR)
         );
         groupBox_3->setTitle(QApplication::translate("AppWindow", "Shader Parameters", Q_NULLPTR));
         label_3->setText(QApplication::translate("AppWindow", "Light Intensity", Q_NULLPTR));
+        shaderComboBox->clear();
+        shaderComboBox->insertItems(0, QStringList()
+         << QApplication::translate("AppWindow", "Phong", Q_NULLPTR)
+         << QApplication::translate("AppWindow", "Toon", Q_NULLPTR)
+        );
+        shaderComboBox->setCurrentText(QApplication::translate("AppWindow", "Phong", Q_NULLPTR));
         groupBox_6->setTitle(QApplication::translate("AppWindow", "Background", Q_NULLPTR));
         blackBgRadioButton->setText(QApplication::translate("AppWindow", "black", Q_NULLPTR));
         greyBgRadioButton->setText(QApplication::translate("AppWindow", "grey", Q_NULLPTR));
         whiteBgRadioButton->setText(QApplication::translate("AppWindow", "white", Q_NULLPTR));
         groupBox_2->setTitle(QApplication::translate("AppWindow", "Rotation Axis", Q_NULLPTR));
         radioButtonRotateX->setText(QApplication::translate("AppWindow", "X", Q_NULLPTR));
-        radioButtonRotateZ->setText(QApplication::translate("AppWindow", "Z", Q_NULLPTR));
         radioButtonRotateY->setText(QApplication::translate("AppWindow", "Y", Q_NULLPTR));
+        radioButtonRotateZ->setText(QApplication::translate("AppWindow", "Z", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(rendering_tab), QApplication::translate("AppWindow", "Rendering", Q_NULLPTR));
         quitButton->setText(QApplication::translate("AppWindow", "quit", Q_NULLPTR));
         label_11->setText(QApplication::translate("AppWindow", "left/right: rotate camera Y-Axsi", Q_NULLPTR));

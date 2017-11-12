@@ -15,7 +15,7 @@ CXX           = g++
 DEFINES       = -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g -Wall -W -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -g -std=gnu++1y -Wall -W -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I. -I/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include -I/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets -I/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui -I/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore -I. -isystem /usr/include/libdrm -I. -I/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/linux-g++
+INCPATH       = -I. -I../../QT/5.9.2/gcc_64/include -I../../QT/5.9.2/gcc_64/include/QtWidgets -I../../QT/5.9.2/gcc_64/include/QtGui -I../../QT/5.9.2/gcc_64/include/QtCore -I. -isystem /usr/include/libdrm -I. -I../../QT/5.9.2/gcc_64/mkspecs/linux-g++
 QMAKE         = /home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -35,7 +35,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = rtrApp1.0.0
-DISTDIR = /media/pentax/Second/_Studium_/RTR/01_RTR_App/01_RTR_App/.tmp/rtrApp1.0.0
+DISTDIR = /home/pentax/_Entwicklung_/workspace_master/01_RTR_App/.tmp/rtrApp1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-rpath,/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/lib
 LIBS          = $(SUBLIBS) -L/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/lib -lQt5Widgets -lQt5Gui -lQt5Core -lGL -lpthread 
@@ -66,7 +66,8 @@ SOURCES       = main.cpp \
 		navigator/nodenavigator.cpp \
 		material/phong.cpp \
 		navigator/position_navigator.cpp \
-		navigator/rotate_y.cpp qrc_models_and_textures.cpp \
+		navigator/rotate_y.cpp \
+		material/toon.cpp qrc_models_and_textures.cpp \
 		qrc_shaders.cpp \
 		moc_appwindow.cpp \
 		moc_rtrglwidget.cpp \
@@ -88,190 +89,192 @@ OBJECTS       = main.o \
 		phong.o \
 		position_navigator.o \
 		rotate_y.o \
+		toon.o \
 		qrc_models_and_textures.o \
 		qrc_shaders.o \
 		moc_appwindow.o \
 		moc_rtrglwidget.o \
 		moc_scene.o
-DIST          = /home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/spec_pre.prf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/common/unix.conf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/common/linux.conf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/common/sanitize.conf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/common/gcc-base.conf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/common/gcc-base-unix.conf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/common/g++-base.conf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/common/g++-unix.conf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/qconfig.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3danimation.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3danimation_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dcore.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dcore_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dextras.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dextras_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dinput.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dinput_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dlogic.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dlogic_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquick.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquick_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickanimation.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickanimation_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickextras.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickextras_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickinput.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickinput_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickrender.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickrender_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickscene2d.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickscene2d_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3drender.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3drender_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_accessibility_support_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_bluetooth.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_bluetooth_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_bootstrap_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_charts.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_charts_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_concurrent.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_concurrent_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_core.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_core_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_datavisualization.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_datavisualization_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_dbus.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_dbus_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_designer.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_designer_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_designercomponents_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_devicediscovery_support_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_egl_support_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_eglfsdeviceintegration_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_eventdispatcher_support_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_fb_support_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_fontdatabase_support_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_gamepad.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_gamepad_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_glx_support_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_gui.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_gui_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_help.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_help_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_input_support_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_kms_support_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_linuxaccessibility_support_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_location.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_location_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_multimedia.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_multimedia_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_multimediawidgets.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_multimediawidgets_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_network.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_network_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_networkauth.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_networkauth_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_nfc.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_nfc_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_opengl.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_opengl_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_openglextensions.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_openglextensions_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_packetprotocol_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_platformcompositor_support_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_positioning.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_positioning_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_printsupport.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_printsupport_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_purchasing.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_purchasing_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_qml.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_qml_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_qmldebug_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_qmldevtools_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_qmltest.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_qmltest_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_qtmultimediaquicktools_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_quick.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_quick_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_quickcontrols2.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_quickcontrols2_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_quickparticles_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_quicktemplates2_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_quickwidgets.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_quickwidgets_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_remoteobjects.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_remoteobjects_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_repparser.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_repparser_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_script.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_script_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_scripttools.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_scripttools_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_scxml.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_scxml_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_sensors.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_sensors_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_serialbus.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_serialbus_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_serialport.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_serialport_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_service_support_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_sql.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_sql_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_svg.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_svg_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_testlib.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_testlib_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_texttospeech.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_texttospeech_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_theme_support_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_uiplugin.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_uitools.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_uitools_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webchannel.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webchannel_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webengine.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webengine_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webenginecore.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webenginecore_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webenginecoreheaders_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webenginewidgets.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webenginewidgets_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_websockets.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_websockets_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webview.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webview_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_widgets.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_widgets_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_x11extras.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_x11extras_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_xcb_qpa_lib_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_xml.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_xml_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_xmlpatterns.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_xmlpatterns_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/qt_functions.prf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/qt_config.prf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/linux-g++/qmake.conf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/spec_post.prf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/exclusive_builds.prf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/toolchain.prf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/default_pre.prf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/resolve_config.prf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/default_post.prf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/qml_debug.prf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/warn_on.prf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/qt.prf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/resources.prf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/moc.prf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/unix/opengl.prf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/uic.prf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/unix/thread.prf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/qmake_use.prf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/file_copies.prf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/testcase_targets.prf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/exceptions.prf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/yacc.prf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/lex.prf \
+DIST          = ../../QT/5.9.2/gcc_64/mkspecs/features/spec_pre.prf \
+		../../QT/5.9.2/gcc_64/mkspecs/common/unix.conf \
+		../../QT/5.9.2/gcc_64/mkspecs/common/linux.conf \
+		../../QT/5.9.2/gcc_64/mkspecs/common/sanitize.conf \
+		../../QT/5.9.2/gcc_64/mkspecs/common/gcc-base.conf \
+		../../QT/5.9.2/gcc_64/mkspecs/common/gcc-base-unix.conf \
+		../../QT/5.9.2/gcc_64/mkspecs/common/g++-base.conf \
+		../../QT/5.9.2/gcc_64/mkspecs/common/g++-unix.conf \
+		../../QT/5.9.2/gcc_64/mkspecs/qconfig.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3danimation.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3danimation_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dcore.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dcore_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dextras.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dextras_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dinput.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dinput_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dlogic.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dlogic_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquick.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquick_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickanimation.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickanimation_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickextras.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickextras_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickinput.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickinput_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickrender.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickrender_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickscene2d.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickscene2d_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3drender.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3drender_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_accessibility_support_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_bluetooth.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_bluetooth_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_bootstrap_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_charts.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_charts_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_concurrent.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_concurrent_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_core.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_core_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_datavisualization.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_datavisualization_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_dbus.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_dbus_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_designer.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_designer_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_designercomponents_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_devicediscovery_support_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_egl_support_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_eglfsdeviceintegration_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_eventdispatcher_support_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_fb_support_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_fontdatabase_support_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_gamepad.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_gamepad_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_glx_support_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_gui.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_gui_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_help.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_help_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_input_support_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_kms_support_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_linuxaccessibility_support_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_location.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_location_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_multimedia.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_multimedia_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_multimediawidgets.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_multimediawidgets_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_network.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_network_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_networkauth.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_networkauth_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_nfc.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_nfc_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_opengl.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_opengl_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_openglextensions.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_openglextensions_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_packetprotocol_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_platformcompositor_support_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_positioning.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_positioning_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_printsupport.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_printsupport_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_purchasing.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_purchasing_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_qml.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_qml_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_qmldebug_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_qmldevtools_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_qmltest.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_qmltest_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_qtmultimediaquicktools_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_quick.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_quick_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_quickcontrols2.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_quickcontrols2_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_quickparticles_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_quicktemplates2_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_quickwidgets.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_quickwidgets_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_remoteobjects.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_remoteobjects_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_repparser.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_repparser_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_script.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_script_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_scripttools.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_scripttools_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_scxml.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_scxml_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_sensors.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_sensors_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_serialbus.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_serialbus_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_serialport.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_serialport_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_service_support_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_sql.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_sql_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_svg.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_svg_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_testlib.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_testlib_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_texttospeech.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_texttospeech_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_theme_support_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_uiplugin.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_uitools.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_uitools_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webchannel.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webchannel_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webengine.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webengine_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webenginecore.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webenginecore_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webenginecoreheaders_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webenginewidgets.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webenginewidgets_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_websockets.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_websockets_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webview.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webview_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_widgets.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_widgets_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_x11extras.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_x11extras_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_xcb_qpa_lib_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_xml.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_xml_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_xmlpatterns.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_xmlpatterns_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/features/qt_functions.prf \
+		../../QT/5.9.2/gcc_64/mkspecs/features/qt_config.prf \
+		../../QT/5.9.2/gcc_64/mkspecs/linux-g++/qmake.conf \
+		../../QT/5.9.2/gcc_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
+		../../QT/5.9.2/gcc_64/mkspecs/features/exclusive_builds.prf \
+		../../QT/5.9.2/gcc_64/mkspecs/features/toolchain.prf \
+		../../QT/5.9.2/gcc_64/mkspecs/features/default_pre.prf \
+		../../QT/5.9.2/gcc_64/mkspecs/features/resolve_config.prf \
+		../../QT/5.9.2/gcc_64/mkspecs/features/default_post.prf \
+		../../QT/5.9.2/gcc_64/mkspecs/features/qml_debug.prf \
+		../../QT/5.9.2/gcc_64/mkspecs/features/warn_on.prf \
+		../../QT/5.9.2/gcc_64/mkspecs/features/qt.prf \
+		../../QT/5.9.2/gcc_64/mkspecs/features/resources.prf \
+		../../QT/5.9.2/gcc_64/mkspecs/features/moc.prf \
+		../../QT/5.9.2/gcc_64/mkspecs/features/unix/opengl.prf \
+		../../QT/5.9.2/gcc_64/mkspecs/features/uic.prf \
+		../../QT/5.9.2/gcc_64/mkspecs/features/unix/thread.prf \
+		../../QT/5.9.2/gcc_64/mkspecs/features/qmake_use.prf \
+		../../QT/5.9.2/gcc_64/mkspecs/features/file_copies.prf \
+		../../QT/5.9.2/gcc_64/mkspecs/features/testcase_targets.prf \
+		../../QT/5.9.2/gcc_64/mkspecs/features/exceptions.prf \
+		../../QT/5.9.2/gcc_64/mkspecs/features/yacc.prf \
+		../../QT/5.9.2/gcc_64/mkspecs/features/lex.prf \
 		rtrApp.pro camera.h \
 		appwindow.h \
 		material/material.h \
@@ -288,7 +291,8 @@ DIST          = /home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/spec
 		navigator/nodenavigator.h \
 		material/phong.h \
 		navigator/position_navigator.h \
-		navigator/rotate_y.h main.cpp \
+		navigator/rotate_y.h \
+		material/toon.h main.cpp \
 		appwindow.cpp \
 		camera.cpp \
 		material/material.cpp \
@@ -304,7 +308,8 @@ DIST          = /home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/spec
 		navigator/nodenavigator.cpp \
 		material/phong.cpp \
 		navigator/position_navigator.cpp \
-		navigator/rotate_y.cpp
+		navigator/rotate_y.cpp \
+		material/toon.cpp
 QMAKE_TARGET  = rtrApp
 DESTDIR       = 
 TARGET        = rtrApp
@@ -316,377 +321,379 @@ first: all
 $(TARGET): ui_appwindow.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
-Makefile: rtrApp.pro /home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/linux-g++/qmake.conf /home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/spec_pre.prf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/common/unix.conf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/common/linux.conf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/common/sanitize.conf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/common/gcc-base.conf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/common/gcc-base-unix.conf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/common/g++-base.conf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/common/g++-unix.conf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/qconfig.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3danimation.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3danimation_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dcore.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dcore_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dextras.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dextras_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dinput.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dinput_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dlogic.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dlogic_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquick.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquick_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickanimation.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickanimation_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickextras.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickextras_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickinput.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickinput_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickrender.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickrender_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickscene2d.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickscene2d_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3drender.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3drender_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_accessibility_support_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_bluetooth.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_bluetooth_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_bootstrap_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_charts.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_charts_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_concurrent.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_concurrent_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_core.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_core_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_datavisualization.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_datavisualization_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_dbus.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_dbus_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_designer.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_designer_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_designercomponents_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_devicediscovery_support_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_egl_support_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_eglfsdeviceintegration_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_eventdispatcher_support_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_fb_support_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_fontdatabase_support_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_gamepad.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_gamepad_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_glx_support_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_gui.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_gui_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_help.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_help_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_input_support_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_kms_support_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_linuxaccessibility_support_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_location.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_location_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_multimedia.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_multimedia_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_multimediawidgets.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_multimediawidgets_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_network.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_network_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_networkauth.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_networkauth_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_nfc.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_nfc_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_opengl.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_opengl_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_openglextensions.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_openglextensions_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_packetprotocol_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_platformcompositor_support_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_positioning.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_positioning_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_printsupport.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_printsupport_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_purchasing.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_purchasing_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_qml.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_qml_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_qmldebug_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_qmldevtools_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_qmltest.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_qmltest_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_qtmultimediaquicktools_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_quick.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_quick_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_quickcontrols2.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_quickcontrols2_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_quickparticles_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_quicktemplates2_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_quickwidgets.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_quickwidgets_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_remoteobjects.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_remoteobjects_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_repparser.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_repparser_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_script.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_script_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_scripttools.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_scripttools_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_scxml.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_scxml_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_sensors.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_sensors_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_serialbus.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_serialbus_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_serialport.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_serialport_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_service_support_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_sql.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_sql_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_svg.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_svg_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_testlib.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_testlib_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_texttospeech.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_texttospeech_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_theme_support_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_uiplugin.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_uitools.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_uitools_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webchannel.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webchannel_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webengine.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webengine_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webenginecore.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webenginecore_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webenginecoreheaders_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webenginewidgets.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webenginewidgets_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_websockets.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_websockets_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webview.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webview_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_widgets.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_widgets_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_x11extras.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_x11extras_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_xcb_qpa_lib_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_xml.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_xml_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_xmlpatterns.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_xmlpatterns_private.pri \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/qt_functions.prf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/qt_config.prf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/linux-g++/qmake.conf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/spec_post.prf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/exclusive_builds.prf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/toolchain.prf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/default_pre.prf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/resolve_config.prf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/default_post.prf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/qml_debug.prf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/warn_on.prf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/qt.prf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/resources.prf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/moc.prf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/unix/opengl.prf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/uic.prf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/unix/thread.prf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/qmake_use.prf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/file_copies.prf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/testcase_targets.prf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/exceptions.prf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/yacc.prf \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/lex.prf \
+Makefile: rtrApp.pro ../../QT/5.9.2/gcc_64/mkspecs/linux-g++/qmake.conf ../../QT/5.9.2/gcc_64/mkspecs/features/spec_pre.prf \
+		../../QT/5.9.2/gcc_64/mkspecs/common/unix.conf \
+		../../QT/5.9.2/gcc_64/mkspecs/common/linux.conf \
+		../../QT/5.9.2/gcc_64/mkspecs/common/sanitize.conf \
+		../../QT/5.9.2/gcc_64/mkspecs/common/gcc-base.conf \
+		../../QT/5.9.2/gcc_64/mkspecs/common/gcc-base-unix.conf \
+		../../QT/5.9.2/gcc_64/mkspecs/common/g++-base.conf \
+		../../QT/5.9.2/gcc_64/mkspecs/common/g++-unix.conf \
+		../../QT/5.9.2/gcc_64/mkspecs/qconfig.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3danimation.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3danimation_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dcore.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dcore_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dextras.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dextras_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dinput.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dinput_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dlogic.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dlogic_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquick.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquick_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickanimation.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickanimation_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickextras.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickextras_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickinput.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickinput_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickrender.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickrender_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickscene2d.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickscene2d_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3drender.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3drender_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_accessibility_support_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_bluetooth.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_bluetooth_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_bootstrap_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_charts.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_charts_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_concurrent.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_concurrent_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_core.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_core_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_datavisualization.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_datavisualization_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_dbus.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_dbus_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_designer.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_designer_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_designercomponents_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_devicediscovery_support_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_egl_support_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_eglfsdeviceintegration_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_eventdispatcher_support_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_fb_support_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_fontdatabase_support_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_gamepad.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_gamepad_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_glx_support_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_gui.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_gui_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_help.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_help_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_input_support_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_kms_support_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_linuxaccessibility_support_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_location.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_location_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_multimedia.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_multimedia_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_multimediawidgets.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_multimediawidgets_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_network.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_network_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_networkauth.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_networkauth_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_nfc.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_nfc_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_opengl.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_opengl_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_openglextensions.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_openglextensions_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_packetprotocol_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_platformcompositor_support_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_positioning.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_positioning_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_printsupport.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_printsupport_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_purchasing.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_purchasing_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_qml.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_qml_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_qmldebug_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_qmldevtools_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_qmltest.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_qmltest_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_qtmultimediaquicktools_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_quick.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_quick_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_quickcontrols2.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_quickcontrols2_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_quickparticles_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_quicktemplates2_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_quickwidgets.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_quickwidgets_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_remoteobjects.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_remoteobjects_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_repparser.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_repparser_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_script.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_script_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_scripttools.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_scripttools_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_scxml.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_scxml_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_sensors.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_sensors_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_serialbus.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_serialbus_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_serialport.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_serialport_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_service_support_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_sql.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_sql_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_svg.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_svg_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_testlib.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_testlib_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_texttospeech.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_texttospeech_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_theme_support_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_uiplugin.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_uitools.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_uitools_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webchannel.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webchannel_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webengine.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webengine_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webenginecore.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webenginecore_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webenginecoreheaders_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webenginewidgets.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webenginewidgets_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_websockets.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_websockets_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webview.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webview_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_widgets.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_widgets_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_x11extras.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_x11extras_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_xcb_qpa_lib_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_xml.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_xml_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_xmlpatterns.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_xmlpatterns_private.pri \
+		../../QT/5.9.2/gcc_64/mkspecs/features/qt_functions.prf \
+		../../QT/5.9.2/gcc_64/mkspecs/features/qt_config.prf \
+		../../QT/5.9.2/gcc_64/mkspecs/linux-g++/qmake.conf \
+		../../QT/5.9.2/gcc_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
+		../../QT/5.9.2/gcc_64/mkspecs/features/exclusive_builds.prf \
+		../../QT/5.9.2/gcc_64/mkspecs/features/toolchain.prf \
+		../../QT/5.9.2/gcc_64/mkspecs/features/default_pre.prf \
+		../../QT/5.9.2/gcc_64/mkspecs/features/resolve_config.prf \
+		../../QT/5.9.2/gcc_64/mkspecs/features/default_post.prf \
+		../../QT/5.9.2/gcc_64/mkspecs/features/qml_debug.prf \
+		../../QT/5.9.2/gcc_64/mkspecs/features/warn_on.prf \
+		../../QT/5.9.2/gcc_64/mkspecs/features/qt.prf \
+		../../QT/5.9.2/gcc_64/mkspecs/features/resources.prf \
+		../../QT/5.9.2/gcc_64/mkspecs/features/moc.prf \
+		../../QT/5.9.2/gcc_64/mkspecs/features/unix/opengl.prf \
+		../../QT/5.9.2/gcc_64/mkspecs/features/uic.prf \
+		../../QT/5.9.2/gcc_64/mkspecs/features/unix/thread.prf \
+		../../QT/5.9.2/gcc_64/mkspecs/features/qmake_use.prf \
+		../../QT/5.9.2/gcc_64/mkspecs/features/file_copies.prf \
+		../../QT/5.9.2/gcc_64/mkspecs/features/testcase_targets.prf \
+		../../QT/5.9.2/gcc_64/mkspecs/features/exceptions.prf \
+		../../QT/5.9.2/gcc_64/mkspecs/features/yacc.prf \
+		../../QT/5.9.2/gcc_64/mkspecs/features/lex.prf \
 		rtrApp.pro \
 		models_and_textures.qrc \
 		shaders.qrc \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/lib/libQt5Widgets.prl \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/lib/libQt5Gui.prl \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/lib/libQt5Core.prl
+		../../QT/5.9.2/gcc_64/lib/libQt5Widgets.prl \
+		../../QT/5.9.2/gcc_64/lib/libQt5Gui.prl \
+		../../QT/5.9.2/gcc_64/lib/libQt5Core.prl
 	$(QMAKE) -o Makefile rtrApp.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/spec_pre.prf:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/common/unix.conf:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/common/linux.conf:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/common/sanitize.conf:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/common/gcc-base.conf:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/common/gcc-base-unix.conf:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/common/g++-base.conf:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/common/g++-unix.conf:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/qconfig.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3danimation.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3danimation_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dcore.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dcore_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dextras.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dextras_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dinput.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dinput_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dlogic.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dlogic_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquick.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquick_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickanimation.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickanimation_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickextras.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickextras_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickinput.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickinput_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickrender.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickrender_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickscene2d.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickscene2d_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3drender.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3drender_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_accessibility_support_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_bluetooth.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_bluetooth_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_bootstrap_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_charts.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_charts_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_concurrent.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_concurrent_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_core.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_core_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_datavisualization.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_datavisualization_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_dbus.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_dbus_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_designer.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_designer_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_designercomponents_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_devicediscovery_support_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_egl_support_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_eglfsdeviceintegration_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_eventdispatcher_support_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_fb_support_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_fontdatabase_support_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_gamepad.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_gamepad_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_glx_support_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_gui.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_gui_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_help.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_help_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_input_support_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_kms_support_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_linuxaccessibility_support_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_location.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_location_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_multimedia.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_multimedia_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_multimediawidgets.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_multimediawidgets_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_network.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_network_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_networkauth.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_networkauth_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_nfc.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_nfc_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_opengl.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_opengl_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_openglextensions.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_openglextensions_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_packetprotocol_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_platformcompositor_support_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_positioning.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_positioning_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_printsupport.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_printsupport_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_purchasing.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_purchasing_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_qml.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_qml_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_qmldebug_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_qmldevtools_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_qmltest.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_qmltest_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_qtmultimediaquicktools_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_quick.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_quick_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_quickcontrols2.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_quickcontrols2_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_quickparticles_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_quicktemplates2_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_quickwidgets.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_quickwidgets_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_remoteobjects.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_remoteobjects_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_repparser.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_repparser_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_script.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_script_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_scripttools.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_scripttools_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_scxml.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_scxml_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_sensors.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_sensors_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_serialbus.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_serialbus_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_serialport.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_serialport_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_service_support_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_sql.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_sql_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_svg.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_svg_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_testlib.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_testlib_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_texttospeech.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_texttospeech_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_theme_support_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_uiplugin.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_uitools.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_uitools_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webchannel.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webchannel_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webengine.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webengine_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webenginecore.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webenginecore_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webenginecoreheaders_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webenginewidgets.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webenginewidgets_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_websockets.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_websockets_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webview.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webview_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_widgets.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_widgets_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_x11extras.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_x11extras_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_xcb_qpa_lib_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_xml.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_xml_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_xmlpatterns.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_xmlpatterns_private.pri:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/qt_functions.prf:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/qt_config.prf:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/linux-g++/qmake.conf:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/spec_post.prf:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/exclusive_builds.prf:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/toolchain.prf:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/default_pre.prf:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/resolve_config.prf:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/default_post.prf:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/qml_debug.prf:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/warn_on.prf:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/qt.prf:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/resources.prf:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/moc.prf:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/unix/opengl.prf:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/uic.prf:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/unix/thread.prf:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/qmake_use.prf:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/file_copies.prf:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/testcase_targets.prf:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/exceptions.prf:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/yacc.prf:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/lex.prf:
+../../QT/5.9.2/gcc_64/mkspecs/features/spec_pre.prf:
+../../QT/5.9.2/gcc_64/mkspecs/common/unix.conf:
+../../QT/5.9.2/gcc_64/mkspecs/common/linux.conf:
+../../QT/5.9.2/gcc_64/mkspecs/common/sanitize.conf:
+../../QT/5.9.2/gcc_64/mkspecs/common/gcc-base.conf:
+../../QT/5.9.2/gcc_64/mkspecs/common/gcc-base-unix.conf:
+../../QT/5.9.2/gcc_64/mkspecs/common/g++-base.conf:
+../../QT/5.9.2/gcc_64/mkspecs/common/g++-unix.conf:
+../../QT/5.9.2/gcc_64/mkspecs/qconfig.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3danimation.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3danimation_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dcore.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dcore_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dextras.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dextras_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dinput.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dinput_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dlogic.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dlogic_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquick.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquick_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickanimation.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickanimation_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickextras.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickextras_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickinput.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickinput_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickrender.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickrender_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickscene2d.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3dquickscene2d_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3drender.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_3drender_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_accessibility_support_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_bluetooth.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_bluetooth_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_bootstrap_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_charts.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_charts_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_concurrent.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_concurrent_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_core.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_core_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_datavisualization.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_datavisualization_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_dbus.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_dbus_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_designer.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_designer_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_designercomponents_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_devicediscovery_support_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_egl_support_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_eglfsdeviceintegration_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_eventdispatcher_support_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_fb_support_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_fontdatabase_support_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_gamepad.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_gamepad_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_glx_support_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_gui.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_gui_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_help.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_help_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_input_support_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_kms_support_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_linuxaccessibility_support_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_location.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_location_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_multimedia.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_multimedia_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_multimediawidgets.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_multimediawidgets_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_network.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_network_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_networkauth.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_networkauth_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_nfc.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_nfc_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_opengl.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_opengl_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_openglextensions.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_openglextensions_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_packetprotocol_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_platformcompositor_support_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_positioning.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_positioning_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_printsupport.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_printsupport_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_purchasing.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_purchasing_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_qml.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_qml_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_qmldebug_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_qmldevtools_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_qmltest.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_qmltest_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_qtmultimediaquicktools_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_quick.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_quick_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_quickcontrols2.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_quickcontrols2_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_quickparticles_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_quicktemplates2_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_quickwidgets.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_quickwidgets_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_remoteobjects.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_remoteobjects_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_repparser.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_repparser_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_script.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_script_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_scripttools.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_scripttools_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_scxml.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_scxml_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_sensors.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_sensors_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_serialbus.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_serialbus_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_serialport.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_serialport_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_service_support_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_sql.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_sql_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_svg.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_svg_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_testlib.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_testlib_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_texttospeech.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_texttospeech_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_theme_support_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_uiplugin.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_uitools.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_uitools_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webchannel.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webchannel_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webengine.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webengine_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webenginecore.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webenginecore_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webenginecoreheaders_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webenginewidgets.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webenginewidgets_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_websockets.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_websockets_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webview.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_webview_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_widgets.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_widgets_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_x11extras.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_x11extras_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_xcb_qpa_lib_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_xml.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_xml_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_xmlpatterns.pri:
+../../QT/5.9.2/gcc_64/mkspecs/modules/qt_lib_xmlpatterns_private.pri:
+../../QT/5.9.2/gcc_64/mkspecs/features/qt_functions.prf:
+../../QT/5.9.2/gcc_64/mkspecs/features/qt_config.prf:
+../../QT/5.9.2/gcc_64/mkspecs/linux-g++/qmake.conf:
+../../QT/5.9.2/gcc_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
+../../QT/5.9.2/gcc_64/mkspecs/features/exclusive_builds.prf:
+../../QT/5.9.2/gcc_64/mkspecs/features/toolchain.prf:
+../../QT/5.9.2/gcc_64/mkspecs/features/default_pre.prf:
+../../QT/5.9.2/gcc_64/mkspecs/features/resolve_config.prf:
+../../QT/5.9.2/gcc_64/mkspecs/features/default_post.prf:
+../../QT/5.9.2/gcc_64/mkspecs/features/qml_debug.prf:
+../../QT/5.9.2/gcc_64/mkspecs/features/warn_on.prf:
+../../QT/5.9.2/gcc_64/mkspecs/features/qt.prf:
+../../QT/5.9.2/gcc_64/mkspecs/features/resources.prf:
+../../QT/5.9.2/gcc_64/mkspecs/features/moc.prf:
+../../QT/5.9.2/gcc_64/mkspecs/features/unix/opengl.prf:
+../../QT/5.9.2/gcc_64/mkspecs/features/uic.prf:
+../../QT/5.9.2/gcc_64/mkspecs/features/unix/thread.prf:
+../../QT/5.9.2/gcc_64/mkspecs/features/qmake_use.prf:
+../../QT/5.9.2/gcc_64/mkspecs/features/file_copies.prf:
+../../QT/5.9.2/gcc_64/mkspecs/features/testcase_targets.prf:
+../../QT/5.9.2/gcc_64/mkspecs/features/exceptions.prf:
+../../QT/5.9.2/gcc_64/mkspecs/features/yacc.prf:
+../../QT/5.9.2/gcc_64/mkspecs/features/lex.prf:
 rtrApp.pro:
 models_and_textures.qrc:
 shaders.qrc:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/lib/libQt5Widgets.prl:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/lib/libQt5Gui.prl:
-/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/lib/libQt5Core.prl:
+../../QT/5.9.2/gcc_64/lib/libQt5Widgets.prl:
+../../QT/5.9.2/gcc_64/lib/libQt5Gui.prl:
+../../QT/5.9.2/gcc_64/lib/libQt5Core.prl:
 qmake: FORCE
 	@$(QMAKE) -o Makefile rtrApp.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug
 
@@ -702,9 +709,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents models_and_textures.qrc shaders.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents /home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents camera.h appwindow.h material/material.h node.h rtrglwidget.h scene.h geometry/cube.h mesh/bbox.h mesh/objloader.h mesh/indexbuffer.h mesh/mesh.h mesh/vertexbuffer.h mesh/geometrybuffers.h navigator/nodenavigator.h material/phong.h navigator/position_navigator.h navigator/rotate_y.h $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp appwindow.cpp camera.cpp material/material.cpp node.cpp scene.cpp geometry/cube.cpp mesh/bbox.cpp mesh/geometrybuffers.cpp mesh/objloader.cpp mesh/indexbuffer.cpp mesh/mesh.cpp rtrglwidget.cpp navigator/nodenavigator.cpp material/phong.cpp navigator/position_navigator.cpp navigator/rotate_y.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../../QT/5.9.2/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents camera.h appwindow.h material/material.h node.h rtrglwidget.h scene.h geometry/cube.h mesh/bbox.h mesh/objloader.h mesh/indexbuffer.h mesh/mesh.h mesh/vertexbuffer.h mesh/geometrybuffers.h navigator/nodenavigator.h material/phong.h navigator/position_navigator.h navigator/rotate_y.h material/toon.h $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp appwindow.cpp camera.cpp material/material.cpp node.cpp scene.cpp geometry/cube.cpp mesh/bbox.cpp mesh/geometrybuffers.cpp mesh/objloader.cpp mesh/indexbuffer.cpp mesh/mesh.cpp rtrglwidget.cpp navigator/nodenavigator.cpp material/phong.cpp navigator/position_navigator.cpp navigator/rotate_y.cpp material/toon.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents appwindow.ui $(DISTDIR)/
 
 
@@ -721,7 +728,7 @@ distclean: clean
 
 ####### Sub-libraries
 
-shaders: /media/pentax/Second/_Studium_/RTR/01_RTR_App/01_RTR_App/assets/shaders/phong.frag /media/pentax/Second/_Studium_/RTR/01_RTR_App/01_RTR_App/assets/shaders/phong.vert
+shaders: /home/pentax/_Entwicklung_/workspace_master/01_RTR_App/assets/shaders/phong.frag /home/pentax/_Entwicklung_/workspace_master/01_RTR_App/assets/shaders/phong.vert
 
 mocclean: compiler_moc_header_clean compiler_moc_source_clean
 
@@ -735,455 +742,462 @@ compiler_rcc_make_all: qrc_models_and_textures.cpp qrc_shaders.cpp
 compiler_rcc_clean:
 	-$(DEL_FILE) qrc_models_and_textures.cpp qrc_shaders.cpp
 qrc_models_and_textures.cpp: models_and_textures.qrc \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/bin/rcc \
+		../../QT/5.9.2/gcc_64/bin/rcc \
 		models/goblin.obj \
 		models/duck/duck.obj \
+		models/obiwan/obiwan.obj \
 		models/teapot/teapot.obj \
 		textures/RTR-ist-super-4-3.png
 	/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/bin/rcc -name models_and_textures models_and_textures.qrc -o qrc_models_and_textures.cpp
 
 qrc_shaders.cpp: shaders.qrc \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/bin/rcc \
+		../../QT/5.9.2/gcc_64/bin/rcc \
 		shaders/phong.frag \
-		shaders/phong.vert
+		shaders/obiwan.vert \
+		shaders/toon.frag \
+		shaders/phong.vert \
+		shaders/obiwan.frag \
+		shaders/toon.vert
 	/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/bin/rcc -name shaders shaders.qrc -o qrc_shaders.cpp
 
 compiler_moc_predefs_make_all: moc_predefs.h
 compiler_moc_predefs_clean:
 	-$(DEL_FILE) moc_predefs.h
-moc_predefs.h: /home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/data/dummy.cpp
-	g++ -pipe -g -std=gnu++1y -Wall -W -dM -E -o moc_predefs.h /home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/features/data/dummy.cpp
+moc_predefs.h: ../../QT/5.9.2/gcc_64/mkspecs/features/data/dummy.cpp
+	g++ -pipe -g -std=gnu++1y -Wall -W -dM -E -o moc_predefs.h ../../QT/5.9.2/gcc_64/mkspecs/features/data/dummy.cpp
 
 compiler_moc_header_make_all: moc_appwindow.cpp moc_rtrglwidget.cpp moc_scene.cpp
 compiler_moc_header_clean:
 	-$(DEL_FILE) moc_appwindow.cpp moc_rtrglwidget.cpp moc_scene.cpp
-moc_appwindow.cpp: /home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/QWidget \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/qwidget.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtguiglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qconfig.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtcore-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsystemdetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qprocessordetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcompilerdetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtypeinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsysinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlogging.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qflags.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbasicatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qgenericatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_cxx11.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_msvc.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qglobalstatic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmutex.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qnumeric.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qversiontagging.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtgui-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/qtwidgets-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qwindowdefs.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobjectdefs.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qnamespace.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qwindowdefs_win.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobject.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstring.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qchar.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbytearray.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qrefcount.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qarraydata.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringbuilder.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qalgorithms.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qiterator.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qhashfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qpair.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbytearraylist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringlist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qregexp.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringmatcher.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcoreevent.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qscopedpointer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmetatype.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvarlengtharray.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcontainerfwd.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobject_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmargins.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpaintdevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qrect.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsize.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qpoint.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpalette.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qcolor.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qrgb.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qrgba64.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qbrush.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvector.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qmatrix.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpolygon.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qregion.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qdatastream.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qiodevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qline.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtransform.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpainterpath.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qimage.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpixelformat.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpixmap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsharedpointer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qshareddata.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qhash.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qfont.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qfontmetrics.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qfontinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/qsizepolicy.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qcursor.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qkeysequence.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qevent.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvariant.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qdebug.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtextstream.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlocale.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qset.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcontiguouscache.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qurl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qurlquery.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qfile.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qfiledevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector2d.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtouchdevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QSettings \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsettings.h \
+moc_appwindow.cpp: ../../QT/5.9.2/gcc_64/include/QtWidgets/QWidget \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qwidget.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtguiglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qconfig.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtcore-config.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsystemdetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qprocessordetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtypeinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsysinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlogging.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qflags.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbasicatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qgenericatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qglobalstatic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmutex.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qnumeric.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qversiontagging.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtgui-config.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qwindowdefs.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobjectdefs.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qnamespace.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobject.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstring.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qchar.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbytearray.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qrefcount.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qarraydata.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringbuilder.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qalgorithms.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qiterator.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qhashfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qpair.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbytearraylist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringlist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qregexp.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringmatcher.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcoreevent.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qscopedpointer.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmetatype.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobject_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmargins.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpaintdevice.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qrect.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsize.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qpoint.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpalette.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qcolor.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qrgb.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qrgba64.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qbrush.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvector.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qmatrix.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpolygon.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qregion.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qdatastream.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qiodevice.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qline.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtransform.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpainterpath.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qimage.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpixelformat.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpixmap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsharedpointer.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qshareddata.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qhash.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qfont.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qfontmetrics.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qfontinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qsizepolicy.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qcursor.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qkeysequence.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qevent.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvariant.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qdebug.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtextstream.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlocale.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qset.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qurl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qurlquery.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qfile.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qfiledevice.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector2d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtouchdevice.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/QSettings \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsettings.h \
 		scene.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLShaderProgram \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglshaderprogram.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qt_windows.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengles2ext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector3d.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector4d.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qmatrix4x4.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qquaternion.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qgenericmatrix.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLFunctions \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglcontext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QObject \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QScopedPointer \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QSurfaceFormat \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qsurfaceformat.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglversionfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLVertexArrayObject \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglvertexarrayobject.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QTimer \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtimer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbasictimer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLFramebufferObject \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglframebufferobject.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLShaderProgram \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglshaderprogram.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qt_windows.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengles2ext.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglext.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector3d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector4d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qmatrix4x4.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qquaternion.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qgenericmatrix.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLFunctions \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglcontext.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/QObject \
+		../../QT/5.9.2/gcc_64/include/QtCore/QScopedPointer \
+		../../QT/5.9.2/gcc_64/include/QtGui/QSurfaceFormat \
+		../../QT/5.9.2/gcc_64/include/QtGui/qsurfaceformat.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglversionfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLVertexArrayObject \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglvertexarrayobject.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/QTimer \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtimer.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbasictimer.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLFramebufferObject \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglframebufferobject.h \
 		node.h \
 		mesh/mesh.h \
 		mesh/geometrybuffers.h \
 		mesh/vertexbuffer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLBuffer \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglbuffer.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLBuffer \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglbuffer.h \
 		mesh/indexbuffer.h \
 		mesh/bbox.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QVector3D \
+		../../QT/5.9.2/gcc_64/include/QtGui/QVector3D \
 		material/material.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLContext \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLContext \
 		camera.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QMatrix4x4 \
+		../../QT/5.9.2/gcc_64/include/QtGui/QMatrix4x4 \
 		material/phong.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLTexture \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengltexture.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLTexture \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengltexture.h \
+		material/toon.h \
 		navigator/rotate_y.h \
 		navigator/nodenavigator.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QKeyEvent \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QMouseEvent \
+		../../QT/5.9.2/gcc_64/include/QtGui/QKeyEvent \
+		../../QT/5.9.2/gcc_64/include/QtGui/QMouseEvent \
 		appwindow.h \
 		moc_predefs.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/bin/moc
-	/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/linux-g++ -I/media/pentax/Second/_Studium_/RTR/01_RTR_App/01_RTR_App -I/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include -I/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets -I/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui -I/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include appwindow.h -o moc_appwindow.cpp
+		../../QT/5.9.2/gcc_64/bin/moc
+	/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/linux-g++ -I/home/pentax/_Entwicklung_/workspace_master/01_RTR_App -I/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include -I/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets -I/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui -I/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include appwindow.h -o moc_appwindow.cpp
 
-moc_rtrglwidget.cpp: /home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/QOpenGLWidget \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/qopenglwidget.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtguiglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qconfig.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtcore-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsystemdetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qprocessordetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcompilerdetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtypeinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsysinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlogging.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qflags.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbasicatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qgenericatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_cxx11.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_msvc.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qglobalstatic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmutex.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qnumeric.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qversiontagging.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtgui-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/qtwidgets-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/QWidget \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/qwidget.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qwindowdefs.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobjectdefs.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qnamespace.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qwindowdefs_win.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobject.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstring.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qchar.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbytearray.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qrefcount.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qarraydata.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringbuilder.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qalgorithms.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qiterator.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qhashfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qpair.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbytearraylist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringlist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qregexp.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringmatcher.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcoreevent.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qscopedpointer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmetatype.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvarlengtharray.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcontainerfwd.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobject_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmargins.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpaintdevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qrect.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsize.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qpoint.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpalette.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qcolor.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qrgb.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qrgba64.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qbrush.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvector.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qmatrix.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpolygon.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qregion.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qdatastream.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qiodevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qline.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtransform.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpainterpath.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qimage.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpixelformat.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpixmap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsharedpointer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qshareddata.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qhash.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qfont.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qfontmetrics.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qfontinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/qsizepolicy.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qcursor.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qkeysequence.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qevent.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvariant.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qdebug.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtextstream.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlocale.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qset.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcontiguouscache.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qurl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qurlquery.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qfile.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qfiledevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector2d.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtouchdevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QSurfaceFormat \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qsurfaceformat.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qt_windows.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengles2ext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLFunctions \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglcontext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QObject \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QScopedPointer \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglversionfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLBuffer \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglbuffer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLDebugLogger \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengldebug.h \
+moc_rtrglwidget.cpp: ../../QT/5.9.2/gcc_64/include/QtWidgets/QOpenGLWidget \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qopenglwidget.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtguiglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qconfig.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtcore-config.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsystemdetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qprocessordetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtypeinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsysinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlogging.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qflags.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbasicatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qgenericatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qglobalstatic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmutex.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qnumeric.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qversiontagging.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtgui-config.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/QWidget \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qwidget.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qwindowdefs.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobjectdefs.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qnamespace.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobject.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstring.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qchar.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbytearray.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qrefcount.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qarraydata.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringbuilder.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qalgorithms.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qiterator.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qhashfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qpair.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbytearraylist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringlist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qregexp.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringmatcher.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcoreevent.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qscopedpointer.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmetatype.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobject_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmargins.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpaintdevice.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qrect.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsize.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qpoint.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpalette.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qcolor.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qrgb.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qrgba64.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qbrush.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvector.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qmatrix.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpolygon.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qregion.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qdatastream.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qiodevice.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qline.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtransform.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpainterpath.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qimage.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpixelformat.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpixmap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsharedpointer.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qshareddata.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qhash.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qfont.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qfontmetrics.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qfontinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qsizepolicy.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qcursor.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qkeysequence.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qevent.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvariant.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qdebug.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtextstream.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlocale.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qset.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qurl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qurlquery.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qfile.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qfiledevice.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector2d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtouchdevice.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QSurfaceFormat \
+		../../QT/5.9.2/gcc_64/include/QtGui/qsurfaceformat.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qt_windows.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengles2ext.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglext.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLFunctions \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglcontext.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/QObject \
+		../../QT/5.9.2/gcc_64/include/QtCore/QScopedPointer \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglversionfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLBuffer \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglbuffer.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLDebugLogger \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengldebug.h \
 		rtrglwidget.h \
 		moc_predefs.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/bin/moc
-	/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/linux-g++ -I/media/pentax/Second/_Studium_/RTR/01_RTR_App/01_RTR_App -I/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include -I/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets -I/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui -I/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include rtrglwidget.h -o moc_rtrglwidget.cpp
+		../../QT/5.9.2/gcc_64/bin/moc
+	/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/linux-g++ -I/home/pentax/_Entwicklung_/workspace_master/01_RTR_App -I/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include -I/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets -I/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui -I/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include rtrglwidget.h -o moc_rtrglwidget.cpp
 
-moc_scene.cpp: /home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/QWidget \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/qwidget.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtguiglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qconfig.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtcore-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsystemdetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qprocessordetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcompilerdetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtypeinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsysinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlogging.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qflags.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbasicatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qgenericatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_cxx11.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_msvc.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qglobalstatic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmutex.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qnumeric.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qversiontagging.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtgui-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/qtwidgets-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qwindowdefs.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobjectdefs.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qnamespace.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qwindowdefs_win.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobject.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstring.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qchar.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbytearray.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qrefcount.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qarraydata.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringbuilder.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qalgorithms.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qiterator.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qhashfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qpair.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbytearraylist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringlist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qregexp.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringmatcher.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcoreevent.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qscopedpointer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmetatype.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvarlengtharray.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcontainerfwd.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobject_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmargins.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpaintdevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qrect.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsize.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qpoint.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpalette.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qcolor.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qrgb.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qrgba64.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qbrush.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvector.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qmatrix.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpolygon.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qregion.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qdatastream.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qiodevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qline.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtransform.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpainterpath.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qimage.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpixelformat.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpixmap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsharedpointer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qshareddata.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qhash.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qfont.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qfontmetrics.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qfontinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/qsizepolicy.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qcursor.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qkeysequence.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qevent.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvariant.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qdebug.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtextstream.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlocale.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qset.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcontiguouscache.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qurl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qurlquery.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qfile.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qfiledevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector2d.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtouchdevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLShaderProgram \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglshaderprogram.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qt_windows.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengles2ext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector3d.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector4d.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qmatrix4x4.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qquaternion.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qgenericmatrix.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLFunctions \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglcontext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QObject \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QScopedPointer \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QSurfaceFormat \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qsurfaceformat.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglversionfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLVertexArrayObject \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglvertexarrayobject.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QTimer \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtimer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbasictimer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLFramebufferObject \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglframebufferobject.h \
+moc_scene.cpp: ../../QT/5.9.2/gcc_64/include/QtWidgets/QWidget \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qwidget.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtguiglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qconfig.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtcore-config.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsystemdetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qprocessordetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtypeinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsysinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlogging.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qflags.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbasicatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qgenericatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qglobalstatic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmutex.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qnumeric.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qversiontagging.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtgui-config.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qwindowdefs.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobjectdefs.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qnamespace.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobject.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstring.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qchar.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbytearray.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qrefcount.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qarraydata.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringbuilder.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qalgorithms.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qiterator.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qhashfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qpair.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbytearraylist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringlist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qregexp.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringmatcher.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcoreevent.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qscopedpointer.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmetatype.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobject_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmargins.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpaintdevice.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qrect.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsize.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qpoint.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpalette.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qcolor.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qrgb.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qrgba64.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qbrush.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvector.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qmatrix.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpolygon.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qregion.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qdatastream.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qiodevice.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qline.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtransform.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpainterpath.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qimage.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpixelformat.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpixmap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsharedpointer.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qshareddata.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qhash.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qfont.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qfontmetrics.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qfontinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qsizepolicy.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qcursor.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qkeysequence.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qevent.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvariant.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qdebug.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtextstream.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlocale.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qset.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qurl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qurlquery.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qfile.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qfiledevice.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector2d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtouchdevice.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLShaderProgram \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglshaderprogram.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qt_windows.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengles2ext.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglext.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector3d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector4d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qmatrix4x4.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qquaternion.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qgenericmatrix.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLFunctions \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglcontext.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/QObject \
+		../../QT/5.9.2/gcc_64/include/QtCore/QScopedPointer \
+		../../QT/5.9.2/gcc_64/include/QtGui/QSurfaceFormat \
+		../../QT/5.9.2/gcc_64/include/QtGui/qsurfaceformat.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglversionfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLVertexArrayObject \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglvertexarrayobject.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/QTimer \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtimer.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbasictimer.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLFramebufferObject \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglframebufferobject.h \
 		node.h \
 		mesh/mesh.h \
 		mesh/geometrybuffers.h \
 		mesh/vertexbuffer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLBuffer \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglbuffer.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLBuffer \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglbuffer.h \
 		mesh/indexbuffer.h \
 		mesh/bbox.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QVector3D \
+		../../QT/5.9.2/gcc_64/include/QtGui/QVector3D \
 		material/material.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLContext \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLContext \
 		camera.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QMatrix4x4 \
+		../../QT/5.9.2/gcc_64/include/QtGui/QMatrix4x4 \
 		material/phong.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLTexture \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengltexture.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLTexture \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengltexture.h \
+		material/toon.h \
 		navigator/rotate_y.h \
 		navigator/nodenavigator.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QKeyEvent \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QMouseEvent \
+		../../QT/5.9.2/gcc_64/include/QtGui/QKeyEvent \
+		../../QT/5.9.2/gcc_64/include/QtGui/QMouseEvent \
 		scene.h \
 		moc_predefs.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/bin/moc
-	/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/linux-g++ -I/media/pentax/Second/_Studium_/RTR/01_RTR_App/01_RTR_App -I/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include -I/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets -I/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui -I/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include scene.h -o moc_scene.cpp
+		../../QT/5.9.2/gcc_64/bin/moc
+	/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/mkspecs/linux-g++ -I/home/pentax/_Entwicklung_/workspace_master/01_RTR_App -I/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include -I/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets -I/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui -I/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include scene.h -o moc_scene.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -1191,126 +1205,126 @@ compiler_uic_make_all: ui_appwindow.h
 compiler_uic_clean:
 	-$(DEL_FILE) ui_appwindow.h
 ui_appwindow.h: appwindow.ui \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/bin/uic \
+		../../QT/5.9.2/gcc_64/bin/uic \
 		rtrglwidget.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/QOpenGLWidget \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/qopenglwidget.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtguiglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qconfig.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtcore-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsystemdetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qprocessordetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcompilerdetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtypeinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsysinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlogging.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qflags.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbasicatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qgenericatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_cxx11.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_msvc.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qglobalstatic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmutex.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qnumeric.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qversiontagging.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtgui-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/qtwidgets-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/QWidget \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/qwidget.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qwindowdefs.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobjectdefs.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qnamespace.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qwindowdefs_win.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobject.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstring.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qchar.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbytearray.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qrefcount.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qarraydata.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringbuilder.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qalgorithms.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qiterator.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qhashfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qpair.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbytearraylist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringlist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qregexp.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringmatcher.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcoreevent.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qscopedpointer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmetatype.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvarlengtharray.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcontainerfwd.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobject_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmargins.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpaintdevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qrect.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsize.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qpoint.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpalette.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qcolor.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qrgb.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qrgba64.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qbrush.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvector.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qmatrix.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpolygon.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qregion.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qdatastream.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qiodevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qline.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtransform.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpainterpath.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qimage.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpixelformat.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpixmap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsharedpointer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qshareddata.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qhash.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qfont.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qfontmetrics.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qfontinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/qsizepolicy.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qcursor.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qkeysequence.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qevent.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvariant.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qdebug.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtextstream.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlocale.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qset.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcontiguouscache.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qurl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qurlquery.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qfile.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qfiledevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector2d.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtouchdevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QSurfaceFormat \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qsurfaceformat.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qt_windows.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengles2ext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLFunctions \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglcontext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QObject \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QScopedPointer \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglversionfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLBuffer \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglbuffer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLDebugLogger \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengldebug.h
+		../../QT/5.9.2/gcc_64/include/QtWidgets/QOpenGLWidget \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qopenglwidget.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtguiglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qconfig.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtcore-config.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsystemdetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qprocessordetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtypeinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsysinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlogging.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qflags.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbasicatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qgenericatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qglobalstatic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmutex.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qnumeric.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qversiontagging.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtgui-config.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/QWidget \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qwidget.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qwindowdefs.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobjectdefs.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qnamespace.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobject.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstring.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qchar.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbytearray.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qrefcount.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qarraydata.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringbuilder.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qalgorithms.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qiterator.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qhashfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qpair.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbytearraylist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringlist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qregexp.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringmatcher.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcoreevent.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qscopedpointer.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmetatype.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobject_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmargins.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpaintdevice.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qrect.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsize.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qpoint.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpalette.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qcolor.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qrgb.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qrgba64.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qbrush.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvector.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qmatrix.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpolygon.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qregion.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qdatastream.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qiodevice.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qline.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtransform.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpainterpath.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qimage.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpixelformat.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpixmap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsharedpointer.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qshareddata.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qhash.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qfont.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qfontmetrics.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qfontinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qsizepolicy.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qcursor.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qkeysequence.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qevent.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvariant.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qdebug.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtextstream.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlocale.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qset.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qurl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qurlquery.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qfile.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qfiledevice.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector2d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtouchdevice.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QSurfaceFormat \
+		../../QT/5.9.2/gcc_64/include/QtGui/qsurfaceformat.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qt_windows.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengles2ext.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglext.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLFunctions \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglcontext.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/QObject \
+		../../QT/5.9.2/gcc_64/include/QtCore/QScopedPointer \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglversionfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLBuffer \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglbuffer.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLDebugLogger \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengldebug.h
 	/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/bin/uic appwindow.ui -o ui_appwindow.h
 
 compiler_yacc_decl_make_all:
@@ -1323,1453 +1337,1505 @@ compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_heade
 
 ####### Compile
 
-main.o: main.cpp /home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/QApplication \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/qapplication.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtguiglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qconfig.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtcore-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsystemdetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qprocessordetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcompilerdetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtypeinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsysinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlogging.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qflags.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbasicatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qgenericatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_cxx11.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_msvc.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qglobalstatic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmutex.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qnumeric.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qversiontagging.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtgui-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/qtwidgets-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcoreapplication.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstring.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qchar.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbytearray.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qrefcount.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qnamespace.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qarraydata.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringbuilder.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobject.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobjectdefs.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qalgorithms.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qiterator.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qhashfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qpair.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbytearraylist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringlist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qregexp.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringmatcher.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcoreevent.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qscopedpointer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmetatype.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvarlengtharray.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcontainerfwd.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobject_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qeventloop.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qwindowdefs.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qwindowdefs_win.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qpoint.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsize.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qcursor.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/qwidget.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmargins.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpaintdevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qrect.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpalette.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qcolor.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qrgb.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qrgba64.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qbrush.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvector.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qmatrix.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpolygon.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qregion.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qdatastream.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qiodevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qline.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtransform.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpainterpath.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qimage.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpixelformat.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpixmap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsharedpointer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qshareddata.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qhash.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qfont.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qfontmetrics.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qfontinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/qsizepolicy.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qkeysequence.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qevent.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvariant.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qdebug.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtextstream.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlocale.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qset.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcontiguouscache.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qurl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qurlquery.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qfile.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qfiledevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector2d.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtouchdevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qguiapplication.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qinputmethod.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QSurfaceFormat \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qsurfaceformat.h \
+main.o: main.cpp ../../QT/5.9.2/gcc_64/include/QtWidgets/QApplication \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qapplication.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtguiglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qconfig.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtcore-config.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsystemdetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qprocessordetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtypeinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsysinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlogging.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qflags.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbasicatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qgenericatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qglobalstatic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmutex.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qnumeric.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qversiontagging.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtgui-config.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcoreapplication.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstring.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qchar.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbytearray.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qrefcount.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qnamespace.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qarraydata.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringbuilder.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobject.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobjectdefs.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qalgorithms.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qiterator.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qhashfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qpair.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbytearraylist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringlist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qregexp.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringmatcher.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcoreevent.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qscopedpointer.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmetatype.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobject_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qeventloop.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qwindowdefs.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qpoint.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsize.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qcursor.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qwidget.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmargins.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpaintdevice.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qrect.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpalette.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qcolor.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qrgb.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qrgba64.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qbrush.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvector.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qmatrix.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpolygon.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qregion.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qdatastream.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qiodevice.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qline.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtransform.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpainterpath.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qimage.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpixelformat.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpixmap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsharedpointer.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qshareddata.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qhash.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qfont.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qfontmetrics.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qfontinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qsizepolicy.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qkeysequence.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qevent.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvariant.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qdebug.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtextstream.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlocale.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qset.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qurl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qurlquery.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qfile.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qfiledevice.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector2d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtouchdevice.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qguiapplication.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qinputmethod.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QSurfaceFormat \
+		../../QT/5.9.2/gcc_64/include/QtGui/qsurfaceformat.h \
 		appwindow.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/QWidget \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QSettings \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsettings.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/QWidget \
+		../../QT/5.9.2/gcc_64/include/QtCore/QSettings \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsettings.h \
 		scene.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLShaderProgram \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglshaderprogram.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qt_windows.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengles2ext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector3d.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector4d.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qmatrix4x4.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qquaternion.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qgenericmatrix.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLFunctions \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglcontext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QObject \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QScopedPointer \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglversionfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLVertexArrayObject \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglvertexarrayobject.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QTimer \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtimer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbasictimer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLFramebufferObject \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglframebufferobject.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLShaderProgram \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglshaderprogram.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qt_windows.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengles2ext.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglext.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector3d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector4d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qmatrix4x4.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qquaternion.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qgenericmatrix.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLFunctions \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglcontext.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/QObject \
+		../../QT/5.9.2/gcc_64/include/QtCore/QScopedPointer \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglversionfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLVertexArrayObject \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglvertexarrayobject.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/QTimer \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtimer.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbasictimer.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLFramebufferObject \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglframebufferobject.h \
 		node.h \
 		mesh/mesh.h \
 		mesh/geometrybuffers.h \
 		mesh/vertexbuffer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLBuffer \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglbuffer.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLBuffer \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglbuffer.h \
 		mesh/indexbuffer.h \
 		mesh/bbox.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QVector3D \
+		../../QT/5.9.2/gcc_64/include/QtGui/QVector3D \
 		material/material.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLContext \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLContext \
 		camera.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QMatrix4x4 \
+		../../QT/5.9.2/gcc_64/include/QtGui/QMatrix4x4 \
 		material/phong.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLTexture \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengltexture.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLTexture \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengltexture.h \
+		material/toon.h \
 		navigator/rotate_y.h \
 		navigator/nodenavigator.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QKeyEvent \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QMouseEvent
+		../../QT/5.9.2/gcc_64/include/QtGui/QKeyEvent \
+		../../QT/5.9.2/gcc_64/include/QtGui/QMouseEvent
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
-appwindow.o: appwindow.cpp /home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/QApplication \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/qapplication.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtguiglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qconfig.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtcore-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsystemdetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qprocessordetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcompilerdetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtypeinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsysinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlogging.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qflags.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbasicatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qgenericatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_cxx11.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_msvc.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qglobalstatic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmutex.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qnumeric.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qversiontagging.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtgui-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/qtwidgets-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcoreapplication.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstring.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qchar.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbytearray.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qrefcount.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qnamespace.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qarraydata.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringbuilder.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobject.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobjectdefs.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qalgorithms.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qiterator.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qhashfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qpair.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbytearraylist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringlist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qregexp.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringmatcher.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcoreevent.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qscopedpointer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmetatype.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvarlengtharray.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcontainerfwd.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobject_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qeventloop.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qwindowdefs.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qwindowdefs_win.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qpoint.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsize.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qcursor.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/qwidget.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmargins.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpaintdevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qrect.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpalette.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qcolor.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qrgb.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qrgba64.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qbrush.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvector.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qmatrix.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpolygon.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qregion.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qdatastream.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qiodevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qline.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtransform.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpainterpath.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qimage.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpixelformat.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpixmap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsharedpointer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qshareddata.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qhash.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qfont.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qfontmetrics.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qfontinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/qsizepolicy.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qkeysequence.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qevent.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvariant.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qdebug.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtextstream.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlocale.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qset.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcontiguouscache.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qurl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qurlquery.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qfile.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qfiledevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector2d.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtouchdevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qguiapplication.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qinputmethod.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QKeyEvent \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/QDesktopWidget \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/QDialog \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/qdialog.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/QVBoxLayout \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/qboxlayout.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/qlayout.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/qlayoutitem.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/qgridlayout.h \
+appwindow.o: appwindow.cpp ../../QT/5.9.2/gcc_64/include/QtWidgets/QApplication \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qapplication.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtguiglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qconfig.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtcore-config.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsystemdetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qprocessordetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtypeinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsysinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlogging.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qflags.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbasicatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qgenericatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qglobalstatic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmutex.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qnumeric.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qversiontagging.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtgui-config.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcoreapplication.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstring.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qchar.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbytearray.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qrefcount.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qnamespace.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qarraydata.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringbuilder.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobject.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobjectdefs.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qalgorithms.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qiterator.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qhashfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qpair.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbytearraylist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringlist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qregexp.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringmatcher.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcoreevent.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qscopedpointer.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmetatype.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobject_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qeventloop.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qwindowdefs.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qpoint.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsize.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qcursor.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qwidget.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmargins.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpaintdevice.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qrect.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpalette.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qcolor.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qrgb.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qrgba64.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qbrush.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvector.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qmatrix.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpolygon.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qregion.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qdatastream.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qiodevice.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qline.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtransform.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpainterpath.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qimage.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpixelformat.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpixmap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsharedpointer.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qshareddata.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qhash.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qfont.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qfontmetrics.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qfontinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qsizepolicy.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qkeysequence.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qevent.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvariant.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qdebug.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtextstream.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlocale.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qset.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qurl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qurlquery.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qfile.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qfiledevice.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector2d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtouchdevice.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qguiapplication.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qinputmethod.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QKeyEvent \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/QDesktopWidget \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/QDialog \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qdialog.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/QVBoxLayout \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qlayout.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qgridlayout.h \
 		appwindow.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/QWidget \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QSettings \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsettings.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/QWidget \
+		../../QT/5.9.2/gcc_64/include/QtCore/QSettings \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsettings.h \
 		scene.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLShaderProgram \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglshaderprogram.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qt_windows.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengles2ext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector3d.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector4d.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qmatrix4x4.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qquaternion.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qgenericmatrix.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLFunctions \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglcontext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QObject \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QScopedPointer \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QSurfaceFormat \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qsurfaceformat.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglversionfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLVertexArrayObject \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglvertexarrayobject.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QTimer \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtimer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbasictimer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLFramebufferObject \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglframebufferobject.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLShaderProgram \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglshaderprogram.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qt_windows.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengles2ext.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglext.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector3d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector4d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qmatrix4x4.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qquaternion.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qgenericmatrix.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLFunctions \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglcontext.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/QObject \
+		../../QT/5.9.2/gcc_64/include/QtCore/QScopedPointer \
+		../../QT/5.9.2/gcc_64/include/QtGui/QSurfaceFormat \
+		../../QT/5.9.2/gcc_64/include/QtGui/qsurfaceformat.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglversionfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLVertexArrayObject \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglvertexarrayobject.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/QTimer \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtimer.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbasictimer.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLFramebufferObject \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglframebufferobject.h \
 		node.h \
 		mesh/mesh.h \
 		mesh/geometrybuffers.h \
 		mesh/vertexbuffer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLBuffer \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglbuffer.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLBuffer \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglbuffer.h \
 		mesh/indexbuffer.h \
 		mesh/bbox.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QVector3D \
+		../../QT/5.9.2/gcc_64/include/QtGui/QVector3D \
 		material/material.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLContext \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLContext \
 		camera.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QMatrix4x4 \
+		../../QT/5.9.2/gcc_64/include/QtGui/QMatrix4x4 \
 		material/phong.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLTexture \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengltexture.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLTexture \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengltexture.h \
+		material/toon.h \
 		navigator/rotate_y.h \
 		navigator/nodenavigator.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QMouseEvent \
-		ui_appwindow.h
+		../../QT/5.9.2/gcc_64/include/QtGui/QMouseEvent \
+		ui_appwindow.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/QVariant \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/QAction \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qaction.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qicon.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qactiongroup.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/QButtonGroup \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qbuttongroup.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/QComboBox \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qcombobox.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qstyleoption.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvalidator.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qregularexpression.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qslider.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qstyle.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qtabbar.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qtabwidget.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qrubberband.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qframe.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/QGridLayout \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/QGroupBox \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qgroupbox.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/QHBoxLayout \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/QHeaderView \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qheaderview.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/QLabel \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qlabel.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/QPushButton \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/QRadioButton \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qradiobutton.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/QSlider \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/QSpacerItem \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/QSplitter \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qsplitter.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/QTabWidget \
+		rtrglwidget.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/QOpenGLWidget \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qopenglwidget.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLDebugLogger \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengldebug.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o appwindow.o appwindow.cpp
 
 camera.o: camera.cpp camera.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QMatrix4x4 \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qmatrix4x4.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtguiglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qconfig.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtcore-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsystemdetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qprocessordetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcompilerdetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtypeinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsysinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlogging.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qflags.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbasicatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qgenericatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_cxx11.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_msvc.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qglobalstatic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmutex.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qnumeric.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qversiontagging.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtgui-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector3d.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qpoint.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qnamespace.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmetatype.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbytearray.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qrefcount.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qarraydata.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstring.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qchar.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringbuilder.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvarlengtharray.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcontainerfwd.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qalgorithms.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobjectdefs.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector4d.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qquaternion.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qgenericmatrix.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qdebug.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qhash.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qiterator.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qhashfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qpair.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbytearraylist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringlist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qregexp.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringmatcher.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtextstream.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qiodevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobject.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcoreevent.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qscopedpointer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobject_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlocale.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvariant.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qshareddata.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvector.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qset.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcontiguouscache.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsharedpointer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qdatastream.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qrect.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmargins.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsize.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLShaderProgram \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglshaderprogram.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qt_windows.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengles2ext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector2d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QMatrix4x4 \
+		../../QT/5.9.2/gcc_64/include/QtGui/qmatrix4x4.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtguiglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qconfig.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtcore-config.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsystemdetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qprocessordetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtypeinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsysinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlogging.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qflags.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbasicatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qgenericatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qglobalstatic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmutex.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qnumeric.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qversiontagging.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtgui-config.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector3d.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qpoint.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qnamespace.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmetatype.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbytearray.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qrefcount.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qarraydata.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstring.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qchar.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringbuilder.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qalgorithms.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobjectdefs.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector4d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qquaternion.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qgenericmatrix.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qdebug.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qhash.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qiterator.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qhashfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qpair.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbytearraylist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringlist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qregexp.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringmatcher.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtextstream.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qiodevice.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobject.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcoreevent.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qscopedpointer.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobject_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlocale.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvariant.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qshareddata.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvector.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qset.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsharedpointer.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qdatastream.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qrect.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmargins.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsize.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLShaderProgram \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglshaderprogram.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qt_windows.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengles2ext.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglext.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector2d.h \
 		material/material.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o camera.o camera.cpp
 
 material.o: material/material.cpp material/material.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLShaderProgram \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglshaderprogram.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtguiglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qconfig.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtcore-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsystemdetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qprocessordetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcompilerdetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtypeinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsysinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlogging.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qflags.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbasicatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qgenericatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_cxx11.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_msvc.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qglobalstatic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmutex.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qnumeric.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qversiontagging.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtgui-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qt_windows.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengles2ext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector2d.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qpoint.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qnamespace.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmetatype.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbytearray.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qrefcount.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qarraydata.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstring.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qchar.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringbuilder.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvarlengtharray.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcontainerfwd.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qalgorithms.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobjectdefs.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector3d.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector4d.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qmatrix4x4.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qquaternion.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qgenericmatrix.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qdebug.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qhash.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qiterator.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qhashfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qpair.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbytearraylist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringlist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qregexp.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringmatcher.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtextstream.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qiodevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobject.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcoreevent.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qscopedpointer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobject_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlocale.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvariant.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qshareddata.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvector.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qset.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcontiguouscache.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsharedpointer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qdatastream.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qrect.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmargins.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsize.h
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLShaderProgram \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglshaderprogram.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtguiglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qconfig.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtcore-config.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsystemdetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qprocessordetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtypeinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsysinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlogging.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qflags.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbasicatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qgenericatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qglobalstatic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmutex.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qnumeric.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qversiontagging.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtgui-config.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qt_windows.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengles2ext.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglext.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector2d.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qpoint.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qnamespace.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmetatype.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbytearray.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qrefcount.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qarraydata.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstring.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qchar.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringbuilder.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qalgorithms.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobjectdefs.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector3d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector4d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qmatrix4x4.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qquaternion.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qgenericmatrix.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qdebug.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qhash.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qiterator.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qhashfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qpair.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbytearraylist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringlist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qregexp.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringmatcher.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtextstream.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qiodevice.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobject.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcoreevent.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qscopedpointer.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobject_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlocale.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvariant.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qshareddata.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvector.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qset.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsharedpointer.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qdatastream.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qrect.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmargins.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsize.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o material.o material/material.cpp
 
 node.o: node.cpp node.h \
 		mesh/mesh.h \
 		mesh/geometrybuffers.h \
 		mesh/vertexbuffer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLBuffer \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglbuffer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtguiglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qconfig.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtcore-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsystemdetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qprocessordetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcompilerdetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtypeinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsysinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlogging.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qflags.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbasicatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qgenericatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_cxx11.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_msvc.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qglobalstatic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmutex.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qnumeric.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qversiontagging.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtgui-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qscopedpointer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qt_windows.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengles2ext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLFunctions \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglcontext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qnamespace.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QObject \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobject.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobjectdefs.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstring.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qchar.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbytearray.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qrefcount.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qarraydata.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringbuilder.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qalgorithms.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qiterator.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qhashfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qpair.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbytearraylist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringlist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qregexp.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringmatcher.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcoreevent.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmetatype.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvarlengtharray.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcontainerfwd.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobject_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QScopedPointer \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QSurfaceFormat \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qsurfaceformat.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglversionfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qhash.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvariant.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qdebug.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtextstream.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qiodevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlocale.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qshareddata.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvector.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qpoint.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qset.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcontiguouscache.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsharedpointer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLBuffer \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglbuffer.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtguiglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qconfig.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtcore-config.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsystemdetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qprocessordetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtypeinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsysinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlogging.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qflags.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbasicatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qgenericatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qglobalstatic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmutex.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qnumeric.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qversiontagging.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtgui-config.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qscopedpointer.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qt_windows.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengles2ext.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglext.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLFunctions \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglcontext.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qnamespace.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/QObject \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobject.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobjectdefs.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstring.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qchar.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbytearray.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qrefcount.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qarraydata.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringbuilder.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qalgorithms.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qiterator.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qhashfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qpair.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbytearraylist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringlist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qregexp.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringmatcher.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcoreevent.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmetatype.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobject_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/QScopedPointer \
+		../../QT/5.9.2/gcc_64/include/QtGui/QSurfaceFormat \
+		../../QT/5.9.2/gcc_64/include/QtGui/qsurfaceformat.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglversionfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qhash.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvariant.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qdebug.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtextstream.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qiodevice.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlocale.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qshareddata.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvector.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qpoint.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qset.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsharedpointer.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
 		mesh/indexbuffer.h \
 		mesh/bbox.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QVector3D \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector3d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QVector3D \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector3d.h \
 		material/material.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLShaderProgram \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglshaderprogram.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector2d.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector4d.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qmatrix4x4.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qquaternion.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qgenericmatrix.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qdatastream.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qrect.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmargins.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsize.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLVertexArrayObject \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglvertexarrayobject.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLContext \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLShaderProgram \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglshaderprogram.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector2d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector4d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qmatrix4x4.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qquaternion.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qgenericmatrix.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qdatastream.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qrect.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmargins.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsize.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLVertexArrayObject \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglvertexarrayobject.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLContext \
 		camera.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QMatrix4x4
+		../../QT/5.9.2/gcc_64/include/QtGui/QMatrix4x4
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o node.o node.cpp
 
 scene.o: scene.cpp scene.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/QWidget \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/qwidget.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtguiglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qconfig.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtcore-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsystemdetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qprocessordetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcompilerdetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtypeinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsysinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlogging.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qflags.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbasicatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qgenericatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_cxx11.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_msvc.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qglobalstatic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmutex.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qnumeric.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qversiontagging.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtgui-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/qtwidgets-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qwindowdefs.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobjectdefs.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qnamespace.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qwindowdefs_win.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobject.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstring.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qchar.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbytearray.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qrefcount.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qarraydata.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringbuilder.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qalgorithms.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qiterator.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qhashfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qpair.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbytearraylist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringlist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qregexp.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringmatcher.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcoreevent.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qscopedpointer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmetatype.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvarlengtharray.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcontainerfwd.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobject_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmargins.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpaintdevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qrect.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsize.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qpoint.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpalette.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qcolor.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qrgb.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qrgba64.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qbrush.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvector.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qmatrix.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpolygon.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qregion.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qdatastream.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qiodevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qline.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtransform.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpainterpath.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qimage.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpixelformat.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpixmap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsharedpointer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qshareddata.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qhash.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qfont.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qfontmetrics.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qfontinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/qsizepolicy.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qcursor.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qkeysequence.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qevent.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvariant.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qdebug.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtextstream.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlocale.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qset.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcontiguouscache.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qurl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qurlquery.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qfile.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qfiledevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector2d.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtouchdevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLShaderProgram \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglshaderprogram.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qt_windows.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengles2ext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector3d.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector4d.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qmatrix4x4.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qquaternion.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qgenericmatrix.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLFunctions \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglcontext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QObject \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QScopedPointer \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QSurfaceFormat \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qsurfaceformat.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglversionfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLVertexArrayObject \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglvertexarrayobject.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QTimer \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtimer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbasictimer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLFramebufferObject \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglframebufferobject.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/QWidget \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qwidget.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtguiglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qconfig.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtcore-config.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsystemdetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qprocessordetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtypeinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsysinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlogging.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qflags.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbasicatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qgenericatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qglobalstatic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmutex.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qnumeric.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qversiontagging.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtgui-config.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qwindowdefs.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobjectdefs.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qnamespace.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobject.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstring.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qchar.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbytearray.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qrefcount.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qarraydata.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringbuilder.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qalgorithms.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qiterator.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qhashfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qpair.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbytearraylist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringlist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qregexp.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringmatcher.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcoreevent.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qscopedpointer.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmetatype.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobject_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmargins.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpaintdevice.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qrect.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsize.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qpoint.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpalette.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qcolor.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qrgb.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qrgba64.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qbrush.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvector.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qmatrix.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpolygon.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qregion.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qdatastream.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qiodevice.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qline.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtransform.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpainterpath.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qimage.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpixelformat.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpixmap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsharedpointer.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qshareddata.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qhash.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qfont.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qfontmetrics.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qfontinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qsizepolicy.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qcursor.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qkeysequence.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qevent.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvariant.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qdebug.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtextstream.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlocale.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qset.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qurl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qurlquery.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qfile.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qfiledevice.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector2d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtouchdevice.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLShaderProgram \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglshaderprogram.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qt_windows.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengles2ext.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglext.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector3d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector4d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qmatrix4x4.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qquaternion.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qgenericmatrix.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLFunctions \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglcontext.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/QObject \
+		../../QT/5.9.2/gcc_64/include/QtCore/QScopedPointer \
+		../../QT/5.9.2/gcc_64/include/QtGui/QSurfaceFormat \
+		../../QT/5.9.2/gcc_64/include/QtGui/qsurfaceformat.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglversionfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLVertexArrayObject \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglvertexarrayobject.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/QTimer \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtimer.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbasictimer.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLFramebufferObject \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglframebufferobject.h \
 		node.h \
 		mesh/mesh.h \
 		mesh/geometrybuffers.h \
 		mesh/vertexbuffer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLBuffer \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglbuffer.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLBuffer \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglbuffer.h \
 		mesh/indexbuffer.h \
 		mesh/bbox.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QVector3D \
+		../../QT/5.9.2/gcc_64/include/QtGui/QVector3D \
 		material/material.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLContext \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLContext \
 		camera.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QMatrix4x4 \
+		../../QT/5.9.2/gcc_64/include/QtGui/QMatrix4x4 \
 		material/phong.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLTexture \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengltexture.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLTexture \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengltexture.h \
+		material/toon.h \
 		navigator/rotate_y.h \
 		navigator/nodenavigator.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QKeyEvent \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QMouseEvent \
+		../../QT/5.9.2/gcc_64/include/QtGui/QKeyEvent \
+		../../QT/5.9.2/gcc_64/include/QtGui/QMouseEvent \
 		geometry/cube.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QtMath \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmath.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/QMessageBox \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/qmessagebox.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/qdialog.h
+		../../QT/5.9.2/gcc_64/include/QtCore/QtMath \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmath.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/QMessageBox \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qmessagebox.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o scene.o scene.cpp
 
 cube.o: geometry/cube.cpp geometry/cube.h \
 		mesh/geometrybuffers.h \
 		mesh/vertexbuffer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLBuffer \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglbuffer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtguiglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qconfig.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtcore-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsystemdetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qprocessordetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcompilerdetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtypeinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsysinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlogging.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qflags.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbasicatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qgenericatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_cxx11.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_msvc.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qglobalstatic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmutex.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qnumeric.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qversiontagging.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtgui-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qscopedpointer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qt_windows.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengles2ext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLFunctions \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglcontext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qnamespace.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QObject \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobject.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobjectdefs.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstring.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qchar.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbytearray.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qrefcount.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qarraydata.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringbuilder.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qalgorithms.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qiterator.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qhashfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qpair.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbytearraylist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringlist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qregexp.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringmatcher.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcoreevent.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmetatype.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvarlengtharray.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcontainerfwd.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobject_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QScopedPointer \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QSurfaceFormat \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qsurfaceformat.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglversionfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qhash.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvariant.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qdebug.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtextstream.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qiodevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlocale.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qshareddata.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvector.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qpoint.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qset.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcontiguouscache.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsharedpointer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLBuffer \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglbuffer.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtguiglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qconfig.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtcore-config.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsystemdetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qprocessordetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtypeinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsysinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlogging.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qflags.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbasicatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qgenericatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qglobalstatic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmutex.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qnumeric.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qversiontagging.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtgui-config.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qscopedpointer.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qt_windows.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengles2ext.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglext.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLFunctions \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglcontext.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qnamespace.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/QObject \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobject.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobjectdefs.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstring.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qchar.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbytearray.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qrefcount.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qarraydata.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringbuilder.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qalgorithms.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qiterator.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qhashfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qpair.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbytearraylist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringlist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qregexp.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringmatcher.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcoreevent.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmetatype.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobject_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/QScopedPointer \
+		../../QT/5.9.2/gcc_64/include/QtGui/QSurfaceFormat \
+		../../QT/5.9.2/gcc_64/include/QtGui/qsurfaceformat.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglversionfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qhash.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvariant.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qdebug.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtextstream.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qiodevice.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlocale.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qshareddata.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvector.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qpoint.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qset.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsharedpointer.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
 		mesh/indexbuffer.h \
 		mesh/bbox.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QVector3D \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector3d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QVector3D \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector3d.h \
 		material/material.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLShaderProgram \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglshaderprogram.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector2d.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector4d.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qmatrix4x4.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qquaternion.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qgenericmatrix.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qdatastream.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qrect.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmargins.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsize.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLVertexArrayObject \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglvertexarrayobject.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLContext
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLShaderProgram \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglshaderprogram.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector2d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector4d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qmatrix4x4.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qquaternion.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qgenericmatrix.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qdatastream.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qrect.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmargins.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsize.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLVertexArrayObject \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglvertexarrayobject.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLContext
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o cube.o geometry/cube.cpp
 
 bbox.o: mesh/bbox.cpp mesh/bbox.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QVector3D \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector3d.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtguiglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qconfig.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtcore-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsystemdetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qprocessordetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcompilerdetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtypeinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsysinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlogging.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qflags.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbasicatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qgenericatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_cxx11.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_msvc.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qglobalstatic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmutex.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qnumeric.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qversiontagging.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtgui-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qpoint.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qnamespace.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmetatype.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbytearray.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qrefcount.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qarraydata.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstring.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qchar.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringbuilder.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvarlengtharray.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcontainerfwd.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qalgorithms.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobjectdefs.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QDebug \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qdebug.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qhash.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qiterator.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qhashfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qpair.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbytearraylist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringlist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qregexp.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringmatcher.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtextstream.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qiodevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobject.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcoreevent.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qscopedpointer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobject_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlocale.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvariant.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qshareddata.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvector.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qset.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcontiguouscache.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsharedpointer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsharedpointer_impl.h
+		../../QT/5.9.2/gcc_64/include/QtGui/QVector3D \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector3d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtguiglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qconfig.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtcore-config.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsystemdetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qprocessordetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtypeinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsysinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlogging.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qflags.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbasicatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qgenericatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qglobalstatic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmutex.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qnumeric.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qversiontagging.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtgui-config.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qpoint.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qnamespace.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmetatype.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbytearray.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qrefcount.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qarraydata.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstring.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qchar.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringbuilder.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qalgorithms.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobjectdefs.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/QDebug \
+		../../QT/5.9.2/gcc_64/include/QtCore/qdebug.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qhash.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qiterator.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qhashfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qpair.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbytearraylist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringlist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qregexp.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringmatcher.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtextstream.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qiodevice.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobject.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcoreevent.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qscopedpointer.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobject_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlocale.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvariant.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qshareddata.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvector.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qset.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsharedpointer.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsharedpointer_impl.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o bbox.o mesh/bbox.cpp
 
 geometrybuffers.o: mesh/geometrybuffers.cpp mesh/geometrybuffers.h \
 		mesh/vertexbuffer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLBuffer \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglbuffer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtguiglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qconfig.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtcore-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsystemdetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qprocessordetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcompilerdetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtypeinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsysinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlogging.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qflags.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbasicatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qgenericatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_cxx11.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_msvc.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qglobalstatic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmutex.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qnumeric.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qversiontagging.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtgui-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qscopedpointer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qt_windows.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengles2ext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLFunctions \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglcontext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qnamespace.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QObject \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobject.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobjectdefs.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstring.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qchar.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbytearray.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qrefcount.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qarraydata.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringbuilder.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qalgorithms.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qiterator.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qhashfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qpair.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbytearraylist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringlist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qregexp.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringmatcher.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcoreevent.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmetatype.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvarlengtharray.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcontainerfwd.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobject_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QScopedPointer \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QSurfaceFormat \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qsurfaceformat.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglversionfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qhash.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvariant.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qdebug.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtextstream.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qiodevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlocale.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qshareddata.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvector.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qpoint.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qset.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcontiguouscache.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsharedpointer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLBuffer \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglbuffer.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtguiglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qconfig.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtcore-config.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsystemdetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qprocessordetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtypeinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsysinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlogging.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qflags.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbasicatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qgenericatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qglobalstatic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmutex.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qnumeric.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qversiontagging.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtgui-config.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qscopedpointer.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qt_windows.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengles2ext.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglext.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLFunctions \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglcontext.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qnamespace.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/QObject \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobject.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobjectdefs.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstring.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qchar.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbytearray.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qrefcount.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qarraydata.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringbuilder.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qalgorithms.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qiterator.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qhashfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qpair.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbytearraylist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringlist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qregexp.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringmatcher.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcoreevent.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmetatype.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobject_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/QScopedPointer \
+		../../QT/5.9.2/gcc_64/include/QtGui/QSurfaceFormat \
+		../../QT/5.9.2/gcc_64/include/QtGui/qsurfaceformat.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglversionfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qhash.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvariant.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qdebug.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtextstream.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qiodevice.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlocale.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qshareddata.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvector.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qpoint.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qset.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsharedpointer.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
 		mesh/indexbuffer.h \
 		mesh/bbox.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QVector3D \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector3d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QVector3D \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector3d.h \
 		material/material.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLShaderProgram \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglshaderprogram.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector2d.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector4d.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qmatrix4x4.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qquaternion.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qgenericmatrix.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qdatastream.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qrect.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmargins.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsize.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLVertexArrayObject \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglvertexarrayobject.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLContext \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLShaderProgram \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglshaderprogram.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector2d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector4d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qmatrix4x4.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qquaternion.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qgenericmatrix.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qdatastream.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qrect.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmargins.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsize.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLVertexArrayObject \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglvertexarrayobject.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLContext \
 		mesh/objloader.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QVector2D \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QVector4D
+		../../QT/5.9.2/gcc_64/include/QtGui/QVector2D \
+		../../QT/5.9.2/gcc_64/include/QtGui/QVector4D
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o geometrybuffers.o mesh/geometrybuffers.cpp
 
 objloader.o: mesh/objloader.cpp mesh/objloader.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QVector2D \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector2d.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtguiglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qconfig.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtcore-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsystemdetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qprocessordetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcompilerdetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtypeinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsysinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlogging.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qflags.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbasicatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qgenericatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_cxx11.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_msvc.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qglobalstatic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmutex.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qnumeric.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qversiontagging.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtgui-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qpoint.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qnamespace.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmetatype.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbytearray.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qrefcount.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qarraydata.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstring.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qchar.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringbuilder.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvarlengtharray.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcontainerfwd.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qalgorithms.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobjectdefs.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QVector3D \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector3d.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QVector4D \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector4d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QVector2D \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector2d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtguiglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qconfig.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtcore-config.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsystemdetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qprocessordetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtypeinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsysinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlogging.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qflags.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbasicatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qgenericatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qglobalstatic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmutex.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qnumeric.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qversiontagging.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtgui-config.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qpoint.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qnamespace.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmetatype.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbytearray.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qrefcount.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qarraydata.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstring.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qchar.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringbuilder.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qalgorithms.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobjectdefs.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QVector3D \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector3d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QVector4D \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector4d.h \
 		mesh/bbox.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QDebug \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qdebug.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qhash.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qiterator.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qhashfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qpair.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbytearraylist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringlist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qregexp.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringmatcher.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtextstream.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qiodevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobject.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcoreevent.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qscopedpointer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobject_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlocale.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvariant.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qshareddata.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvector.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qset.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcontiguouscache.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsharedpointer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QFile \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qfile.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qfiledevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLBuffer \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglbuffer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qt_windows.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengles2ext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLShaderProgram \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglshaderprogram.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qmatrix4x4.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qquaternion.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qgenericmatrix.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qdatastream.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qrect.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmargins.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsize.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QTextStream \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QVector \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QHash
+		../../QT/5.9.2/gcc_64/include/QtCore/QDebug \
+		../../QT/5.9.2/gcc_64/include/QtCore/qdebug.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qhash.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qiterator.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qhashfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qpair.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbytearraylist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringlist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qregexp.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringmatcher.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtextstream.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qiodevice.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobject.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcoreevent.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qscopedpointer.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobject_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlocale.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvariant.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qshareddata.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvector.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qset.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsharedpointer.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/QFile \
+		../../QT/5.9.2/gcc_64/include/QtCore/qfile.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qfiledevice.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLBuffer \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglbuffer.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qt_windows.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengles2ext.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglext.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLShaderProgram \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglshaderprogram.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qmatrix4x4.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qquaternion.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qgenericmatrix.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qdatastream.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qrect.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmargins.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsize.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/QTextStream \
+		../../QT/5.9.2/gcc_64/include/QtCore/QVector \
+		../../QT/5.9.2/gcc_64/include/QtCore/QHash
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objloader.o mesh/objloader.cpp
 
 indexbuffer.o: mesh/indexbuffer.cpp mesh/indexbuffer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLBuffer \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglbuffer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtguiglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qconfig.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtcore-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsystemdetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qprocessordetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcompilerdetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtypeinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsysinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlogging.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qflags.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbasicatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qgenericatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_cxx11.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_msvc.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qglobalstatic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmutex.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qnumeric.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qversiontagging.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtgui-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qscopedpointer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qt_windows.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengles2ext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLFunctions \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglcontext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qnamespace.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QObject \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobject.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobjectdefs.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstring.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qchar.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbytearray.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qrefcount.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qarraydata.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringbuilder.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qalgorithms.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qiterator.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qhashfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qpair.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbytearraylist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringlist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qregexp.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringmatcher.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcoreevent.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmetatype.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvarlengtharray.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcontainerfwd.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobject_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QScopedPointer \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QSurfaceFormat \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qsurfaceformat.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglversionfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qhash.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvariant.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qdebug.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtextstream.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qiodevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlocale.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qshareddata.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvector.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qpoint.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qset.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcontiguouscache.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsharedpointer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsharedpointer_impl.h
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLBuffer \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglbuffer.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtguiglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qconfig.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtcore-config.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsystemdetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qprocessordetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtypeinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsysinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlogging.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qflags.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbasicatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qgenericatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qglobalstatic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmutex.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qnumeric.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qversiontagging.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtgui-config.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qscopedpointer.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qt_windows.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengles2ext.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglext.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLFunctions \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglcontext.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qnamespace.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/QObject \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobject.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobjectdefs.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstring.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qchar.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbytearray.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qrefcount.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qarraydata.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringbuilder.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qalgorithms.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qiterator.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qhashfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qpair.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbytearraylist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringlist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qregexp.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringmatcher.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcoreevent.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmetatype.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobject_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/QScopedPointer \
+		../../QT/5.9.2/gcc_64/include/QtGui/QSurfaceFormat \
+		../../QT/5.9.2/gcc_64/include/QtGui/qsurfaceformat.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglversionfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qhash.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvariant.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qdebug.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtextstream.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qiodevice.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlocale.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qshareddata.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvector.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qpoint.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qset.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsharedpointer.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsharedpointer_impl.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o indexbuffer.o mesh/indexbuffer.cpp
 
 mesh.o: mesh/mesh.cpp mesh/mesh.h \
 		mesh/geometrybuffers.h \
 		mesh/vertexbuffer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLBuffer \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglbuffer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtguiglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qconfig.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtcore-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsystemdetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qprocessordetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcompilerdetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtypeinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsysinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlogging.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qflags.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbasicatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qgenericatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_cxx11.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_msvc.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qglobalstatic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmutex.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qnumeric.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qversiontagging.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtgui-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qscopedpointer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qt_windows.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengles2ext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLFunctions \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglcontext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qnamespace.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QObject \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobject.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobjectdefs.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstring.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qchar.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbytearray.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qrefcount.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qarraydata.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringbuilder.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qalgorithms.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qiterator.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qhashfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qpair.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbytearraylist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringlist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qregexp.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringmatcher.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcoreevent.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmetatype.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvarlengtharray.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcontainerfwd.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobject_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QScopedPointer \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QSurfaceFormat \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qsurfaceformat.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglversionfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qhash.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvariant.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qdebug.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtextstream.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qiodevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlocale.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qshareddata.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvector.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qpoint.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qset.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcontiguouscache.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsharedpointer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLBuffer \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglbuffer.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtguiglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qconfig.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtcore-config.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsystemdetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qprocessordetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtypeinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsysinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlogging.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qflags.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbasicatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qgenericatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qglobalstatic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmutex.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qnumeric.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qversiontagging.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtgui-config.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qscopedpointer.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qt_windows.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengles2ext.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglext.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLFunctions \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglcontext.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qnamespace.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/QObject \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobject.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobjectdefs.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstring.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qchar.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbytearray.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qrefcount.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qarraydata.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringbuilder.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qalgorithms.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qiterator.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qhashfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qpair.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbytearraylist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringlist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qregexp.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringmatcher.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcoreevent.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmetatype.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobject_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/QScopedPointer \
+		../../QT/5.9.2/gcc_64/include/QtGui/QSurfaceFormat \
+		../../QT/5.9.2/gcc_64/include/QtGui/qsurfaceformat.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglversionfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qhash.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvariant.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qdebug.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtextstream.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qiodevice.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlocale.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qshareddata.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvector.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qpoint.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qset.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsharedpointer.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
 		mesh/indexbuffer.h \
 		mesh/bbox.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QVector3D \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector3d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QVector3D \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector3d.h \
 		material/material.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLShaderProgram \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglshaderprogram.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector2d.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector4d.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qmatrix4x4.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qquaternion.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qgenericmatrix.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qdatastream.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qrect.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmargins.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsize.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLVertexArrayObject \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglvertexarrayobject.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLContext \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLShaderProgram \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglshaderprogram.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector2d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector4d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qmatrix4x4.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qquaternion.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qgenericmatrix.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qdatastream.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qrect.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmargins.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsize.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLVertexArrayObject \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglvertexarrayobject.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLContext \
 		mesh/objloader.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QVector2D \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QVector4D
+		../../QT/5.9.2/gcc_64/include/QtGui/QVector2D \
+		../../QT/5.9.2/gcc_64/include/QtGui/QVector4D
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mesh.o mesh/mesh.cpp
 
 rtrglwidget.o: rtrglwidget.cpp rtrglwidget.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/QOpenGLWidget \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/qopenglwidget.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtguiglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qconfig.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtcore-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsystemdetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qprocessordetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcompilerdetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtypeinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsysinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlogging.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qflags.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbasicatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qgenericatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_cxx11.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_msvc.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qglobalstatic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmutex.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qnumeric.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qversiontagging.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtgui-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/qtwidgets-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/QWidget \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/qwidget.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qwindowdefs.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobjectdefs.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qnamespace.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qwindowdefs_win.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobject.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstring.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qchar.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbytearray.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qrefcount.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qarraydata.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringbuilder.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qalgorithms.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qiterator.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qhashfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qpair.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbytearraylist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringlist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qregexp.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringmatcher.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcoreevent.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qscopedpointer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmetatype.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvarlengtharray.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcontainerfwd.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobject_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmargins.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpaintdevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qrect.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsize.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qpoint.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpalette.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qcolor.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qrgb.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qrgba64.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qbrush.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvector.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qmatrix.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpolygon.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qregion.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qdatastream.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qiodevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qline.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtransform.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpainterpath.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qimage.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpixelformat.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpixmap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsharedpointer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qshareddata.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qhash.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qfont.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qfontmetrics.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qfontinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtWidgets/qsizepolicy.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qcursor.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qkeysequence.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qevent.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvariant.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qdebug.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtextstream.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlocale.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qset.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcontiguouscache.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qurl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qurlquery.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qfile.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qfiledevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector2d.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtouchdevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QSurfaceFormat \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qsurfaceformat.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qt_windows.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengles2ext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLFunctions \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglcontext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QObject \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QScopedPointer \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglversionfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLBuffer \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglbuffer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLDebugLogger \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengldebug.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/QOpenGLWidget \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qopenglwidget.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtguiglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qconfig.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtcore-config.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsystemdetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qprocessordetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtypeinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsysinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlogging.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qflags.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbasicatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qgenericatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qglobalstatic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmutex.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qnumeric.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qversiontagging.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtgui-config.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/QWidget \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qwidget.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qwindowdefs.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobjectdefs.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qnamespace.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobject.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstring.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qchar.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbytearray.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qrefcount.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qarraydata.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringbuilder.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qalgorithms.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qiterator.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qhashfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qpair.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbytearraylist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringlist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qregexp.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringmatcher.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcoreevent.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qscopedpointer.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmetatype.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobject_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmargins.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpaintdevice.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qrect.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsize.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qpoint.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpalette.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qcolor.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qrgb.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qrgba64.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qbrush.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvector.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qmatrix.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpolygon.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qregion.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qdatastream.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qiodevice.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qline.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtransform.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpainterpath.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qimage.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpixelformat.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpixmap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsharedpointer.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qshareddata.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qhash.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qfont.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qfontmetrics.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qfontinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtWidgets/qsizepolicy.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qcursor.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qkeysequence.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qevent.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvariant.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qdebug.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtextstream.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlocale.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qset.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qurl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qurlquery.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qfile.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qfiledevice.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector2d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtouchdevice.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QSurfaceFormat \
+		../../QT/5.9.2/gcc_64/include/QtGui/qsurfaceformat.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qt_windows.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengles2ext.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglext.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLFunctions \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglcontext.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/QObject \
+		../../QT/5.9.2/gcc_64/include/QtCore/QScopedPointer \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglversionfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLBuffer \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglbuffer.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLDebugLogger \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengldebug.h \
 		scene.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLShaderProgram \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglshaderprogram.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector3d.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector4d.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qmatrix4x4.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qquaternion.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qgenericmatrix.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLVertexArrayObject \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglvertexarrayobject.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QTimer \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtimer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbasictimer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLFramebufferObject \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglframebufferobject.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLShaderProgram \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglshaderprogram.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector3d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector4d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qmatrix4x4.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qquaternion.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qgenericmatrix.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLVertexArrayObject \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglvertexarrayobject.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/QTimer \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtimer.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbasictimer.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLFramebufferObject \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglframebufferobject.h \
 		node.h \
 		mesh/mesh.h \
 		mesh/geometrybuffers.h \
 		mesh/vertexbuffer.h \
 		mesh/indexbuffer.h \
 		mesh/bbox.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QVector3D \
+		../../QT/5.9.2/gcc_64/include/QtGui/QVector3D \
 		material/material.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLContext \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLContext \
 		camera.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QMatrix4x4 \
+		../../QT/5.9.2/gcc_64/include/QtGui/QMatrix4x4 \
 		material/phong.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLTexture \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengltexture.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLTexture \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengltexture.h \
+		material/toon.h \
 		navigator/rotate_y.h \
 		navigator/nodenavigator.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QKeyEvent \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QMouseEvent
+		../../QT/5.9.2/gcc_64/include/QtGui/QKeyEvent \
+		../../QT/5.9.2/gcc_64/include/QtGui/QMouseEvent
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o rtrglwidget.o rtrglwidget.cpp
 
 nodenavigator.o: navigator/nodenavigator.cpp navigator/nodenavigator.h \
@@ -2777,214 +2843,214 @@ nodenavigator.o: navigator/nodenavigator.cpp navigator/nodenavigator.h \
 		mesh/mesh.h \
 		mesh/geometrybuffers.h \
 		mesh/vertexbuffer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLBuffer \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglbuffer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtguiglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qconfig.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtcore-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsystemdetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qprocessordetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcompilerdetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtypeinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsysinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlogging.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qflags.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbasicatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qgenericatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_cxx11.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_msvc.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qglobalstatic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmutex.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qnumeric.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qversiontagging.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtgui-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qscopedpointer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qt_windows.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengles2ext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLFunctions \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglcontext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qnamespace.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QObject \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobject.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobjectdefs.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstring.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qchar.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbytearray.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qrefcount.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qarraydata.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringbuilder.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qalgorithms.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qiterator.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qhashfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qpair.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbytearraylist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringlist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qregexp.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringmatcher.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcoreevent.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmetatype.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvarlengtharray.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcontainerfwd.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobject_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QScopedPointer \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QSurfaceFormat \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qsurfaceformat.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglversionfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qhash.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvariant.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qdebug.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtextstream.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qiodevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlocale.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qshareddata.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvector.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qpoint.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qset.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcontiguouscache.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsharedpointer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLBuffer \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglbuffer.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtguiglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qconfig.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtcore-config.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsystemdetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qprocessordetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtypeinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsysinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlogging.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qflags.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbasicatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qgenericatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qglobalstatic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmutex.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qnumeric.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qversiontagging.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtgui-config.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qscopedpointer.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qt_windows.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengles2ext.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglext.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLFunctions \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglcontext.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qnamespace.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/QObject \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobject.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobjectdefs.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstring.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qchar.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbytearray.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qrefcount.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qarraydata.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringbuilder.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qalgorithms.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qiterator.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qhashfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qpair.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbytearraylist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringlist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qregexp.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringmatcher.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcoreevent.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmetatype.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobject_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/QScopedPointer \
+		../../QT/5.9.2/gcc_64/include/QtGui/QSurfaceFormat \
+		../../QT/5.9.2/gcc_64/include/QtGui/qsurfaceformat.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglversionfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qhash.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvariant.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qdebug.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtextstream.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qiodevice.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlocale.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qshareddata.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvector.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qpoint.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qset.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsharedpointer.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
 		mesh/indexbuffer.h \
 		mesh/bbox.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QVector3D \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector3d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QVector3D \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector3d.h \
 		material/material.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLShaderProgram \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglshaderprogram.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector2d.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector4d.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qmatrix4x4.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qquaternion.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qgenericmatrix.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qdatastream.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qrect.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmargins.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsize.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLVertexArrayObject \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglvertexarrayobject.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLContext \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLShaderProgram \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglshaderprogram.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector2d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector4d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qmatrix4x4.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qquaternion.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qgenericmatrix.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qdatastream.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qrect.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmargins.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsize.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLVertexArrayObject \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglvertexarrayobject.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLContext \
 		camera.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QMatrix4x4 \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QKeyEvent \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qevent.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qwindowdefs.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qwindowdefs_win.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qregion.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qkeysequence.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qurl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qurlquery.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qfile.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qfiledevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtouchdevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QMouseEvent
+		../../QT/5.9.2/gcc_64/include/QtGui/QMatrix4x4 \
+		../../QT/5.9.2/gcc_64/include/QtGui/QKeyEvent \
+		../../QT/5.9.2/gcc_64/include/QtGui/qevent.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qwindowdefs.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qregion.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qkeysequence.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qurl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qurlquery.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qfile.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qfiledevice.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtouchdevice.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QMouseEvent
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o nodenavigator.o navigator/nodenavigator.cpp
 
 phong.o: material/phong.cpp material/phong.h \
 		material/material.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLShaderProgram \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglshaderprogram.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtguiglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qconfig.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtcore-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsystemdetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qprocessordetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcompilerdetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtypeinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsysinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlogging.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qflags.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbasicatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qgenericatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_cxx11.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_msvc.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qglobalstatic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmutex.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qnumeric.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qversiontagging.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtgui-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qt_windows.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengles2ext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector2d.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qpoint.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qnamespace.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmetatype.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbytearray.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qrefcount.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qarraydata.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstring.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qchar.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringbuilder.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvarlengtharray.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcontainerfwd.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qalgorithms.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobjectdefs.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector3d.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector4d.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qmatrix4x4.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qquaternion.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qgenericmatrix.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qdebug.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qhash.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qiterator.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qhashfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qpair.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbytearraylist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringlist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qregexp.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringmatcher.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtextstream.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qiodevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobject.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcoreevent.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qscopedpointer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobject_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlocale.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvariant.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qshareddata.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvector.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qset.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcontiguouscache.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsharedpointer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qdatastream.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qrect.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmargins.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsize.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLTexture \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengltexture.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qimage.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qcolor.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qrgb.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qrgba64.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpaintdevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qwindowdefs.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qwindowdefs_win.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpixelformat.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtransform.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qmatrix.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpolygon.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qregion.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qline.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qpainterpath.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QScopedPointer
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLShaderProgram \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglshaderprogram.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtguiglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qconfig.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtcore-config.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsystemdetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qprocessordetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtypeinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsysinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlogging.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qflags.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbasicatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qgenericatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qglobalstatic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmutex.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qnumeric.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qversiontagging.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtgui-config.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qt_windows.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengles2ext.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglext.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector2d.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qpoint.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qnamespace.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmetatype.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbytearray.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qrefcount.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qarraydata.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstring.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qchar.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringbuilder.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qalgorithms.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobjectdefs.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector3d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector4d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qmatrix4x4.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qquaternion.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qgenericmatrix.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qdebug.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qhash.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qiterator.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qhashfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qpair.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbytearraylist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringlist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qregexp.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringmatcher.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtextstream.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qiodevice.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobject.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcoreevent.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qscopedpointer.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobject_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlocale.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvariant.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qshareddata.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvector.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qset.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsharedpointer.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qdatastream.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qrect.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmargins.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsize.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLTexture \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengltexture.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qimage.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qcolor.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qrgb.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qrgba64.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpaintdevice.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qwindowdefs.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpixelformat.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtransform.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qmatrix.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpolygon.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qregion.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qline.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpainterpath.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/QScopedPointer
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o phong.o material/phong.cpp
 
 position_navigator.o: navigator/position_navigator.cpp navigator/position_navigator.h \
@@ -2993,117 +3059,117 @@ position_navigator.o: navigator/position_navigator.cpp navigator/position_naviga
 		mesh/mesh.h \
 		mesh/geometrybuffers.h \
 		mesh/vertexbuffer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLBuffer \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglbuffer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtguiglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qconfig.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtcore-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsystemdetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qprocessordetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcompilerdetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtypeinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsysinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlogging.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qflags.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbasicatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qgenericatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_cxx11.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_msvc.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qglobalstatic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmutex.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qnumeric.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qversiontagging.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtgui-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qscopedpointer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qt_windows.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengles2ext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLFunctions \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglcontext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qnamespace.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QObject \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobject.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobjectdefs.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstring.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qchar.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbytearray.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qrefcount.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qarraydata.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringbuilder.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qalgorithms.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qiterator.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qhashfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qpair.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbytearraylist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringlist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qregexp.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringmatcher.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcoreevent.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmetatype.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvarlengtharray.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcontainerfwd.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobject_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QScopedPointer \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QSurfaceFormat \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qsurfaceformat.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglversionfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qhash.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvariant.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qdebug.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtextstream.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qiodevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlocale.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qshareddata.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvector.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qpoint.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qset.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcontiguouscache.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsharedpointer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLBuffer \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglbuffer.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtguiglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qconfig.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtcore-config.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsystemdetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qprocessordetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtypeinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsysinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlogging.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qflags.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbasicatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qgenericatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qglobalstatic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmutex.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qnumeric.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qversiontagging.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtgui-config.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qscopedpointer.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qt_windows.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengles2ext.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglext.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLFunctions \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglcontext.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qnamespace.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/QObject \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobject.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobjectdefs.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstring.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qchar.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbytearray.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qrefcount.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qarraydata.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringbuilder.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qalgorithms.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qiterator.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qhashfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qpair.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbytearraylist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringlist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qregexp.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringmatcher.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcoreevent.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmetatype.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobject_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/QScopedPointer \
+		../../QT/5.9.2/gcc_64/include/QtGui/QSurfaceFormat \
+		../../QT/5.9.2/gcc_64/include/QtGui/qsurfaceformat.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglversionfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qhash.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvariant.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qdebug.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtextstream.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qiodevice.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlocale.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qshareddata.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvector.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qpoint.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qset.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsharedpointer.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
 		mesh/indexbuffer.h \
 		mesh/bbox.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QVector3D \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector3d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QVector3D \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector3d.h \
 		material/material.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLShaderProgram \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglshaderprogram.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector2d.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector4d.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qmatrix4x4.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qquaternion.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qgenericmatrix.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qdatastream.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qrect.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmargins.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsize.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLVertexArrayObject \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglvertexarrayobject.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLContext \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLShaderProgram \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglshaderprogram.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector2d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector4d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qmatrix4x4.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qquaternion.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qgenericmatrix.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qdatastream.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qrect.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmargins.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsize.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLVertexArrayObject \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglvertexarrayobject.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLContext \
 		camera.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QMatrix4x4 \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QKeyEvent \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qevent.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qwindowdefs.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qwindowdefs_win.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qregion.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qkeysequence.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qurl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qurlquery.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qfile.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qfiledevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtouchdevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QMouseEvent \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QtMath \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmath.h
+		../../QT/5.9.2/gcc_64/include/QtGui/QMatrix4x4 \
+		../../QT/5.9.2/gcc_64/include/QtGui/QKeyEvent \
+		../../QT/5.9.2/gcc_64/include/QtGui/qevent.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qwindowdefs.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qregion.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qkeysequence.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qurl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qurlquery.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qfile.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qfiledevice.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtouchdevice.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QMouseEvent \
+		../../QT/5.9.2/gcc_64/include/QtCore/QtMath \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmath.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o position_navigator.o navigator/position_navigator.cpp
 
 rotate_y.o: navigator/rotate_y.cpp navigator/rotate_y.h \
@@ -3112,118 +3178,218 @@ rotate_y.o: navigator/rotate_y.cpp navigator/rotate_y.h \
 		mesh/mesh.h \
 		mesh/geometrybuffers.h \
 		mesh/vertexbuffer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLBuffer \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglbuffer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtguiglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qglobal.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qconfig.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtcore-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsystemdetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qprocessordetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcompilerdetection.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtypeinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsysinfo.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlogging.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qflags.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbasicatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qgenericatomic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_cxx11.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qatomic_msvc.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qglobalstatic.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmutex.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qnumeric.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qversiontagging.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtgui-config.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qscopedpointer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qt_windows.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopengles2ext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLFunctions \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglcontext.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qnamespace.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QObject \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobject.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobjectdefs.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstring.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qchar.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbytearray.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qrefcount.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qarraydata.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringbuilder.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qalgorithms.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qiterator.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qhashfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qpair.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qbytearraylist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringlist.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qregexp.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qstringmatcher.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcoreevent.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmetatype.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvarlengtharray.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcontainerfwd.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qobject_impl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QScopedPointer \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QSurfaceFormat \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qsurfaceformat.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglversionfunctions.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qhash.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvariant.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmap.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qdebug.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qtextstream.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qiodevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qlocale.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qshareddata.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qvector.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qpoint.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qset.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qcontiguouscache.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsharedpointer.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLBuffer \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglbuffer.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtguiglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qconfig.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtcore-config.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsystemdetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qprocessordetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtypeinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsysinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlogging.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qflags.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbasicatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qgenericatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qglobalstatic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmutex.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qnumeric.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qversiontagging.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtgui-config.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qscopedpointer.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qt_windows.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengles2ext.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglext.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLFunctions \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglcontext.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qnamespace.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/QObject \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobject.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobjectdefs.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstring.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qchar.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbytearray.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qrefcount.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qarraydata.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringbuilder.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qalgorithms.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qiterator.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qhashfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qpair.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbytearraylist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringlist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qregexp.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringmatcher.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcoreevent.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmetatype.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobject_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/QScopedPointer \
+		../../QT/5.9.2/gcc_64/include/QtGui/QSurfaceFormat \
+		../../QT/5.9.2/gcc_64/include/QtGui/qsurfaceformat.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglversionfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qhash.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvariant.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qdebug.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtextstream.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qiodevice.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlocale.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qshareddata.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvector.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qpoint.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qset.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsharedpointer.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
 		mesh/indexbuffer.h \
 		mesh/bbox.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QVector3D \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector3d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QVector3D \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector3d.h \
 		material/material.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLShaderProgram \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglshaderprogram.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector2d.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qvector4d.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qmatrix4x4.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qquaternion.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qgenericmatrix.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qdatastream.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qrect.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmargins.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qsize.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLVertexArrayObject \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qopenglvertexarrayobject.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QOpenGLContext \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLShaderProgram \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglshaderprogram.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector2d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector4d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qmatrix4x4.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qquaternion.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qgenericmatrix.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qdatastream.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qrect.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmargins.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsize.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLVertexArrayObject \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglvertexarrayobject.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLContext \
 		camera.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QMatrix4x4 \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QKeyEvent \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qevent.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qwindowdefs.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qwindowdefs_win.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qregion.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qkeysequence.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qurl.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qurlquery.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qfile.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qfiledevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/qtouchdevice.h \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtGui/QMouseEvent \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/QtMath \
-		/home/pentax/_Entwicklung_/QT/5.9.2/gcc_64/include/QtCore/qmath.h
+		../../QT/5.9.2/gcc_64/include/QtGui/QMatrix4x4 \
+		../../QT/5.9.2/gcc_64/include/QtGui/QKeyEvent \
+		../../QT/5.9.2/gcc_64/include/QtGui/qevent.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qwindowdefs.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qregion.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qkeysequence.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qurl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qurlquery.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qfile.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qfiledevice.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtouchdevice.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QMouseEvent \
+		../../QT/5.9.2/gcc_64/include/QtCore/QtMath \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmath.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o rotate_y.o navigator/rotate_y.cpp
+
+toon.o: material/toon.cpp material/toon.h \
+		material/material.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLShaderProgram \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglshaderprogram.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtguiglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qglobal.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qconfig.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtcore-config.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsystemdetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qprocessordetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtypeinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsysinfo.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlogging.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qflags.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbasicatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qgenericatomic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qglobalstatic.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmutex.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qnumeric.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qversiontagging.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtgui-config.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qt_windows.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengles2ext.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopenglext.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector2d.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qpoint.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qnamespace.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmetatype.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbytearray.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qrefcount.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qarraydata.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstring.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qchar.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringbuilder.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qalgorithms.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobjectdefs.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector3d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qvector4d.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qmatrix4x4.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qquaternion.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qgenericmatrix.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qdebug.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qhash.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qiterator.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qhashfunctions.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qpair.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qbytearraylist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringlist.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qregexp.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qstringmatcher.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmap.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qtextstream.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qiodevice.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobject.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcoreevent.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qscopedpointer.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qobject_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qlocale.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvariant.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qshareddata.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qvector.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qset.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsharedpointer.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qdatastream.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qrect.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qmargins.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qsize.h \
+		material/phong.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/QOpenGLTexture \
+		../../QT/5.9.2/gcc_64/include/QtGui/qopengltexture.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qimage.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qcolor.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qrgb.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qrgba64.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpaintdevice.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qwindowdefs.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpixelformat.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qtransform.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qmatrix.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpolygon.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qregion.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/qline.h \
+		../../QT/5.9.2/gcc_64/include/QtGui/qpainterpath.h \
+		../../QT/5.9.2/gcc_64/include/QtCore/QScopedPointer
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o toon.o material/toon.cpp
 
 qrc_models_and_textures.o: qrc_models_and_textures.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_models_and_textures.o qrc_models_and_textures.cpp

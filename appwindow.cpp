@@ -66,24 +66,30 @@ AppWindow::AppWindow(QWidget *parent) :
 
     connect(ui->radioButtonRotateX, &QRadioButton::clicked, [this](bool)
     {
-               scene().setRotateAxis(0);
+               scene().setRotateAxis(RotateY::Axis::X);
     });
 
     connect(ui->radioButtonRotateY, &QRadioButton::clicked, [this](bool)
     {
-               scene().setRotateAxis(1);
+               scene().setRotateAxis(RotateY::Axis::Y);
     });
 
 
     connect(ui->radioButtonRotateZ, &QRadioButton::clicked, [this](bool)
     {
-               scene().setRotateAxis(2);
+               scene().setRotateAxis(RotateY::Axis::Z);
     });
 
 
     connect(ui->modelComboBox, &QComboBox::currentTextChanged, [this](QString value)
     {
         scene().setSceneNode(value);
+    });
+
+
+    connect(ui->shaderComboBox, &QComboBox::currentTextChanged, [this](QString value)
+    {
+        scene().setShader(value);
     });
 
     connect(ui->light0Slider, &QSlider::valueChanged, [this](int value)
@@ -109,8 +115,8 @@ void AppWindow::setDefaultUIValues() {
     ui->greyBgRadioButton->setChecked(true);
     ui->light0Slider->setValue(0);
     ui->light0Slider->setValue(80);
-    ui->modelComboBox->setCurrentText("Cube");
     ui->modelComboBox->setCurrentText("Duck");
+    ui->shaderComboBox->setCurrentText("Toon");
 
 }
 

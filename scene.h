@@ -11,6 +11,8 @@
 #include "node.h"
 #include "camera.h"
 #include "material/phong.h"
+#include "material/toon.h"
+
 #include "navigator/rotate_y.h"
 
 #include <memory> // std::unique_ptr
@@ -45,6 +47,9 @@ public slots:
 
     // change the node to be rendered in the scene
     void setSceneNode(QString node);
+    QString getCurrentSceneNode();
+
+    void setShader(QString shader);
 
     // change background color
     void setBackgroundColor(QVector3D rgb);
@@ -72,7 +77,10 @@ public slots:
 
     // adjust camera / viewport / ... if drawing surface changes
     void updateViewport(size_t width, size_t height);
-    void setRotateAxis(int axis);
+    void setRotateAxis(RotateY::Axis axis);
+
+
+
 protected:
 
     // draw the actual scene
@@ -99,6 +107,9 @@ protected:
     // different materials to be demonstrated
     std::map<QString, std::shared_ptr<PhongMaterial>> phongMaterials_;
 
+    std::map<QString, std::shared_ptr<ToonMaterial>> toonMaterials_;
+
+    std::vector<std::shared_ptr<Material>> allMaterials_;
     // mesh(es) to be used / shared
     std::map<QString, std::shared_ptr<Mesh>> meshes_;
 
@@ -122,6 +133,6 @@ protected:
     // helpers to construct the objects and to build the hierarchical scene
     void makeNodes();
     void makeScene();
-
+    QString currentSceneNode;
 };
 

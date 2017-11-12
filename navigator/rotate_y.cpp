@@ -8,7 +8,7 @@ using namespace std;
 RotateY::RotateY(std::shared_ptr<Node> node,
                  std::shared_ptr<Node>,
                  std::shared_ptr<Node>)
-    : NodeNavigator(node,nullptr,nullptr)
+    : NodeNavigator(node,nullptr,nullptr), selectedAxis(Axis::X)
 {
     updateTransformation_();
 }
@@ -83,8 +83,8 @@ RotateY& RotateY::rotateX(float degrees)
     return *this;
 }
 
-void RotateY::setRotateAxis(int axisRotae){
-    axis = axisRotae;
+void RotateY::setRotateAxis(Axis axisRotate){
+    selectedAxis = axisRotate;
 }
 
 // calculate camera's tranformation matrix from distance and rotation angle
@@ -95,7 +95,7 @@ void RotateY::updateTransformation_()
     // third, rotate around Y axis
     mat.rotate(rotation_angle_, QVector3D(0,1,0));
 
-    QVector3D qvector = axis == 0? QVector3D(-1,0,0) :  axis == 1 ? QVector3D(0,-1,0) :QVector3D(0,0,-1);
+    QVector3D qvector = getQVector3DOfAxis();
     // second, elevate node above X-Z axis by rotating around -X
     mat.rotate(elevation_angle_, qvector);
 
@@ -106,3 +106,20 @@ void RotateY::updateTransformation_()
     node_->transformation = mat;
 }
 
+RotateY::Axis RotateY::getRotateAxis(){
+    return selectedAxis;
+}
+
+QVector3D RotateY::getQVector3DOfAxis(){
+    switch (getRotateAxis()) {
+    case X:
+        return  QVector3D(-1,0,0);
+     case Y:
+        return  QVector3D(0,-1,0);
+    case Z:
+        return  QVector3D(0,0,-1);
+    default:
+         return  QVector3D(-1,0,0);
+    }
+
+}
