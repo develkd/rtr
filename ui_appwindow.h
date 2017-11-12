@@ -24,8 +24,6 @@
 #include <QtWidgets/QRadioButton>
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QSpacerItem>
-#include <QtWidgets/QSplitter>
-#include <QtWidgets/QTabWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 #include "rtrglwidget.h"
@@ -38,75 +36,68 @@ public:
     QHBoxLayout *mainLayout;
     rtrGLWidget *openGLWidget;
     QWidget *ui_container;
-    QVBoxLayout *verticalLayout_5;
-    QTabWidget *tabWidget;
-    QWidget *rendering_tab;
     QVBoxLayout *verticalLayout;
-    QGroupBox *groupBox;
-    QVBoxLayout *verticalLayout_2;
+    QGroupBox *groupBox_2;
+    QVBoxLayout *verticalLayout_3;
     QComboBox *modelComboBox;
     QGroupBox *groupBox_3;
     QVBoxLayout *verticalLayout_4;
     QComboBox *shaderComboBox;
-    QSpacerItem *verticalSpacer_4;
-    QLabel *label_3;
-    QSlider *light0Slider;
-    QSpacerItem *verticalSpacer_3;
-    QLabel *label_4;
-    QSlider *redSlider;
-    QSpacerItem *verticalSpacer_5;
-    QLabel *label_5;
-    QSlider *greenSlider;
-    QSpacerItem *verticalSpacer_6;
-    QLabel *label_6;
-    QSlider *blueSlider;
-    QSpacerItem *verticalSpacer_7;
-    QCheckBox *checkBoxSilhoutte;
-    QLabel *label_7;
-    QSlider *threshold;
-    QLabel *label_8;
-    QSlider *discretizer;
     QWidget *widget_2;
     QGridLayout *gridLayout;
+    QLabel *label_3;
+    QSlider *sunlightSlider;
+    QLabel *label_2;
+    QSlider *nightLightSlider;
+    QLabel *label_6;
+    QSlider *blendExpSlider;
+    QCheckBox *animationCheckbox;
     QGroupBox *groupBox_6;
     QHBoxLayout *horizontalLayout_4;
     QRadioButton *blackBgRadioButton;
     QRadioButton *greyBgRadioButton;
     QRadioButton *whiteBgRadioButton;
-    QGroupBox *groupBox_2;
+    QGroupBox *groupBox_4;
+    QHBoxLayout *horizontalLayout_2;
+    QCheckBox *bumpMapCheckbox;
+    QSlider *bumpMapSlider;
+    QGroupBox *groupBox_5;
+    QHBoxLayout *horizontalLayout_3;
+    QCheckBox *dispMapCheckBox;
+    QSlider *dispMapSlider;
+    QGroupBox *groupBox;
+    QVBoxLayout *verticalLayout_2;
+    QCheckBox *wireframeCheckBox;
+    QWidget *widget;
     QHBoxLayout *horizontalLayout;
-    QSplitter *splitter;
-    QRadioButton *radioButtonRotateX;
-    QRadioButton *radioButtonRotateY;
-    QRadioButton *radioButtonRotateZ;
-    QSpacerItem *verticalSpacer_2;
+    QRadioButton *radioButton_off;
+    QRadioButton *radioButton_N;
+    QRadioButton *radioButton_T;
+    QRadioButton *radioButton_B;
+    QSlider *vectorScaleSlider;
     QSpacerItem *verticalSpacer;
     QPushButton *quitButton;
-    QLabel *label_11;
-    QLabel *label_12;
-    QLabel *label_2;
     QLabel *label;
+    QLabel *label_4;
+    QLabel *label_5;
+    QLabel *label_7;
+    QButtonGroup *vectorsGroup;
 
     void setupUi(QWidget *AppWindow)
     {
         if (AppWindow->objectName().isEmpty())
             AppWindow->setObjectName(QStringLiteral("AppWindow"));
-        AppWindow->resize(910, 818);
-        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(AppWindow->sizePolicy().hasHeightForWidth());
-        AppWindow->setSizePolicy(sizePolicy);
+        AppWindow->resize(858, 701);
         AppWindow->setMinimumSize(QSize(800, 600));
         mainLayout = new QHBoxLayout(AppWindow);
         mainLayout->setObjectName(QStringLiteral("mainLayout"));
         openGLWidget = new rtrGLWidget(AppWindow);
         openGLWidget->setObjectName(QStringLiteral("openGLWidget"));
-        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Expanding);
-        sizePolicy1.setHorizontalStretch(8);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(openGLWidget->sizePolicy().hasHeightForWidth());
-        openGLWidget->setSizePolicy(sizePolicy1);
+        QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        sizePolicy.setHorizontalStretch(8);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(openGLWidget->sizePolicy().hasHeightForWidth());
+        openGLWidget->setSizePolicy(sizePolicy);
         openGLWidget->setMinimumSize(QSize(0, 0));
         openGLWidget->setFocusPolicy(Qt::StrongFocus);
 
@@ -114,192 +105,101 @@ public:
 
         ui_container = new QWidget(AppWindow);
         ui_container->setObjectName(QStringLiteral("ui_container"));
-        QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy2.setHorizontalStretch(2);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(ui_container->sizePolicy().hasHeightForWidth());
-        ui_container->setSizePolicy(sizePolicy2);
-        ui_container->setMaximumSize(QSize(226, 800));
+        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy1.setHorizontalStretch(2);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(ui_container->sizePolicy().hasHeightForWidth());
+        ui_container->setSizePolicy(sizePolicy1);
         ui_container->setFocusPolicy(Qt::WheelFocus);
-        verticalLayout_5 = new QVBoxLayout(ui_container);
-        verticalLayout_5->setObjectName(QStringLiteral("verticalLayout_5"));
-        tabWidget = new QTabWidget(ui_container);
-        tabWidget->setObjectName(QStringLiteral("tabWidget"));
-        QSizePolicy sizePolicy3(QSizePolicy::Expanding, QSizePolicy::Expanding);
-        sizePolicy3.setHorizontalStretch(0);
-        sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(tabWidget->sizePolicy().hasHeightForWidth());
-        tabWidget->setSizePolicy(sizePolicy3);
-        tabWidget->setMaximumSize(QSize(16777215, 16777215));
-        tabWidget->setUsesScrollButtons(false);
-        rendering_tab = new QWidget();
-        rendering_tab->setObjectName(QStringLiteral("rendering_tab"));
-        verticalLayout = new QVBoxLayout(rendering_tab);
+        verticalLayout = new QVBoxLayout(ui_container);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        verticalLayout->setContentsMargins(2, -1, 2, -1);
-        groupBox = new QGroupBox(rendering_tab);
-        groupBox->setObjectName(QStringLiteral("groupBox"));
-        verticalLayout_2 = new QVBoxLayout(groupBox);
-        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
-        modelComboBox = new QComboBox(groupBox);
+        groupBox_2 = new QGroupBox(ui_container);
+        groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
+        verticalLayout_3 = new QVBoxLayout(groupBox_2);
+        verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
+        modelComboBox = new QComboBox(groupBox_2);
         modelComboBox->setObjectName(QStringLiteral("modelComboBox"));
         modelComboBox->setFocusPolicy(Qt::NoFocus);
-        modelComboBox->setMaxVisibleItems(20);
 
-        verticalLayout_2->addWidget(modelComboBox);
+        verticalLayout_3->addWidget(modelComboBox);
 
-        groupBox_3 = new QGroupBox(groupBox);
+
+        verticalLayout->addWidget(groupBox_2);
+
+        groupBox_3 = new QGroupBox(ui_container);
         groupBox_3->setObjectName(QStringLiteral("groupBox_3"));
-        QSizePolicy sizePolicy4(QSizePolicy::Preferred, QSizePolicy::MinimumExpanding);
-        sizePolicy4.setHorizontalStretch(0);
-        sizePolicy4.setVerticalStretch(20);
-        sizePolicy4.setHeightForWidth(groupBox_3->sizePolicy().hasHeightForWidth());
-        groupBox_3->setSizePolicy(sizePolicy4);
         verticalLayout_4 = new QVBoxLayout(groupBox_3);
-        verticalLayout_4->setSpacing(0);
         verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
         shaderComboBox = new QComboBox(groupBox_3);
         shaderComboBox->setObjectName(QStringLiteral("shaderComboBox"));
-        shaderComboBox->setEnabled(true);
-        sizePolicy.setHeightForWidth(shaderComboBox->sizePolicy().hasHeightForWidth());
-        shaderComboBox->setSizePolicy(sizePolicy);
+        shaderComboBox->setFocusPolicy(Qt::NoFocus);
 
         verticalLayout_4->addWidget(shaderComboBox);
 
-        verticalSpacer_4 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
-
-        verticalLayout_4->addItem(verticalSpacer_4);
-
-        label_3 = new QLabel(groupBox_3);
-        label_3->setObjectName(QStringLiteral("label_3"));
-        QSizePolicy sizePolicy5(QSizePolicy::MinimumExpanding, QSizePolicy::Fixed);
-        sizePolicy5.setHorizontalStretch(0);
-        sizePolicy5.setVerticalStretch(0);
-        sizePolicy5.setHeightForWidth(label_3->sizePolicy().hasHeightForWidth());
-        label_3->setSizePolicy(sizePolicy5);
-
-        verticalLayout_4->addWidget(label_3);
-
-        light0Slider = new QSlider(groupBox_3);
-        light0Slider->setObjectName(QStringLiteral("light0Slider"));
-        sizePolicy5.setHeightForWidth(light0Slider->sizePolicy().hasHeightForWidth());
-        light0Slider->setSizePolicy(sizePolicy5);
-        light0Slider->setFocusPolicy(Qt::NoFocus);
-        light0Slider->setMaximum(100);
-        light0Slider->setOrientation(Qt::Horizontal);
-
-        verticalLayout_4->addWidget(light0Slider);
-
-        verticalSpacer_3 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
-
-        verticalLayout_4->addItem(verticalSpacer_3);
-
-        label_4 = new QLabel(groupBox_3);
-        label_4->setObjectName(QStringLiteral("label_4"));
-        sizePolicy5.setHeightForWidth(label_4->sizePolicy().hasHeightForWidth());
-        label_4->setSizePolicy(sizePolicy5);
-        label_4->setBaseSize(QSize(0, 30));
-
-        verticalLayout_4->addWidget(label_4);
-
-        redSlider = new QSlider(groupBox_3);
-        redSlider->setObjectName(QStringLiteral("redSlider"));
-        redSlider->setMaximum(100);
-        redSlider->setOrientation(Qt::Horizontal);
-
-        verticalLayout_4->addWidget(redSlider);
-
-        verticalSpacer_5 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
-
-        verticalLayout_4->addItem(verticalSpacer_5);
-
-        label_5 = new QLabel(groupBox_3);
-        label_5->setObjectName(QStringLiteral("label_5"));
-        sizePolicy5.setHeightForWidth(label_5->sizePolicy().hasHeightForWidth());
-        label_5->setSizePolicy(sizePolicy5);
-
-        verticalLayout_4->addWidget(label_5);
-
-        greenSlider = new QSlider(groupBox_3);
-        greenSlider->setObjectName(QStringLiteral("greenSlider"));
-        greenSlider->setMaximum(100);
-        greenSlider->setOrientation(Qt::Horizontal);
-
-        verticalLayout_4->addWidget(greenSlider);
-
-        verticalSpacer_6 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
-
-        verticalLayout_4->addItem(verticalSpacer_6);
-
-        label_6 = new QLabel(groupBox_3);
-        label_6->setObjectName(QStringLiteral("label_6"));
-        sizePolicy5.setHeightForWidth(label_6->sizePolicy().hasHeightForWidth());
-        label_6->setSizePolicy(sizePolicy5);
-
-        verticalLayout_4->addWidget(label_6);
-
-        blueSlider = new QSlider(groupBox_3);
-        blueSlider->setObjectName(QStringLiteral("blueSlider"));
-        blueSlider->setMaximum(100);
-        blueSlider->setOrientation(Qt::Horizontal);
-
-        verticalLayout_4->addWidget(blueSlider);
-
-        verticalSpacer_7 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
-
-        verticalLayout_4->addItem(verticalSpacer_7);
-
-        checkBoxSilhoutte = new QCheckBox(groupBox_3);
-        checkBoxSilhoutte->setObjectName(QStringLiteral("checkBoxSilhoutte"));
-
-        verticalLayout_4->addWidget(checkBoxSilhoutte);
-
-        label_7 = new QLabel(groupBox_3);
-        label_7->setObjectName(QStringLiteral("label_7"));
-
-        verticalLayout_4->addWidget(label_7);
-
-        threshold = new QSlider(groupBox_3);
-        threshold->setObjectName(QStringLiteral("threshold"));
-        threshold->setEnabled(false);
-        threshold->setMaximum(100);
-        threshold->setOrientation(Qt::Horizontal);
-
-        verticalLayout_4->addWidget(threshold);
-
-        label_8 = new QLabel(groupBox_3);
-        label_8->setObjectName(QStringLiteral("label_8"));
-
-        verticalLayout_4->addWidget(label_8);
-
-        discretizer = new QSlider(groupBox_3);
-        discretizer->setObjectName(QStringLiteral("discretizer"));
-        discretizer->setMinimum(1);
-        discretizer->setMaximum(10);
-        discretizer->setOrientation(Qt::Horizontal);
-
-        verticalLayout_4->addWidget(discretizer);
-
         widget_2 = new QWidget(groupBox_3);
         widget_2->setObjectName(QStringLiteral("widget_2"));
-        QSizePolicy sizePolicy6(QSizePolicy::Maximum, QSizePolicy::Minimum);
-        sizePolicy6.setHorizontalStretch(0);
-        sizePolicy6.setVerticalStretch(0);
-        sizePolicy6.setHeightForWidth(widget_2->sizePolicy().hasHeightForWidth());
-        widget_2->setSizePolicy(sizePolicy6);
         gridLayout = new QGridLayout(widget_2);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
         gridLayout->setContentsMargins(0, 0, 0, 0);
+        label_3 = new QLabel(widget_2);
+        label_3->setObjectName(QStringLiteral("label_3"));
+
+        gridLayout->addWidget(label_3, 0, 0, 1, 1);
+
+        sunlightSlider = new QSlider(widget_2);
+        sunlightSlider->setObjectName(QStringLiteral("sunlightSlider"));
+        QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Fixed);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(sunlightSlider->sizePolicy().hasHeightForWidth());
+        sunlightSlider->setSizePolicy(sizePolicy2);
+        sunlightSlider->setFocusPolicy(Qt::NoFocus);
+        sunlightSlider->setMaximum(100);
+        sunlightSlider->setOrientation(Qt::Horizontal);
+
+        gridLayout->addWidget(sunlightSlider, 0, 2, 1, 1);
+
+        label_2 = new QLabel(widget_2);
+        label_2->setObjectName(QStringLiteral("label_2"));
+
+        gridLayout->addWidget(label_2, 1, 0, 1, 1);
+
+        nightLightSlider = new QSlider(widget_2);
+        nightLightSlider->setObjectName(QStringLiteral("nightLightSlider"));
+        sizePolicy2.setHeightForWidth(nightLightSlider->sizePolicy().hasHeightForWidth());
+        nightLightSlider->setSizePolicy(sizePolicy2);
+        nightLightSlider->setFocusPolicy(Qt::NoFocus);
+        nightLightSlider->setValue(0);
+        nightLightSlider->setOrientation(Qt::Horizontal);
+
+        gridLayout->addWidget(nightLightSlider, 1, 2, 1, 1);
+
+        label_6 = new QLabel(widget_2);
+        label_6->setObjectName(QStringLiteral("label_6"));
+
+        gridLayout->addWidget(label_6, 2, 0, 1, 1);
+
+        blendExpSlider = new QSlider(widget_2);
+        blendExpSlider->setObjectName(QStringLiteral("blendExpSlider"));
+        blendExpSlider->setFocusPolicy(Qt::NoFocus);
+        blendExpSlider->setMaximum(100);
+        blendExpSlider->setOrientation(Qt::Horizontal);
+
+        gridLayout->addWidget(blendExpSlider, 2, 2, 1, 1);
+
 
         verticalLayout_4->addWidget(widget_2);
 
+        animationCheckbox = new QCheckBox(groupBox_3);
+        animationCheckbox->setObjectName(QStringLiteral("animationCheckbox"));
+        animationCheckbox->setFocusPolicy(Qt::NoFocus);
 
-        verticalLayout_2->addWidget(groupBox_3);
+        verticalLayout_4->addWidget(animationCheckbox);
 
 
-        verticalLayout->addWidget(groupBox);
+        verticalLayout->addWidget(groupBox_3);
 
-        groupBox_6 = new QGroupBox(rendering_tab);
+        groupBox_6 = new QGroupBox(ui_container);
         groupBox_6->setObjectName(QStringLiteral("groupBox_6"));
         horizontalLayout_4 = new QHBoxLayout(groupBox_6);
         horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
@@ -310,97 +210,173 @@ public:
 
         greyBgRadioButton = new QRadioButton(groupBox_6);
         greyBgRadioButton->setObjectName(QStringLiteral("greyBgRadioButton"));
-        greyBgRadioButton->setFocusPolicy(Qt::NoFocus);
         greyBgRadioButton->setChecked(true);
 
         horizontalLayout_4->addWidget(greyBgRadioButton);
 
         whiteBgRadioButton = new QRadioButton(groupBox_6);
         whiteBgRadioButton->setObjectName(QStringLiteral("whiteBgRadioButton"));
-        whiteBgRadioButton->setFocusPolicy(Qt::StrongFocus);
 
         horizontalLayout_4->addWidget(whiteBgRadioButton);
 
 
         verticalLayout->addWidget(groupBox_6);
 
-        groupBox_2 = new QGroupBox(rendering_tab);
-        groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
-        horizontalLayout = new QHBoxLayout(groupBox_2);
+        groupBox_4 = new QGroupBox(ui_container);
+        groupBox_4->setObjectName(QStringLiteral("groupBox_4"));
+        horizontalLayout_2 = new QHBoxLayout(groupBox_4);
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        horizontalLayout_2->setContentsMargins(-1, 6, -1, 6);
+        bumpMapCheckbox = new QCheckBox(groupBox_4);
+        bumpMapCheckbox->setObjectName(QStringLiteral("bumpMapCheckbox"));
+        QSizePolicy sizePolicy3(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(bumpMapCheckbox->sizePolicy().hasHeightForWidth());
+        bumpMapCheckbox->setSizePolicy(sizePolicy3);
+        bumpMapCheckbox->setFocusPolicy(Qt::NoFocus);
+
+        horizontalLayout_2->addWidget(bumpMapCheckbox);
+
+        bumpMapSlider = new QSlider(groupBox_4);
+        bumpMapSlider->setObjectName(QStringLiteral("bumpMapSlider"));
+        sizePolicy2.setHeightForWidth(bumpMapSlider->sizePolicy().hasHeightForWidth());
+        bumpMapSlider->setSizePolicy(sizePolicy2);
+        bumpMapSlider->setFocusPolicy(Qt::NoFocus);
+        bumpMapSlider->setMaximum(100);
+        bumpMapSlider->setValue(0);
+        bumpMapSlider->setOrientation(Qt::Horizontal);
+        bumpMapSlider->setInvertedAppearance(false);
+        bumpMapSlider->setInvertedControls(false);
+
+        horizontalLayout_2->addWidget(bumpMapSlider);
+
+
+        verticalLayout->addWidget(groupBox_4);
+
+        groupBox_5 = new QGroupBox(ui_container);
+        groupBox_5->setObjectName(QStringLiteral("groupBox_5"));
+        horizontalLayout_3 = new QHBoxLayout(groupBox_5);
+        horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
+        horizontalLayout_3->setContentsMargins(-1, 6, -1, 6);
+        dispMapCheckBox = new QCheckBox(groupBox_5);
+        dispMapCheckBox->setObjectName(QStringLiteral("dispMapCheckBox"));
+        sizePolicy3.setHeightForWidth(dispMapCheckBox->sizePolicy().hasHeightForWidth());
+        dispMapCheckBox->setSizePolicy(sizePolicy3);
+        dispMapCheckBox->setFocusPolicy(Qt::NoFocus);
+
+        horizontalLayout_3->addWidget(dispMapCheckBox);
+
+        dispMapSlider = new QSlider(groupBox_5);
+        dispMapSlider->setObjectName(QStringLiteral("dispMapSlider"));
+        sizePolicy2.setHeightForWidth(dispMapSlider->sizePolicy().hasHeightForWidth());
+        dispMapSlider->setSizePolicy(sizePolicy2);
+        dispMapSlider->setFocusPolicy(Qt::NoFocus);
+        dispMapSlider->setMaximum(100);
+        dispMapSlider->setValue(0);
+        dispMapSlider->setOrientation(Qt::Horizontal);
+
+        horizontalLayout_3->addWidget(dispMapSlider);
+
+
+        verticalLayout->addWidget(groupBox_5);
+
+        groupBox = new QGroupBox(ui_container);
+        groupBox->setObjectName(QStringLiteral("groupBox"));
+        verticalLayout_2 = new QVBoxLayout(groupBox);
+        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        verticalLayout_2->setContentsMargins(-1, 6, -1, 6);
+        wireframeCheckBox = new QCheckBox(groupBox);
+        wireframeCheckBox->setObjectName(QStringLiteral("wireframeCheckBox"));
+        wireframeCheckBox->setFocusPolicy(Qt::NoFocus);
+
+        verticalLayout_2->addWidget(wireframeCheckBox);
+
+        widget = new QWidget(groupBox);
+        widget->setObjectName(QStringLiteral("widget"));
+        horizontalLayout = new QHBoxLayout(widget);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        splitter = new QSplitter(groupBox_2);
-        splitter->setObjectName(QStringLiteral("splitter"));
-        splitter->setOrientation(Qt::Horizontal);
-        radioButtonRotateX = new QRadioButton(splitter);
-        radioButtonRotateX->setObjectName(QStringLiteral("radioButtonRotateX"));
-        radioButtonRotateX->setFocusPolicy(Qt::NoFocus);
-        radioButtonRotateX->setChecked(true);
-        splitter->addWidget(radioButtonRotateX);
-        radioButtonRotateY = new QRadioButton(splitter);
-        radioButtonRotateY->setObjectName(QStringLiteral("radioButtonRotateY"));
-        splitter->addWidget(radioButtonRotateY);
-        radioButtonRotateZ = new QRadioButton(splitter);
-        radioButtonRotateZ->setObjectName(QStringLiteral("radioButtonRotateZ"));
-        radioButtonRotateZ->setFocusPolicy(Qt::NoFocus);
-        splitter->addWidget(radioButtonRotateZ);
+        horizontalLayout->setContentsMargins(0, -1, 0, 0);
+        radioButton_off = new QRadioButton(widget);
+        vectorsGroup = new QButtonGroup(AppWindow);
+        vectorsGroup->setObjectName(QStringLiteral("vectorsGroup"));
+        vectorsGroup->addButton(radioButton_off);
+        radioButton_off->setObjectName(QStringLiteral("radioButton_off"));
+        radioButton_off->setFocusPolicy(Qt::NoFocus);
+        radioButton_off->setChecked(true);
 
-        horizontalLayout->addWidget(splitter);
+        horizontalLayout->addWidget(radioButton_off);
+
+        radioButton_N = new QRadioButton(widget);
+        vectorsGroup->addButton(radioButton_N);
+        radioButton_N->setObjectName(QStringLiteral("radioButton_N"));
+        radioButton_N->setFocusPolicy(Qt::NoFocus);
+
+        horizontalLayout->addWidget(radioButton_N);
+
+        radioButton_T = new QRadioButton(widget);
+        vectorsGroup->addButton(radioButton_T);
+        radioButton_T->setObjectName(QStringLiteral("radioButton_T"));
+        radioButton_T->setFocusPolicy(Qt::NoFocus);
+
+        horizontalLayout->addWidget(radioButton_T);
+
+        radioButton_B = new QRadioButton(widget);
+        vectorsGroup->addButton(radioButton_B);
+        radioButton_B->setObjectName(QStringLiteral("radioButton_B"));
+        radioButton_B->setFocusPolicy(Qt::NoFocus);
+
+        horizontalLayout->addWidget(radioButton_B);
 
 
-        verticalLayout->addWidget(groupBox_2);
+        verticalLayout_2->addWidget(widget);
 
-        tabWidget->addTab(rendering_tab, QString());
+        vectorScaleSlider = new QSlider(groupBox);
+        vectorScaleSlider->setObjectName(QStringLiteral("vectorScaleSlider"));
+        sizePolicy2.setHeightForWidth(vectorScaleSlider->sizePolicy().hasHeightForWidth());
+        vectorScaleSlider->setSizePolicy(sizePolicy2);
+        vectorScaleSlider->setFocusPolicy(Qt::NoFocus);
+        vectorScaleSlider->setMinimum(1);
+        vectorScaleSlider->setMaximum(100);
+        vectorScaleSlider->setValue(1);
+        vectorScaleSlider->setSliderPosition(1);
+        vectorScaleSlider->setTracking(true);
+        vectorScaleSlider->setOrientation(Qt::Horizontal);
 
-        verticalLayout_5->addWidget(tabWidget);
+        verticalLayout_2->addWidget(vectorScaleSlider);
 
-        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Ignored);
 
-        verticalLayout_5->addItem(verticalSpacer_2);
+        verticalLayout->addWidget(groupBox);
 
-        verticalSpacer = new QSpacerItem(20, 100, QSizePolicy::Minimum, QSizePolicy::Ignored);
+        verticalSpacer = new QSpacerItem(20, 368, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-        verticalLayout_5->addItem(verticalSpacer);
+        verticalLayout->addItem(verticalSpacer);
 
         quitButton = new QPushButton(ui_container);
         quitButton->setObjectName(QStringLiteral("quitButton"));
         quitButton->setFocusPolicy(Qt::NoFocus);
 
-        verticalLayout_5->addWidget(quitButton);
-
-        label_11 = new QLabel(ui_container);
-        label_11->setObjectName(QStringLiteral("label_11"));
-        QSizePolicy sizePolicy7(QSizePolicy::Preferred, QSizePolicy::Minimum);
-        sizePolicy7.setHorizontalStretch(0);
-        sizePolicy7.setVerticalStretch(0);
-        sizePolicy7.setHeightForWidth(label_11->sizePolicy().hasHeightForWidth());
-        label_11->setSizePolicy(sizePolicy7);
-        label_11->setMaximumSize(QSize(16777215, 20));
-
-        verticalLayout_5->addWidget(label_11);
-
-        label_12 = new QLabel(ui_container);
-        label_12->setObjectName(QStringLiteral("label_12"));
-        sizePolicy7.setHeightForWidth(label_12->sizePolicy().hasHeightForWidth());
-        label_12->setSizePolicy(sizePolicy7);
-        label_12->setMaximumSize(QSize(16777215, 20));
-
-        verticalLayout_5->addWidget(label_12);
-
-        label_2 = new QLabel(ui_container);
-        label_2->setObjectName(QStringLiteral("label_2"));
-        sizePolicy7.setHeightForWidth(label_2->sizePolicy().hasHeightForWidth());
-        label_2->setSizePolicy(sizePolicy7);
-        label_2->setMaximumSize(QSize(16777215, 20));
-
-        verticalLayout_5->addWidget(label_2);
+        verticalLayout->addWidget(quitButton);
 
         label = new QLabel(ui_container);
         label->setObjectName(QStringLiteral("label"));
-        sizePolicy7.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
-        label->setSizePolicy(sizePolicy7);
-        label->setMaximumSize(QSize(16777215, 20));
 
-        verticalLayout_5->addWidget(label);
+        verticalLayout->addWidget(label);
+
+        label_4 = new QLabel(ui_container);
+        label_4->setObjectName(QStringLiteral("label_4"));
+
+        verticalLayout->addWidget(label_4);
+
+        label_5 = new QLabel(ui_container);
+        label_5->setObjectName(QStringLiteral("label_5"));
+
+        verticalLayout->addWidget(label_5);
+
+        label_7 = new QLabel(ui_container);
+        label_7->setObjectName(QStringLiteral("label_7"));
+
+        verticalLayout->addWidget(label_7);
 
 
         mainLayout->addWidget(ui_container);
@@ -408,7 +384,7 @@ public:
 
         retranslateUi(AppWindow);
 
-        tabWidget->setCurrentIndex(0);
+        modelComboBox->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(AppWindow);
@@ -417,50 +393,55 @@ public:
     void retranslateUi(QWidget *AppWindow)
     {
         AppWindow->setWindowTitle(QApplication::translate("AppWindow", "RTR Demo", Q_NULLPTR));
-        groupBox->setTitle(QApplication::translate("AppWindow", "Scene", Q_NULLPTR));
+        groupBox_2->setTitle(QApplication::translate("AppWindow", "Model", Q_NULLPTR));
         modelComboBox->clear();
         modelComboBox->insertItems(0, QStringList()
-         << QApplication::translate("AppWindow", "Teapot", Q_NULLPTR)
-         << QApplication::translate("AppWindow", "F117_H", Q_NULLPTR)
-         << QApplication::translate("AppWindow", "Alien", Q_NULLPTR)
-         << QApplication::translate("AppWindow", "Cube", Q_NULLPTR)
-         << QApplication::translate("AppWindow", "Obiwan", Q_NULLPTR)
-         << QApplication::translate("AppWindow", "Goblin", Q_NULLPTR)
-         << QApplication::translate("AppWindow", "Duck", Q_NULLPTR)
-         << QApplication::translate("AppWindow", "Venus", Q_NULLPTR)
-         << QApplication::translate("AppWindow", "Buddha", Q_NULLPTR)
-         << QApplication::translate("AppWindow", "Dragon", Q_NULLPTR)
          << QApplication::translate("AppWindow", "Sphere", Q_NULLPTR)
+         << QApplication::translate("AppWindow", "Torus", Q_NULLPTR)
+         << QApplication::translate("AppWindow", "Rect", Q_NULLPTR)
+         << QApplication::translate("AppWindow", "Cube", Q_NULLPTR)
+         << QApplication::translate("AppWindow", "Duck", Q_NULLPTR)
+         << QApplication::translate("AppWindow", "Teapot", Q_NULLPTR)
+         << QApplication::translate("AppWindow", "Dwarf", Q_NULLPTR)
         );
-        groupBox_3->setTitle(QApplication::translate("AppWindow", "Shader Parameters", Q_NULLPTR));
+        groupBox_3->setTitle(QApplication::translate("AppWindow", "Shader", Q_NULLPTR));
         shaderComboBox->clear();
         shaderComboBox->insertItems(0, QStringList()
          << QApplication::translate("AppWindow", "Phong", Q_NULLPTR)
-         << QApplication::translate("AppWindow", "Point", Q_NULLPTR)
-         << QApplication::translate("AppWindow", "Toon", Q_NULLPTR)
+         << QApplication::translate("AppWindow", "Debug Tex Coords", Q_NULLPTR)
+         << QApplication::translate("AppWindow", "Debug Day/Night", Q_NULLPTR)
+         << QApplication::translate("AppWindow", "Day Texture", Q_NULLPTR)
+         << QApplication::translate("AppWindow", "Night Texture", Q_NULLPTR)
+         << QApplication::translate("AppWindow", "Day+Night Texture", Q_NULLPTR)
+         << QApplication::translate("AppWindow", "Debug Gloss", Q_NULLPTR)
+         << QApplication::translate("AppWindow", "Phong+Gloss", Q_NULLPTR)
+         << QApplication::translate("AppWindow", "Day+Night+Gloss", Q_NULLPTR)
+         << QApplication::translate("AppWindow", "+Clouds", Q_NULLPTR)
+         << QApplication::translate("AppWindow", "None", Q_NULLPTR)
         );
-        shaderComboBox->setCurrentText(QApplication::translate("AppWindow", "Phong", Q_NULLPTR));
-        label_3->setText(QApplication::translate("AppWindow", "Light Intensity", Q_NULLPTR));
-        label_4->setText(QApplication::translate("AppWindow", "Red", Q_NULLPTR));
-        label_5->setText(QApplication::translate("AppWindow", "Green", Q_NULLPTR));
-        label_6->setText(QApplication::translate("AppWindow", "Blue", Q_NULLPTR));
-        checkBoxSilhoutte->setText(QApplication::translate("AppWindow", "Silhouette", Q_NULLPTR));
-        label_7->setText(QApplication::translate("AppWindow", "Threshold", Q_NULLPTR));
-        label_8->setText(QApplication::translate("AppWindow", "Steps of discretize", Q_NULLPTR));
+        label_3->setText(QApplication::translate("AppWindow", "Sunlight", Q_NULLPTR));
+        label_2->setText(QApplication::translate("AppWindow", "Night Lights", Q_NULLPTR));
+        label_6->setText(QApplication::translate("AppWindow", "Blending Exp", Q_NULLPTR));
+        animationCheckbox->setText(QApplication::translate("AppWindow", "cloud animation", Q_NULLPTR));
         groupBox_6->setTitle(QApplication::translate("AppWindow", "Background", Q_NULLPTR));
         blackBgRadioButton->setText(QApplication::translate("AppWindow", "black", Q_NULLPTR));
         greyBgRadioButton->setText(QApplication::translate("AppWindow", "grey", Q_NULLPTR));
         whiteBgRadioButton->setText(QApplication::translate("AppWindow", "white", Q_NULLPTR));
-        groupBox_2->setTitle(QApplication::translate("AppWindow", "Rotation Axis", Q_NULLPTR));
-        radioButtonRotateX->setText(QApplication::translate("AppWindow", "X", Q_NULLPTR));
-        radioButtonRotateY->setText(QApplication::translate("AppWindow", "Y", Q_NULLPTR));
-        radioButtonRotateZ->setText(QApplication::translate("AppWindow", "Z", Q_NULLPTR));
-        tabWidget->setTabText(tabWidget->indexOf(rendering_tab), QApplication::translate("AppWindow", "Rendering", Q_NULLPTR));
+        groupBox_4->setTitle(QApplication::translate("AppWindow", "Bump Mapping", Q_NULLPTR));
+        bumpMapCheckbox->setText(QApplication::translate("AppWindow", "on", Q_NULLPTR));
+        groupBox_5->setTitle(QApplication::translate("AppWindow", "Displacement Mapping", Q_NULLPTR));
+        dispMapCheckBox->setText(QApplication::translate("AppWindow", "on", Q_NULLPTR));
+        groupBox->setTitle(QApplication::translate("AppWindow", "Visualize wireframe / vectors", Q_NULLPTR));
+        wireframeCheckBox->setText(QApplication::translate("AppWindow", "wireframe", Q_NULLPTR));
+        radioButton_off->setText(QApplication::translate("AppWindow", "off", Q_NULLPTR));
+        radioButton_N->setText(QApplication::translate("AppWindow", "N", Q_NULLPTR));
+        radioButton_T->setText(QApplication::translate("AppWindow", "T", Q_NULLPTR));
+        radioButton_B->setText(QApplication::translate("AppWindow", "B", Q_NULLPTR));
         quitButton->setText(QApplication::translate("AppWindow", "quit", Q_NULLPTR));
-        label_11->setText(QApplication::translate("AppWindow", "left/right: rotate camera Y-Axsi", Q_NULLPTR));
-        label_12->setText(QApplication::translate("AppWindow", "up/down: rotate camera X/Z-Axis", Q_NULLPTR));
-        label_2->setText(QApplication::translate("AppWindow", "zoom in: +      zoom out: -", Q_NULLPTR));
         label->setText(QApplication::translate("AppWindow", "'h': show/hide UI", Q_NULLPTR));
+        label_4->setText(QApplication::translate("AppWindow", "cursor keys: rotate / zoom", Q_NULLPTR));
+        label_5->setText(QApplication::translate("AppWindow", "Alt + cursor: move light in X/Y", Q_NULLPTR));
+        label_7->setText(QApplication::translate("AppWindow", "Alt + Shift + cursor: move light in Z", Q_NULLPTR));
     } // retranslateUi
 
 };

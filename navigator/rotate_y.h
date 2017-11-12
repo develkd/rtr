@@ -8,11 +8,6 @@
 
 class RotateY : public NodeNavigator {
 public:
-    enum Axis{
-        X,
-        Y,
-        Z
-    };
 
     // this navigator only needs the actual node, and is independent of world and camera
     RotateY(std::shared_ptr<Node> node,
@@ -37,23 +32,15 @@ public:
     // add/subtract to/form current rotation angle
     RotateY& rotate(float degrees);
 
-    // add/subtract to/form current rotation angle
-    RotateY& rotateX(float degrees);
-
-    void setRotateAxis(Axis axis);
-    Axis getRotateAxis();
-
 protected:
-    Axis selectedAxis;
+
     float distance_to_center_ = 1.0;
     float rotation_angle_ = 0;
     float elevation_angle_ = 15;
     float rotation_speed_ = 5.0;
     float zoom_speed_ = 0.25;
-    QVector3D rotateVector =  QVector3D(0,1,0);
 
     void updateTransformation_();
-    QVector3D getQVector3DOfAxis();
 
 };
 

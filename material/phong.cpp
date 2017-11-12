@@ -10,6 +10,7 @@ void PhongMaterial::apply(unsigned int light_pass)
     // globals
     prog_->setUniformValue("time", time);
     prog_->setUniformValue("ambientLightIntensity", ambientLightIntensity);
+
     // point light
     assert(light_pass>=0 && light_pass<lights.size());
     prog_->setUniformValue("light.position_WC", lights[light_pass].position_WC);
@@ -22,10 +23,7 @@ void PhongMaterial::apply(unsigned int light_pass)
     prog_->setUniformValue("phong.k_specular", phong.k_specular);
     prog_->setUniformValue("phong.shininess",  phong.shininess);
 
-
 }
 
-QString
-PhongMaterial::getAppliedShader(){
-    return "phong";
-}
+
+

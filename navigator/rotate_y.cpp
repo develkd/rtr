@@ -8,7 +8,7 @@ using namespace std;
 RotateY::RotateY(std::shared_ptr<Node> node,
                  std::shared_ptr<Node>,
                  std::shared_ptr<Node>)
-    : NodeNavigator(node,nullptr,nullptr), selectedAxis(Axis::X)
+    : NodeNavigator(node,nullptr,nullptr)
 {
     updateTransformation_();
 }
@@ -25,15 +25,9 @@ void RotateY::keyPressEvent(QKeyEvent *event)
             rotate(+rotation_speed_);
             break;
         case Qt::Key_Up:
-         rotateX(+rotation_speed_);
-        break;
-        case Qt::Key_Down:
-         rotateX(-rotation_speed_);
-        break;
-        case Qt::Key_Plus:
             setDistance(distance_to_center_-zoom_speed_);
             break;
-        case Qt::Key_Minus:
+        case Qt::Key_Down:
             setDistance(distance_to_center_+zoom_speed_);
             break;
         default:
@@ -76,28 +70,18 @@ RotateY& RotateY::rotate(float degrees)
     return *this;
 }
 
-RotateY& RotateY::rotateX(float degrees)
-{
-    elevation_angle_ = elevation_angle_ + degrees;
-    updateTransformation_();
-    return *this;
-}
-
-void RotateY::setRotateAxis(Axis axisRotate){
-    selectedAxis = axisRotate;
-}
-
 // calculate camera's tranformation matrix from distance and rotation angle
 void RotateY::updateTransformation_()
 {
     QMatrix4x4 mat;
 
-    // third, rotate around Y axis
-    mat.rotate(rotation_angle_, rotateVector);
+    // qDebug() << "navigator: dist=" << distance_to_center_ << " angle=" << rotation_angle_;
 
-    QVector3D qvector = getQVector3DOfAxis( );
+    // third, rotate around Y axis
+    mat.rotate(rotation_angle_, QVector3D(0,1,0));
+
     // second, elevate node above X-Z axis by rotating around -X
-    mat.rotate(elevation_angle_, qvector);
+    mat.rotate(elevation_angle_, QVector3D(-1,0,0));
 
     // first, translate along camera axis
     mat.translate(0, 0, distance_to_center_);
@@ -106,22 +90,3 @@ void RotateY::updateTransformation_()
     node_->transformation = mat;
 }
 
-RotateY::Axis RotateY::getRotateAxis(){
-    return selectedAxis;
-}
-
-QVector3D RotateY::getQVector3DOfAxis(){
-
-
-    switch (getRotateAxis()) {
-    case X:
-        return  QVector3D(-1,0,0);
-     case Y:
-        return  QVector3D(0,-1,0);
-    case Z:
-        return  QVector3D(0,0,-1);
-    default:
-         return  rotateVector;
-    }
-
-}

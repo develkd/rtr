@@ -3,13 +3,13 @@
         <file>models/duck/duck.obj</file>
         <file>models/teapot/teapot.obj</file>
         <file>models/goblin.obj</file>
-        <file>textures/RTR-ist-super-4-3.png</file>
-        <file>models/obiwan/obiwan.obj</file>
-        <file>models/extern/buddha.obj</file>
-        <file>models/extern/dragon.obj</file>
-        <file>models/extern/sphere.obj</file>
-        <file>models/extern/venus.obj</file>
-        <file>models/stuff/alien.obj</file>
-        <file>models/stuff/F117_H.obj</file>
+        <file>models/trefoil.obj</file>
+        <file>models/dwarf/Dwarf_2_Low.obj</file>
+        <file>textures/earth_at_night_2048.jpg</file>
+        <file>textures/earth_bathymetry_2048.jpg</file>
+        <file>textures/earth_clouds_2048.jpg</file>
+        <file>textures/earth_day.jpg</file>
+        <file>textures/earth_topography_2048_NRM.png</file>
+        <file>textures/earth_topography_2048.jpg</file>
     </qresource>
 </RCC>
