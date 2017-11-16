@@ -66,6 +66,12 @@ public:
     QSlider *threshold;
     QLabel *label_8;
     QSlider *discretizer;
+    QSpacerItem *verticalSpacer_8;
+    QLabel *label_9;
+    QSlider *radiusSlider;
+    QSpacerItem *verticalSpacer_9;
+    QLabel *label_10;
+    QSlider *densitySlider;
     QWidget *widget_2;
     QGridLayout *gridLayout;
     QGroupBox *groupBox_6;
@@ -91,7 +97,7 @@ public:
     {
         if (AppWindow->objectName().isEmpty())
             AppWindow->setObjectName(QStringLiteral("AppWindow"));
-        AppWindow->resize(910, 818);
+        AppWindow->resize(976, 924);
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -280,6 +286,36 @@ public:
 
         verticalLayout_4->addWidget(discretizer);
 
+        verticalSpacer_8 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        verticalLayout_4->addItem(verticalSpacer_8);
+
+        label_9 = new QLabel(groupBox_3);
+        label_9->setObjectName(QStringLiteral("label_9"));
+
+        verticalLayout_4->addWidget(label_9);
+
+        radiusSlider = new QSlider(groupBox_3);
+        radiusSlider->setObjectName(QStringLiteral("radiusSlider"));
+        radiusSlider->setOrientation(Qt::Horizontal);
+
+        verticalLayout_4->addWidget(radiusSlider);
+
+        verticalSpacer_9 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_4->addItem(verticalSpacer_9);
+
+        label_10 = new QLabel(groupBox_3);
+        label_10->setObjectName(QStringLiteral("label_10"));
+
+        verticalLayout_4->addWidget(label_10);
+
+        densitySlider = new QSlider(groupBox_3);
+        densitySlider->setObjectName(QStringLiteral("densitySlider"));
+        densitySlider->setOrientation(Qt::Horizontal);
+
+        verticalLayout_4->addWidget(densitySlider);
+
         widget_2 = new QWidget(groupBox_3);
         widget_2->setObjectName(QStringLiteral("widget_2"));
         QSizePolicy sizePolicy6(QSizePolicy::Maximum, QSizePolicy::Minimum);
@@ -447,6 +483,8 @@ public:
         checkBoxSilhoutte->setText(QApplication::translate("AppWindow", "Silhouette", Q_NULLPTR));
         label_7->setText(QApplication::translate("AppWindow", "Threshold", Q_NULLPTR));
         label_8->setText(QApplication::translate("AppWindow", "Steps of discretize", Q_NULLPTR));
+        label_9->setText(QApplication::translate("AppWindow", "Radius", Q_NULLPTR));
+        label_10->setText(QApplication::translate("AppWindow", "Anzahl ", Q_NULLPTR));
         groupBox_6->setTitle(QApplication::translate("AppWindow", "Background", Q_NULLPTR));
         blackBgRadioButton->setText(QApplication::translate("AppWindow", "black", Q_NULLPTR));
         greyBgRadioButton->setText(QApplication::translate("AppWindow", "grey", Q_NULLPTR));

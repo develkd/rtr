@@ -120,6 +120,15 @@ AppWindow::AppWindow(QWidget *parent) :
     connect(ui -> redSlider, &QSlider::valueChanged, [this](int value){
          scene().setRedIntensity(float(value)/100);
     });
+
+    connect(ui -> densitySlider, &QSlider::valueChanged, [this](int value){
+         scene().setDensity(float(value)/100);
+    });
+
+    connect(ui -> radiusSlider, &QSlider::valueChanged, [this](int value){
+         scene().setRadius(float(value)/100);
+    });
+
 }
 
 // called when the window is initially shown

@@ -27,6 +27,8 @@ public:
 
     float time = 0.0;
 
+
+
      std::vector<PointLight> lights;
 
     /*

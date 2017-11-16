@@ -26,4 +26,5 @@ public:
        QVector3D backgroundColor=QVector3D(0.40f,0.50f,0.21f);
        QVector3D circleColor=QVector3D(0.10f,0.80f,0.80f);
     }texture;
+
 };

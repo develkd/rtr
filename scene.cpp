@@ -92,6 +92,9 @@ void Scene::makeNodes()
     point->phong.k_diffuse = QVector3D(0.2f,0.34f,0.41f);
     point->phong.k_ambient = point->phong.k_diffuse * 0.5f;
     point->phong.shininess = 90;
+    point->texture.density=5.0;
+    point->texture.radius=0.2;
+
 
     // which material to use as default for all objects?
     auto std = color_toon;
@@ -426,6 +429,30 @@ void Scene::setGreenIntensity(float greenIntensitiy){
     for(unsigned int i=0; i<lightNodes_.size(); i++) {
         material->lights[i].color.setY(greenIntensitiy);
     }
+    update();
+
+}
+
+void Scene::setDensity(float density){
+    std::shared_ptr<Material>  material =  meshes_[getCurrentSceneNode()] ->material();
+    if("point" == material ->getAppliedShader()){
+         PointMaterial* tm = mapOfPointMaterials_["point"].get();
+        tm -> texture.density=density;
+         qDebug()<<"Denity is set to " << density;
+    }
+
+    update();
+
+}
+
+void Scene::setRadius(float radius){
+    std::shared_ptr<Material>  material =  meshes_[getCurrentSceneNode()] ->material();
+    if("point" == material ->getAppliedShader()){
+         PointMaterial* tm = mapOfPointMaterials_["point"].get();
+        tm -> texture.radius=radius;
+         qDebug()<<"radius is set to " << radius;
+    }
+
     update();
 
 }
