@@ -98,9 +98,9 @@ void Scene::makeNodes()
 
     // load meshes from .obj files and assign shader programs to them
     meshes_["Teapot"]  = std::make_shared<Mesh>(":/models/teapot/teapot.obj", std);
-    meshes_["Duck"]    = std::make_shared<Mesh>(":/models/duck/duck.obj", color_toon);
+    meshes_["Duck"]    = std::make_shared<Mesh>(":/models/duck/duck.obj", std);
     meshes_["Goblin"]  = std::make_shared<Mesh>(":/models/goblin.obj", std);
-    meshes_["Obiwan"]  = std::make_shared<Mesh>(":/models/obiwan/obiwan.obj", color_obiwan);
+    meshes_["Obiwan"]  = std::make_shared<Mesh>(":/models/obiwan/obiwan.obj", std);
 
     meshes_["Buddha"]  = std::make_shared<Mesh>(":/models/extern/buddha.obj", std);
     meshes_["Dragon"]  = std::make_shared<Mesh>(":/models/extern/dragon.obj", std);

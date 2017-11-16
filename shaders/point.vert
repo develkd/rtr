@@ -1,36 +1,39 @@
 /*
  *
- * vertex shader for simple phong
+ * vertex shader for simple point
  *
  */
 
 #version 150
 
-// transformation matrices
-uniform mat4 modelViewProjectionMatrix;
 uniform mat4 projectionMatrix;
 uniform mat4 modelViewMatrix;
-uniform mat4 viewMatrix;
-uniform mat4 inverseViewMatrix;
-uniform mat4 modelMatrix;
 uniform mat3 normalMatrix;
 
 // in: position and normal vector in model coordinates (_MC)
 in vec3 position_MC;
 in vec3 normal_MC;
 
+// position + normal vector in eye coordinates (_EC)
 out vec4 position_EC;
 out vec3 normal_EC;
 
+//for texture
+in vec2 texcoord;
+out vec2 fragTexCoord;
+
+
 void main(void) {
-     // vertex/fragment position in eye coordinates
-     position_EC = modelViewMatrix * vec4(position_MC,1);
 
-     // position in clip coordinates
-     vec4 pos   = projectionMatrix * position_EC;
-      gl_PointSize = (1.0 - pos.z / pos.w) * 64.0;
-        gl_Position  = pos;
+    // position to eye coordinates
+    position_EC = modelViewMatrix * vec4(position_MC,1);
 
-     // normal direction in eye coordinates
-    // normal_EC  = normalMatrix * normal_MC;
+    // normal to eye coordinates
+    normal_EC = normalMatrix * normal_MC;
+
+    // position to clip coordinates
+    gl_Position = projectionMatrix * position_EC;
+
+    fragTexCoord  = texcoord;
+
 }

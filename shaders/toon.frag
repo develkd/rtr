@@ -34,7 +34,7 @@ struct Texture {
 // output - transformed to eye coordinates (EC)
 in vec4 position_EC;
 in vec3 normal_EC;
-in vec2 fragTextCoord;
+
 // output: fragment/pixel color
 out vec4 outColor;
 
