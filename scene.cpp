@@ -452,9 +452,7 @@ void Scene::setRadius(float radius){
         tm -> texture.radius=radius;
          qDebug()<<"radius is set to " << radius;
     }
-
     update();
-
 }
 
 // pass key/mouse events on to navigator objects
