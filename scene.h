@@ -60,6 +60,7 @@ public slots:
     void setBlueIntensity(float blueIntensitiy);
     void setRadius(float radius);
     void setDensity(float density);
+    void revertPoint(bool revert);
 
     // change background color
     void setBackgroundColor(QVector3D rgb);

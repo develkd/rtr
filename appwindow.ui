@@ -503,6 +503,13 @@
                  </widget>
                 </item>
                 <item>
+                 <widget class="QCheckBox" name="checkBoxInvert">
+                  <property name="text">
+                   <string>Invert</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
                  <widget class="QWidget" name="widget_2" native="true">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Maximum" vsizetype="Minimum">

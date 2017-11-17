@@ -72,6 +72,7 @@ public:
     QSpacerItem *verticalSpacer_9;
     QLabel *label_10;
     QSlider *densitySlider;
+    QCheckBox *checkBoxInvert;
     QWidget *widget_2;
     QGridLayout *gridLayout;
     QGroupBox *groupBox_6;
@@ -316,6 +317,11 @@ public:
 
         verticalLayout_4->addWidget(densitySlider);
 
+        checkBoxInvert = new QCheckBox(groupBox_3);
+        checkBoxInvert->setObjectName(QStringLiteral("checkBoxInvert"));
+
+        verticalLayout_4->addWidget(checkBoxInvert);
+
         widget_2 = new QWidget(groupBox_3);
         widget_2->setObjectName(QStringLiteral("widget_2"));
         QSizePolicy sizePolicy6(QSizePolicy::Maximum, QSizePolicy::Minimum);
@@ -485,6 +491,7 @@ public:
         label_8->setText(QApplication::translate("AppWindow", "Steps of discretize", Q_NULLPTR));
         label_9->setText(QApplication::translate("AppWindow", "Radius", Q_NULLPTR));
         label_10->setText(QApplication::translate("AppWindow", "Anzahl ", Q_NULLPTR));
+        checkBoxInvert->setText(QApplication::translate("AppWindow", "Invert", Q_NULLPTR));
         groupBox_6->setTitle(QApplication::translate("AppWindow", "Background", Q_NULLPTR));
         blackBgRadioButton->setText(QApplication::translate("AppWindow", "black", Q_NULLPTR));
         greyBgRadioButton->setText(QApplication::translate("AppWindow", "grey", Q_NULLPTR));

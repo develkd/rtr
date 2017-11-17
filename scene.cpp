@@ -59,12 +59,15 @@ void Scene::makeNodes()
     auto obiwan_prog = createProgram(":/shaders/obiwan.vert", ":/shaders/obiwan.frag");
     auto toon_prog = createProgram(":/shaders/toon.vert", ":/shaders/toon.frag");
     auto point_prog = createProgram(":/shaders/point.vert", ":/shaders/point.frag");
+    auto rect_prog = createProgram(":/shaders/rectangle.vert", ":/shaders/rectangle.frag");
 
     // Phong materials
     auto red = std::make_shared<PhongMaterial>(phong_prog);
     auto color_obiwan = std::make_shared<PhongMaterial>(obiwan_prog);
     auto color_toon = std::make_shared<ToonMaterial>(toon_prog);
     auto point = std::make_shared<PointMaterial>(point_prog);
+    auto rect = std::make_shared<PhongMaterial>(rect_prog);
+
    material_ = red;
 
     mapOfPhongMaterials_["red"] = red;
@@ -76,6 +79,7 @@ void Scene::makeNodes()
     allMaterials_.push_back(color_obiwan);
     allMaterials_.push_back(color_toon);
     allMaterials_.push_back(point);
+      allMaterials_.push_back(rect);
 
     red->phong.k_diffuse = QVector3D(0.8f,0.1f,0.1f);
     red->phong.k_ambient = red->phong.k_diffuse * 0.3f;
@@ -94,6 +98,7 @@ void Scene::makeNodes()
     point->phong.shininess = 90;
     point->texture.density=5.0;
     point->texture.radius=0.2;
+    point->texture.shouldDiscard=false;
 
 
     // which material to use as default for all objects?
@@ -455,6 +460,17 @@ void Scene::setRadius(float radius){
     update();
 }
 
+void Scene::revertPoint(bool  revert){
+    std::shared_ptr<Material>  material =  meshes_[getCurrentSceneNode()] ->material();
+
+    if("point" == material ->getAppliedShader()){
+         PointMaterial* tm = mapOfPointMaterials_["point"].get();
+        tm -> texture.shouldDiscard=revert;
+         qDebug()<<"revert is set to " << revert;
+    }
+
+    update();
+}
 // pass key/mouse events on to navigator objects
 void Scene::keyPressEvent(QKeyEvent *event) {
     cameraNavigator_->keyPressEvent(event);

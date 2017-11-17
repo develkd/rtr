@@ -10,5 +10,7 @@
         <file>shaders/texture.vert</file>
         <file>shaders/point.frag</file>
         <file>shaders/point.vert</file>
+        <file>shaders/rectangle.frag</file>
+        <file>shaders/rectangle.vert</file>
     </qresource>
 </RCC>

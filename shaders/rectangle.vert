@@ -6,34 +6,41 @@
 
 #version 150
 
+
+
+uniform mat4 modelViewProjectionMatrix;
 uniform mat4 projectionMatrix;
 uniform mat4 modelViewMatrix;
+uniform mat4 viewMatrix;
+uniform mat4 inverseViewMatrix;
+uniform mat4 modelMatrix;
 uniform mat3 normalMatrix;
+
+
 
 // in: position and normal vector in model coordinates (_MC)
 in vec3 position_MC;
 in vec3 normal_MC;
 
-// position + normal vector in eye coordinates (_EC)
+
 out vec4 position_EC;
 out vec3 normal_EC;
-
-//for texture
-in vec2 texcoord;
-out vec2 fragTexCoord;
 
 
 void main(void) {
 
-    // position to eye coordinates
+    // vertex/fragment position in eye coordinates
     position_EC = modelViewMatrix * vec4(position_MC,1);
 
-    // normal to eye coordinates
-    normal_EC = normalMatrix * normal_MC;
+    // position in clip coordinates
+    gl_Position  = projectionMatrix * position_EC;
 
-    // position to clip coordinates
-    gl_Position = projectionMatrix * position_EC;
 
-    fragTexCoord  = texcoord;
+
+    // normal direction in eye coordinates
+    normal_EC  = normalMatrix * normal_MC;
+
 
 }
+
+

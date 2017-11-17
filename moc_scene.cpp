@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Scene_t {
-    QByteArrayData data[52];
-    char stringdata0[566];
+    QByteArrayData data[54];
+    char stringdata0[585];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -58,31 +58,33 @@ QT_MOC_LITERAL(23, 267, 9), // "setRadius"
 QT_MOC_LITERAL(24, 277, 6), // "radius"
 QT_MOC_LITERAL(25, 284, 10), // "setDensity"
 QT_MOC_LITERAL(26, 295, 7), // "density"
-QT_MOC_LITERAL(27, 303, 18), // "setBackgroundColor"
-QT_MOC_LITERAL(28, 322, 3), // "rgb"
-QT_MOC_LITERAL(29, 326, 15), // "toggleAnimation"
-QT_MOC_LITERAL(30, 342, 4), // "flag"
-QT_MOC_LITERAL(31, 347, 17), // "setLightIntensity"
-QT_MOC_LITERAL(32, 365, 6), // "size_t"
-QT_MOC_LITERAL(33, 372, 1), // "i"
-QT_MOC_LITERAL(34, 374, 1), // "v"
-QT_MOC_LITERAL(35, 376, 13), // "keyPressEvent"
-QT_MOC_LITERAL(36, 390, 10), // "QKeyEvent*"
-QT_MOC_LITERAL(37, 401, 5), // "event"
-QT_MOC_LITERAL(38, 407, 15), // "mousePressEvent"
-QT_MOC_LITERAL(39, 423, 12), // "QMouseEvent*"
-QT_MOC_LITERAL(40, 436, 14), // "mouseMoveEvent"
-QT_MOC_LITERAL(41, 451, 17), // "mouseReleaseEvent"
-QT_MOC_LITERAL(42, 469, 10), // "wheelEvent"
-QT_MOC_LITERAL(43, 480, 12), // "QWheelEvent*"
-QT_MOC_LITERAL(44, 493, 4), // "draw"
-QT_MOC_LITERAL(45, 498, 6), // "update"
-QT_MOC_LITERAL(46, 505, 14), // "updateViewport"
-QT_MOC_LITERAL(47, 520, 5), // "width"
-QT_MOC_LITERAL(48, 526, 6), // "height"
-QT_MOC_LITERAL(49, 533, 13), // "setRotateAxis"
-QT_MOC_LITERAL(50, 547, 13), // "RotateY::Axis"
-QT_MOC_LITERAL(51, 561, 4) // "axis"
+QT_MOC_LITERAL(27, 303, 11), // "revertPoint"
+QT_MOC_LITERAL(28, 315, 6), // "revert"
+QT_MOC_LITERAL(29, 322, 18), // "setBackgroundColor"
+QT_MOC_LITERAL(30, 341, 3), // "rgb"
+QT_MOC_LITERAL(31, 345, 15), // "toggleAnimation"
+QT_MOC_LITERAL(32, 361, 4), // "flag"
+QT_MOC_LITERAL(33, 366, 17), // "setLightIntensity"
+QT_MOC_LITERAL(34, 384, 6), // "size_t"
+QT_MOC_LITERAL(35, 391, 1), // "i"
+QT_MOC_LITERAL(36, 393, 1), // "v"
+QT_MOC_LITERAL(37, 395, 13), // "keyPressEvent"
+QT_MOC_LITERAL(38, 409, 10), // "QKeyEvent*"
+QT_MOC_LITERAL(39, 420, 5), // "event"
+QT_MOC_LITERAL(40, 426, 15), // "mousePressEvent"
+QT_MOC_LITERAL(41, 442, 12), // "QMouseEvent*"
+QT_MOC_LITERAL(42, 455, 14), // "mouseMoveEvent"
+QT_MOC_LITERAL(43, 470, 17), // "mouseReleaseEvent"
+QT_MOC_LITERAL(44, 488, 10), // "wheelEvent"
+QT_MOC_LITERAL(45, 499, 12), // "QWheelEvent*"
+QT_MOC_LITERAL(46, 512, 4), // "draw"
+QT_MOC_LITERAL(47, 517, 6), // "update"
+QT_MOC_LITERAL(48, 524, 14), // "updateViewport"
+QT_MOC_LITERAL(49, 539, 5), // "width"
+QT_MOC_LITERAL(50, 545, 6), // "height"
+QT_MOC_LITERAL(51, 552, 13), // "setRotateAxis"
+QT_MOC_LITERAL(52, 566, 13), // "RotateY::Axis"
+QT_MOC_LITERAL(53, 580, 4) // "axis"
 
     },
     "Scene\0displayBufferContents\0\0id\0label\0"
@@ -93,10 +95,11 @@ QT_MOC_LITERAL(51, 561, 4) // "axis"
     "redIntensitiy\0setGreenIntensity\0"
     "greenIntensitiy\0setBlueIntensity\0"
     "blueIntensitiy\0setRadius\0radius\0"
-    "setDensity\0density\0setBackgroundColor\0"
-    "rgb\0toggleAnimation\0flag\0setLightIntensity\0"
-    "size_t\0i\0v\0keyPressEvent\0QKeyEvent*\0"
-    "event\0mousePressEvent\0QMouseEvent*\0"
+    "setDensity\0density\0revertPoint\0revert\0"
+    "setBackgroundColor\0rgb\0toggleAnimation\0"
+    "flag\0setLightIntensity\0size_t\0i\0v\0"
+    "keyPressEvent\0QKeyEvent*\0event\0"
+    "mousePressEvent\0QMouseEvent*\0"
     "mouseMoveEvent\0mouseReleaseEvent\0"
     "wheelEvent\0QWheelEvent*\0draw\0update\0"
     "updateViewport\0width\0height\0setRotateAxis\0"
@@ -110,7 +113,7 @@ static const uint qt_meta_data_Scene[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      24,   14, // methods
+      25,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -118,32 +121,33 @@ static const uint qt_meta_data_Scene[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    3,  134,    2, 0x06 /* Public */,
+       1,    3,  139,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       6,    1,  141,    2, 0x0a /* Public */,
-       8,    0,  144,    2, 0x0a /* Public */,
-       9,    1,  145,    2, 0x0a /* Public */,
-      11,    1,  148,    2, 0x0a /* Public */,
-      13,    1,  151,    2, 0x0a /* Public */,
-      15,    1,  154,    2, 0x0a /* Public */,
-      17,    1,  157,    2, 0x0a /* Public */,
-      19,    1,  160,    2, 0x0a /* Public */,
-      21,    1,  163,    2, 0x0a /* Public */,
-      23,    1,  166,    2, 0x0a /* Public */,
-      25,    1,  169,    2, 0x0a /* Public */,
-      27,    1,  172,    2, 0x0a /* Public */,
-      29,    1,  175,    2, 0x0a /* Public */,
-      31,    2,  178,    2, 0x0a /* Public */,
-      35,    1,  183,    2, 0x0a /* Public */,
-      38,    1,  186,    2, 0x0a /* Public */,
-      40,    1,  189,    2, 0x0a /* Public */,
-      41,    1,  192,    2, 0x0a /* Public */,
-      42,    1,  195,    2, 0x0a /* Public */,
-      44,    0,  198,    2, 0x0a /* Public */,
-      45,    0,  199,    2, 0x0a /* Public */,
-      46,    2,  200,    2, 0x0a /* Public */,
-      49,    1,  205,    2, 0x0a /* Public */,
+       6,    1,  146,    2, 0x0a /* Public */,
+       8,    0,  149,    2, 0x0a /* Public */,
+       9,    1,  150,    2, 0x0a /* Public */,
+      11,    1,  153,    2, 0x0a /* Public */,
+      13,    1,  156,    2, 0x0a /* Public */,
+      15,    1,  159,    2, 0x0a /* Public */,
+      17,    1,  162,    2, 0x0a /* Public */,
+      19,    1,  165,    2, 0x0a /* Public */,
+      21,    1,  168,    2, 0x0a /* Public */,
+      23,    1,  171,    2, 0x0a /* Public */,
+      25,    1,  174,    2, 0x0a /* Public */,
+      27,    1,  177,    2, 0x0a /* Public */,
+      29,    1,  180,    2, 0x0a /* Public */,
+      31,    1,  183,    2, 0x0a /* Public */,
+      33,    2,  186,    2, 0x0a /* Public */,
+      37,    1,  191,    2, 0x0a /* Public */,
+      40,    1,  194,    2, 0x0a /* Public */,
+      42,    1,  197,    2, 0x0a /* Public */,
+      43,    1,  200,    2, 0x0a /* Public */,
+      44,    1,  203,    2, 0x0a /* Public */,
+      46,    0,  206,    2, 0x0a /* Public */,
+      47,    0,  207,    2, 0x0a /* Public */,
+      48,    2,  208,    2, 0x0a /* Public */,
+      51,    1,  213,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::UInt, QMetaType::QString, QMetaType::QImage,    3,    4,    5,
@@ -160,18 +164,19 @@ static const uint qt_meta_data_Scene[] = {
     QMetaType::Void, QMetaType::Float,   22,
     QMetaType::Void, QMetaType::Float,   24,
     QMetaType::Void, QMetaType::Float,   26,
-    QMetaType::Void, QMetaType::QVector3D,   28,
-    QMetaType::Void, QMetaType::Bool,   30,
-    QMetaType::Void, 0x80000000 | 32, QMetaType::Float,   33,   34,
-    QMetaType::Void, 0x80000000 | 36,   37,
-    QMetaType::Void, 0x80000000 | 39,   37,
-    QMetaType::Void, 0x80000000 | 39,   37,
-    QMetaType::Void, 0x80000000 | 39,   37,
-    QMetaType::Void, 0x80000000 | 43,   37,
+    QMetaType::Void, QMetaType::Bool,   28,
+    QMetaType::Void, QMetaType::QVector3D,   30,
+    QMetaType::Void, QMetaType::Bool,   32,
+    QMetaType::Void, 0x80000000 | 34, QMetaType::Float,   35,   36,
+    QMetaType::Void, 0x80000000 | 38,   39,
+    QMetaType::Void, 0x80000000 | 41,   39,
+    QMetaType::Void, 0x80000000 | 41,   39,
+    QMetaType::Void, 0x80000000 | 41,   39,
+    QMetaType::Void, 0x80000000 | 45,   39,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 32, 0x80000000 | 32,   47,   48,
-    QMetaType::Void, 0x80000000 | 50,   51,
+    QMetaType::Void, 0x80000000 | 34, 0x80000000 | 34,   49,   50,
+    QMetaType::Void, 0x80000000 | 52,   53,
 
        0        // eod
 };
@@ -195,18 +200,19 @@ void Scene::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void 
         case 9: _t->setBlueIntensity((*reinterpret_cast< float(*)>(_a[1]))); break;
         case 10: _t->setRadius((*reinterpret_cast< float(*)>(_a[1]))); break;
         case 11: _t->setDensity((*reinterpret_cast< float(*)>(_a[1]))); break;
-        case 12: _t->setBackgroundColor((*reinterpret_cast< QVector3D(*)>(_a[1]))); break;
-        case 13: _t->toggleAnimation((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 14: _t->setLightIntensity((*reinterpret_cast< size_t(*)>(_a[1])),(*reinterpret_cast< float(*)>(_a[2]))); break;
-        case 15: _t->keyPressEvent((*reinterpret_cast< QKeyEvent*(*)>(_a[1]))); break;
-        case 16: _t->mousePressEvent((*reinterpret_cast< QMouseEvent*(*)>(_a[1]))); break;
-        case 17: _t->mouseMoveEvent((*reinterpret_cast< QMouseEvent*(*)>(_a[1]))); break;
-        case 18: _t->mouseReleaseEvent((*reinterpret_cast< QMouseEvent*(*)>(_a[1]))); break;
-        case 19: _t->wheelEvent((*reinterpret_cast< QWheelEvent*(*)>(_a[1]))); break;
-        case 20: _t->draw(); break;
-        case 21: _t->update(); break;
-        case 22: _t->updateViewport((*reinterpret_cast< size_t(*)>(_a[1])),(*reinterpret_cast< size_t(*)>(_a[2]))); break;
-        case 23: _t->setRotateAxis((*reinterpret_cast< RotateY::Axis(*)>(_a[1]))); break;
+        case 12: _t->revertPoint((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 13: _t->setBackgroundColor((*reinterpret_cast< QVector3D(*)>(_a[1]))); break;
+        case 14: _t->toggleAnimation((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 15: _t->setLightIntensity((*reinterpret_cast< size_t(*)>(_a[1])),(*reinterpret_cast< float(*)>(_a[2]))); break;
+        case 16: _t->keyPressEvent((*reinterpret_cast< QKeyEvent*(*)>(_a[1]))); break;
+        case 17: _t->mousePressEvent((*reinterpret_cast< QMouseEvent*(*)>(_a[1]))); break;
+        case 18: _t->mouseMoveEvent((*reinterpret_cast< QMouseEvent*(*)>(_a[1]))); break;
+        case 19: _t->mouseReleaseEvent((*reinterpret_cast< QMouseEvent*(*)>(_a[1]))); break;
+        case 20: _t->wheelEvent((*reinterpret_cast< QWheelEvent*(*)>(_a[1]))); break;
+        case 21: _t->draw(); break;
+        case 22: _t->update(); break;
+        case 23: _t->updateViewport((*reinterpret_cast< size_t(*)>(_a[1])),(*reinterpret_cast< size_t(*)>(_a[2]))); break;
+        case 24: _t->setRotateAxis((*reinterpret_cast< RotateY::Axis(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -249,13 +255,13 @@ int Scene::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 24)
+        if (_id < 25)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 24;
+        _id -= 25;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 24)
+        if (_id < 25)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 24;
+        _id -= 25;
     }
     return _id;
 }

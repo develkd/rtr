@@ -1,29 +1,9 @@
 /*
- * fragment shader for points-vert
+ * fragment shader for phong + textures + bumps
  *
  */
 
 #version 150
-struct PhongMaterial {
-    vec3 k_ambient;
-    vec3 k_diffuse;
-    vec3 k_specular;
-    float shininess;
-
-};
-struct PointLight {
-    vec3 intensity;
-    vec4 position_WC;
-    int  pass;
-};
-
-
-struct Texture {
-   float density;
-   float radius;
-   vec3 backgroundColor;
-   vec3 circleColor;
-};
 
 // output - transformed to eye coordinates (EC)
 in vec4 position_EC;
@@ -32,37 +12,30 @@ in vec3 normal_EC;
 // output: fragment/pixel color
 out vec4 outColor;
 
+struct PhongMaterial {
+    vec3 k_ambient;
+    vec3 k_diffuse;
+    vec3 k_specular;
+    float shininess;
 
+};
 uniform PhongMaterial phong;
 uniform vec3 ambientLightIntensity;
 
+struct PointLight {
+    vec3 intensity;
+    vec4 position_WC;
+    int  pass;
+};
 uniform PointLight light;
-uniform Texture texture;
 
 uniform mat4 viewMatrix;
-uniform vec3 color;
-uniform vec3 lightIntensity;
-in vec2 fragTexCoord;
+
 /*
- *  Calculate surface color based on Phong illumination model.silhoullette
+ *  Calculate surface color based on Phong illumination model.
  */
 
 vec3 myphong(vec3 n, vec3 v, vec3 l) {
-    vec3 ambientColor;
-    vec3 diffuseColor;
-    //mod(foo, dichte) < radius
-    float radius = texture.density/2*texture.radius;
-    float denisty = texture.density;
-
-    float mid_x = denisty/2;
-    float mid_y = denisty/2;
-    float coord_x = mod(fragTexCoord.x, denisty);
-    float coord_y = mod(fragTexCoord.y, denisty);
-    float distance = sqrt(pow(coord_x-mid_x, 2)+pow(coord_y-mid_y, 2));
-    bool changeColor = distance <= radius;
-
-    ambientColor = changeColor ? texture.circleColor : phong.k_ambient;
-    diffuseColor = changeColor ? texture.backgroundColor : phong.k_diffuse;
 
     // cosine of angle between light and surface normal.
     float ndotl = dot(n,l);
@@ -70,7 +43,7 @@ vec3 myphong(vec3 n, vec3 v, vec3 l) {
     // ambient / emissive part
     vec3 ambient = vec3(0,0,0);
     if(light.pass == 0) // only add ambient in first light pass
-        ambient = ambientColor * ambientLightIntensity;
+        ambient = phong.k_ambient * ambientLightIntensity;
 
     // surface back-facing to light?
     if(ndotl<=0.0)
@@ -79,7 +52,7 @@ vec3 myphong(vec3 n, vec3 v, vec3 l) {
         ndotl = max(ndotl, 0.0);
 
     // diffuse term
-    vec3 diffuse =  diffuseColor * light.intensity * ndotl;
+    vec3 diffuse =  phong.k_diffuse * light.intensity * ndotl;
 
     // reflected light direction = perfect reflection direction
     vec3 r = reflect(-l,n);
@@ -91,11 +64,9 @@ vec3 myphong(vec3 n, vec3 v, vec3 l) {
     vec3 specular = phong.k_specular * light.intensity * pow(rdotv, phong.shininess);
 
     // return sum of all contributions
-    vec3 sumColor =  ambient + diffuse + specular;
-    return 0.005*vec2( sin(time+1024.0*fragTexCoord.x),cos(time+768.0*fragTexCoord.y));
+    return ambient + diffuse + specular;
+
 }
-
-
 
 void main() {
 
@@ -104,9 +75,13 @@ void main() {
     vec3 lightdir_EC = (lightpos_EC   - position_EC).xyz;
     vec3 viewdir_EC  = (vec4(0,0,0,1) - position_EC).xyz;
 
-   vec3 phong_color =  myphong(normalize(normal_EC),
-                           normalize(viewdir_EC),
-                           normalize(lightdir_EC));
-    outColor = vec4(phong_color,1);
+    // calculate color using phong, all vectors in eye coordinates
+    vec3 final_color = myphong(normalize(normal_EC),
+                               normalize(viewdir_EC),
+                               normalize(lightdir_EC));
+
+    // set output
+    outColor = vec4(final_color, 1.0);
+    // outColor = vec4(1,0,0, 1.0);
 
 }

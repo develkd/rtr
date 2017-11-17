@@ -129,6 +129,9 @@ AppWindow::AppWindow(QWidget *parent) :
          scene().setRadius(float(value)/100);
     });
 
+    connect(ui -> checkBoxInvert, &QCheckBox::toggled,[this](bool enable){
+         scene().revertPoint(enable);
+    });
 }
 
 // called when the window is initially shown

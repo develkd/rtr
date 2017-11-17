@@ -33,6 +33,7 @@ void main(void) {
     // position in clip coordinates
     gl_Position  = projectionMatrix * position_EC;
 
+
     // normal direction in eye coordinates
     normal_EC  = normalMatrix * normal_MC;
 

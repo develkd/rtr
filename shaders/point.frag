@@ -23,6 +23,7 @@ struct Texture {
    float radius;
    vec3 backgroundColor;
    vec3 circleColor;
+   bool shouldDiscard;
 };
 
 // output - transformed to eye coordinates (EC)
@@ -40,9 +41,10 @@ uniform PointLight light;
 uniform Texture texture;
 
 uniform mat4 viewMatrix;
-uniform vec3 color;
+
 uniform vec3 lightIntensity;
 in vec2 fragTexCoord;
+vec3 color;
 /*
  *  Calculate surface color based on Phong illumination model.silhoullette
  */
@@ -60,6 +62,9 @@ vec3 myphong(vec3 n, vec3 v, vec3 l) {
     float coord_y = mod(fragTexCoord.y, denisty);
     float distance = sqrt(pow(coord_x-mid_x, 2)+pow(coord_y-mid_y, 2));
     bool changeColor = distance <= radius;
+
+    if(changeColor && texture.shouldDiscard)
+        discard;
 
     ambientColor = changeColor ? texture.circleColor : phong.k_ambient;
     diffuseColor = changeColor ? texture.backgroundColor : phong.k_diffuse;
@@ -91,8 +96,8 @@ vec3 myphong(vec3 n, vec3 v, vec3 l) {
     vec3 specular = phong.k_specular * light.intensity * pow(rdotv, phong.shininess);
 
     // return sum of all contributions
-    return ambient + diffuse + specular;
-
+    color= ambient + diffuse + specular;
+    return color;
 }
 
 
@@ -107,6 +112,6 @@ void main() {
    vec3 phong_color =  myphong(normalize(normal_EC),
                            normalize(viewdir_EC),
                            normalize(lightdir_EC));
-    outColor = vec4(phong_color,1);
 
+     outColor = vec4(phong_color,1);
 }
