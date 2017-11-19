@@ -313,6 +313,10 @@ public:
 
         densitySlider = new QSlider(groupBox_3);
         densitySlider->setObjectName(QStringLiteral("densitySlider"));
+        densitySlider->setMinimum(1);
+        densitySlider->setMaximum(100);
+        densitySlider->setPageStep(1);
+        densitySlider->setSliderPosition(100);
         densitySlider->setOrientation(Qt::Horizontal);
 
         verticalLayout_4->addWidget(densitySlider);
@@ -490,7 +494,7 @@ public:
         label_7->setText(QApplication::translate("AppWindow", "Threshold", Q_NULLPTR));
         label_8->setText(QApplication::translate("AppWindow", "Steps of discretize", Q_NULLPTR));
         label_9->setText(QApplication::translate("AppWindow", "Radius", Q_NULLPTR));
-        label_10->setText(QApplication::translate("AppWindow", "Anzahl ", Q_NULLPTR));
+        label_10->setText(QApplication::translate("AppWindow", "max           Anzahl       min", Q_NULLPTR));
         checkBoxInvert->setText(QApplication::translate("AppWindow", "Invert", Q_NULLPTR));
         groupBox_6->setTitle(QApplication::translate("AppWindow", "Background", Q_NULLPTR));
         blackBgRadioButton->setText(QApplication::translate("AppWindow", "black", Q_NULLPTR));
